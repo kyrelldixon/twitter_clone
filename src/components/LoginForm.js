@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"
 
 const LoginForm = () => (
   <main>
@@ -14,7 +15,7 @@ const LoginForm = () => (
       </form>
 
       <section>
-        <p>New to Twitter? <a href="#5">Sign up now »</a></p>
+        <p>New to Twitter? <Link to="/signup">Sign up now »</Link></p>
         <p>Already using Twitter via text message? <a href="#6">Activate your account »</a></p>
       </section>
 
