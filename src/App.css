@@ -12,8 +12,8 @@ body {
 }
 
 a {
-    text-decoration: none;
-    border-bottom: red;
+  text-decoration: none;
+  border-bottom: red;
 }
 
 nav {
@@ -37,9 +37,9 @@ p {
 }
 
 .container {
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 840px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 840px;
 }
 
 li {
@@ -62,7 +62,7 @@ form {
   margin-bottom: 1rem;
 }
 
-input[type = text] {
+input[type=text] {
   display: block;
   margin: 1rem 0;
   width: 18rem;
@@ -72,10 +72,9 @@ input[type = text] {
 
 .login-options {
   display: inline;
-  margin-top: 2rem;
 }
 
-input[type = checkbox] {
+input[type=checkbox] {
   margin: 0.5rem;
 
 }
@@ -84,6 +83,3 @@ section {
   background-color: #f5f8fa;
   padding: 1rem 0 1rem 8rem;
 }
-
-
-
