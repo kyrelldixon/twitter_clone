@@ -12,8 +12,9 @@ body {
 }
 
 a {
-    text-decoration: none;
-    border-bottom: red;
+  color: #1da1f2;
+  text-decoration: none;
+  border-bottom: red;
 }
 
 nav {
@@ -73,6 +74,17 @@ input[type = text] {
 .login-options {
   display: inline;
   margin-top: 2rem;
+}
+
+button {
+  width: 4.5rem;
+  background-color: #1da1f2;
+  border-color: #1da1f2;
+  color: #FFFFFF;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 0.4rem;
+  border-radius: 2rem;
 }
 
 input[type = checkbox] {
