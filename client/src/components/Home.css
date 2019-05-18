@@ -1,0 +1,59 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#left-half {
+  background-color: #1da1f2;
+  color: #ffffff;
+}
+
+#right-half {
+  background-color: #ffffff;
+  color: #14171a;
+}
+
+#home-logo {
+  color: #1da1f2;
+  font-size: 3rem;
+}
+
+#signup-btn {
+  display: block;
+  width: 22rem;
+  padding: 0.4rem;
+  background-color: #1da1f2;
+  border-radius: 2rem;
+  border-color: #1da1f2;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.login-btn {
+  width: 22rem;
+  padding: 0.4rem;
+  background-color: #ffffff;
+  border-radius: 2rem;
+  border-color: #1da1f2;
+  color: #1da1f2;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#small-btn {
+  max-width: 3.4rem;
+  line-height: 1.5rem;
+  font-size: 0.8rem;
+}

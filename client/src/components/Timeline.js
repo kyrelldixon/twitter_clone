@@ -1,7 +1,11 @@
 import React from 'react';
+import Nav from './Nav';
 
 const Timeline = () => (
-  <div>This is the timeline!</div>
+  <div>
+  <Nav />
+  This is the timeline!
+  </div>
 );
 
 export default Timeline;

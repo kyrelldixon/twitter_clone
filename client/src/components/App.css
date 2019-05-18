@@ -53,7 +53,7 @@ li {
   padding: 0.3rem;
 }
 
-i {
+#nav-logo {
   font-size: 1.3rem;
   margin-right: 0.4rem;
 }
@@ -90,7 +90,7 @@ input[type=text] {
   display: inline;
 }
 
-button {
+button.login-options {
   width: 4.5rem;
   background-color: #1da1f2;
   border-color: #1da1f2;
@@ -105,7 +105,7 @@ input[type = checkbox] {
   margin: 0.5rem;
 }
 
-section {
+#signup-links {
   background-color: #f5f8fa;
   padding: 0.6rem 0 1rem 8rem;
   margin-top: 1.4rem;
