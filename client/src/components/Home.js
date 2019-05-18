@@ -6,10 +6,12 @@ const Home = () => (
     <div className="wrapper">
 
       <section id="left-half">
-        <h1>Follow your interests.</h1>
-        <h1>Hear what people are talking about.</h1>
-        <h1>Join the conversation.</h1>
+        <h2><i className="fas fa-search"></i>Follow your interests.</h2>
+        <h2><i className="fas fa-users"></i>Hear what people are talking about.</h2>
+        <h2><i className="far fa-comment"></i>Join the conversation.</h2>
       </section>
+
+      <i className="fab fa-twitter" id="bird-bg"></i>
 
       <section id="right-half">
         <i className="fab fa-twitter" id="home-logo"></i>

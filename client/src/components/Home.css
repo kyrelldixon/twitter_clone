@@ -14,11 +14,33 @@
 #left-half {
   background-color: #1da1f2;
   color: #ffffff;
+  padding: 30vh 0 0 12vw;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin: 3rem auto;
+}
+
+#left-half i {
+  margin-right: 1rem;
+  font-size: 1.8rem;
+}
+
+#bird-bg {
+  color: #14171a;
+  opacity: 0.1;
+  font-size: 160vh;
+  position: absolute;
+  z-index: 10;
+  left: 4%;
+  bottom: -28%;
 }
 
 #right-half {
   background-color: #ffffff;
   color: #14171a;
+  z-index: 20;
 }
 
 #home-logo {
@@ -57,3 +79,4 @@
   line-height: 1.5rem;
   font-size: 0.8rem;
 }
+
