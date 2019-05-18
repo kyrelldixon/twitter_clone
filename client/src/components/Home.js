@@ -14,12 +14,21 @@ const Home = () => (
       <i className="fab fa-twitter" id="bird-bg"></i>
 
       <section id="right-half">
-        <i className="fab fa-twitter" id="home-logo"></i>
-        <Link to="login"><button className="login-btn" id="small-btn">Log in</button></Link>
-        <h1>See what's happening in the world right now</h1>
-        <h3>Join Twitter today.</h3>
-        <Link to="signup"><button id="signup-btn">Sign Up</button></Link>
-        <Link to="login"><button className="login-btn">Log in</button></Link>
+        <div id="top-login">
+          <input type="text" placeholder="Phone, email or username" />
+          <input type="text" placeholder="Password" />
+          <Link to="login"><button className="login-btn" id="small-btn-upper">Log in</button></Link>
+        </div>
+        <a href="/" id="forgot-pass">Forgot password?</a>
+
+        <div id="container">
+          <i className="fab fa-twitter" id="home-logo"></i>
+          <Link to="login"><button className="login-btn" id="small-btn-lower">Log in</button></Link>
+          <h1>See what's happening in the world right now</h1>
+          <h3>Join Twitter today.</h3>
+          <Link to="signup"><button id="signup-btn">Sign Up</button></Link>
+          <Link to="login"><button className="login-btn">Log in</button></Link>
+        </div>
       </section>
 
     </div>
