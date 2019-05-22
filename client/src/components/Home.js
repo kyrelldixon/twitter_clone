@@ -17,7 +17,7 @@ const Home = () => (
         <div id="top-login">
           <input type="text" placeholder="Phone, email or username" />
           <input type="text" placeholder="Password" />
-          <Link to="login"><button className="login-btn" id="small-btn-upper">Log in</button></Link>
+          <Link to="timeline"><button className="login-btn" id="small-btn-upper">Log in</button></Link>
         </div>
         <a href="/" id="forgot-pass">Forgot password?</a>
 
