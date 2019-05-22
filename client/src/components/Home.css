@@ -1,0 +1,146 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#left-half {
+  background-color: #1da1f2;
+  color: #ffffff;
+  padding: 30vh 0 0 12vw;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin: 3rem auto;
+}
+
+#left-half i {
+  margin-right: 1rem;
+  font-size: 1.8rem;
+}
+
+#bird-bg {
+  color: #14171a;
+  opacity: 0.1;
+  font-size: 164vh;
+  position: absolute;
+  z-index: 10;
+  top: -33.5%;
+  bottom: 0%;
+  left: 3%;
+  overflow-y: hidden;
+}
+
+#right-half {
+  background-color: #ffffff;
+  color: #14171a;
+  z-index: 20;
+}
+
+#top-login {
+  margin: 2rem 4rem 0 6.5rem;
+  padding: 0.1rem;
+}
+
+#top-login input[type=text] {
+  display: inline;
+  width: 13rem;
+  margin: 0 0.8rem 0 0;
+  padding: 0.7rem;
+  font-size: 0.9rem;
+}
+
+#small-btn-upper {
+  max-width: 3.9rem;
+  line-height: 2rem;
+  font-size: 0.9rem;
+}
+
+#forgot-pass {
+  font-size: 0.9rem;
+  margin: 0 0 0 20.5rem;
+  color: #aab8c2;
+}
+
+#container {
+  margin: 15vh 13vw;
+}
+
+#home-logo {
+  color: #1da1f2;
+  font-size: 3rem;
+}
+
+#container h1 {
+  font-size: 1.6875rem;
+  margin: 0.5rem 0 3.3rem 0;
+}
+
+#signup-btn {
+  display: block;
+  width: 22rem;
+  padding: 0.4rem;
+  background-color: #1da1f2;
+  border-radius: 2rem;
+  border-color: #1da1f2;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.login-btn {
+  width: 22rem;
+  padding: 0.4rem;
+  background-color: #ffffff;
+  border-radius: 2rem;
+  border-color: #1da1f2;
+  color: #1da1f2;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#small-btn-lower {
+  display: none;
+  float: right;
+  max-width: 3.4rem;
+  line-height: 1.5rem;
+  font-size: 0.8rem;
+}
+
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  z-index: 30;
+  background-color: #ffffff;
+  text-align: center;
+  border-top: 0.06rem solid #e6ecf0;
+  padding: 0.10rem 0;
+}
+
+li, span {
+  display: inline;
+  color: #97a8b4;
+  font-size: 0.8rem;
+  margin: 0 0.22rem;
+}
+
+li:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+
+

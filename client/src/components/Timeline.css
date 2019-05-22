@@ -1,0 +1,41 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#home-bar {
+  font-size: 1.4rem;
+  font-weight: bold;
+  background-color: #ffffff;
+  padding: 0.8rem;
+  border: 0.07rem solid #cfdbe2;
+}
+
+.fa-star {
+  color: #1da1f2;
+  float: right;
+}
+
+#compose {
+  background-color: #ffffff;
+  padding: 0.7rem;
+}
+
+input[type=text] {
+  display: inline;
+  margin: 0;
+  background-color: #e6ecf0;
+  color: #cfdbe2;
+  border-radius: 1.2rem;
+  border-style: none;
+  padding: 0.6rem;
+}
+
+img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1.5rem;
+  margin-right: 1rem;
+}

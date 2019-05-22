@@ -5,9 +5,9 @@ const Nav = () => (
   <nav>
     <div className="container">
       <ul>
-        <li> <Link to="/" className="nav-link"><i className="fab fa-twitter"></i> Home</Link> </li>
-        <li> <Link to="/login" className="nav-link">Login</Link> </li>
-        <li id="nav-right"> <a href="#3">Language: English</a> </li>
+        <li> <Link to="/" className="nav-link"><i className="fab fa-twitter" id="nav-logo"></i><span>Home</span></Link> </li>
+        <li> <Link to="/login" className="nav-link"> <span>Login</span> </Link> </li>
+        <li id="nav-right" className="nav-link"> <Link to="#"><span>Language: English</span></Link> </li>
       </ul>
     </div>
   </nav>

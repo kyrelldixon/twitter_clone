@@ -1,8 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import Nav from "./Nav";
 
 const LoginForm = () => (
   <main>
+    <Nav />
     <div className="container" id="main-box">
 
       <form action="#">
@@ -14,7 +16,7 @@ const LoginForm = () => (
         <input type="checkbox" className="login-options" />Remember me · <a href="#4">Forgot password?</a>
       </form>
 
-      <section>
+      <section id="signup-links">
         <p>New to Twitter? <Link to="/signup">Sign up now »</Link></p>
         <p>Already using Twitter via text message? <a href="#6">Activate your account »</a></p>
       </section>
