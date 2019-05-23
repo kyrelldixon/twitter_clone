@@ -7,5 +7,6 @@ defmodule TwitterApiWeb.Router do
 
   scope "/api", TwitterApiWeb do
     pipe_through :api
+    resources "/users", UserController, except: [:new, :edit]
   end
 end
