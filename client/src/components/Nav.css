@@ -1,10 +1,3 @@
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
 a {
   color: #1da1f2;
   text-decoration: none;
@@ -20,12 +13,12 @@ nav {
   border-bottom: 0.07rem solid rgba(0,0,0,0.25);
 }
 
-ul {
+nav ul {
   padding: 0.7rem 0rem;
   margin: 0;
 }
 
-li {
+nav li {
   display: inline;
   margin-right: 1rem;
   padding: 0.3rem;

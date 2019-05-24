@@ -1,10 +1,3 @@
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
 #home-bar {
   font-size: 1.4rem;
   font-weight: bold;
@@ -23,7 +16,7 @@
   padding: 0.7rem;
 }
 
-input[type=text] {
+#compose input {
   display: inline;
   margin: 0;
   background-color: #e6ecf0;
@@ -33,7 +26,7 @@ input[type=text] {
   padding: 0.6rem;
 }
 
-img {
+#compose img {
   width: 3rem;
   height: 3rem;
   border-radius: 1.5rem;
