@@ -13,7 +13,7 @@ const LoginForm = () => (
 
         <input type="text" className="login-form" placeholder="Phone, email or username" />
         <input type="text" className="login-form" placeholder="Password" />
-        <button className="login-options">Log in</button>
+        <Link to="#"><button className="login-options">Log in</button></Link>
         <input type="checkbox" className="login-options" />
         <p className="login-options">Remember me · <Link to="#">Forgot password?</Link></p>
       </form>

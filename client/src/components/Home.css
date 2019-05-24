@@ -119,14 +119,17 @@ footer {
   background-color: #ffffff;
   text-align: center;
   border-top: 0.06rem solid #e6ecf0;
-  padding: 0.10rem 0;
 }
 
-li, span {
+#home-footer-list {
+  margin: 0.78rem 0;
+}
+
+#home-footer-list li, #home-footer-list span {
   display: inline;
   color: #97a8b4;
   font-size: 0.8rem;
-  margin: 0 0.22rem;
+  margin: 0 0.5rem;
 }
 
 li:hover {

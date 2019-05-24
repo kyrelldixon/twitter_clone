@@ -19,7 +19,7 @@ const Home = () => (
           <input type="text" placeholder="Password" />
           <Link to="timeline"><button className="login-btn" id="small-btn-upper">Log in</button></Link>
         </div>
-        <a href="/" id="forgot-pass">Forgot password?</a>
+        <Link to="/" id="forgot-pass">Forgot password?</Link>
 
         <div id="container">
           <i className="fab fa-twitter" id="home-logo"></i>
@@ -32,7 +32,7 @@ const Home = () => (
       </section>
 
       <footer>
-        <ul>
+        <ul id="home-footer-list">
           <li>About</li>
           <li>Help Center</li>
           <li>Blog</li>
