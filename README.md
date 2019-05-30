@@ -1,5 +1,9 @@
 # TwitterApi
 
+In order to work with Phoenix, you'll need both Elixir and mix installed.
+
+* [Elixir download](https://elixir-lang.org/install.html)
+
 To start your Phoenix server:
 
 * Install dependencies with `mix deps.get`
