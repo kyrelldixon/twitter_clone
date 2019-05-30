@@ -49,8 +49,8 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
 config :twitter_api, TwitterApi.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: System.get_env("POSTGRES_USERNAME"),
+  password: System.get_env("POSTGRES_PASSWORD"),
   database: "twitter_api_dev",
   hostname: "localhost",
   pool_size: 10
