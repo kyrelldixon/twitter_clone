@@ -1,0 +1,43 @@
+#signup-box {
+  min-height: 24rem;
+  border: 0.07rem solid rgba(0,0,0,0.18);
+  padding: 0 0 3rem 3rem;
+}
+
+#signup-box h1 {
+  font-size: 2rem;
+}
+
+#signup-box p {
+  margin-bottom: 0.6rem;
+  font-size: 1.2rem;
+}
+
+#signup-box input {
+  width: 14rem;
+  padding: 0.4rem;
+  font-size: 1rem;
+  background-color: #cfebfc;
+  border: 0;
+}
+
+#signup-box button {
+  display: block;
+  margin-top: 1.5rem;
+  padding: 0.7rem;
+  font-size: 1rem;
+  background-color: #ffffff;
+  border-radius: 2rem;
+  border-color: #1da1f2;
+  color: #1da1f2;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#signup-box button:hover {
+  background-color: #1da1f2;
+  border-color: #ffffff;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+}
