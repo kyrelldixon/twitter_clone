@@ -13,20 +13,25 @@ defmodule TwitterApiWeb.Router do
 
   scope "/api", TwitterApiWeb do
     pipe_through :api
-    resources "/users", UserController, except: [:new, :edit]
     resources "/sessions", SessionController, only: [:create, :delete]
+  end
+
+  scope "/api", TwitterApiWeb do
+    pipe_through [:api, :api_auth]
+    resources "/users", UserController, except: [:new, :edit]
   end
 
   # Plug function
   defp ensure_authenticated(conn, _opts) do
-    current_user_id = get_session(conn, :current_user_id)
+    user_id = get_session(conn, :user_id)
 
-    if current_user_id do
+    if user_id do
       conn
     else
       conn
       |> put_status(:unauthorized)
-      |> render(MyAppWeb.ErrorView, "401.json", message: "Unauthenticated user")
+      |> put_view(TwitterApiWeb.ErrorView)
+      |> render("401.json", message: "Unauthenticated user")
       |> halt()
     end
   end
