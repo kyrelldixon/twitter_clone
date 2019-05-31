@@ -26,6 +26,7 @@ defmodule TwitterApiWeb.Auth do
   end
 
   def logout(conn) do
-    configure_session(conn, drop: true)
+    delete_session(conn, :user_id)
+    |> IO.inspect
   end
 end
