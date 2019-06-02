@@ -1,10 +1,10 @@
 import  React, { useState, useEffect } from "react";
 import Nav from "./Nav";
 import './SignupForm.css';
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import axios from 'axios';
 
-const SignupForm = () =>
+const SignupForm = ({ history }) =>
 
 {
   const [name, setName] = useState('');
@@ -13,7 +13,7 @@ const SignupForm = () =>
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
-    const userInfo = {
+    const user = {
       user: {
         name: name,
         username: username,
@@ -23,20 +23,19 @@ const SignupForm = () =>
         }
       }
     }
-    console.log(userInfo);
-    getTest();
+    createUser(user);
+    history.push('/login');
     e.preventDefault();
   }
 
-  const getTest = async () => {
+  const createUser = async (user) => {
     try {
-      const response = await axios.get('localhost:4000/api/users');
+      const response = await axios.post('http://localhost:4000/api/users', user);
       console.log(response);
     } catch (error) {
       console.error(error);
     }
   }
-    // localhost:4000/api/users
 
   return (
     <div>
@@ -61,7 +60,7 @@ const SignupForm = () =>
 
           <label>
             <p>Password</p>
-            <input type="text" value={password} onChange={e => setPassword(e.target.value)} />
+            <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
           </label>
 
           <button type="submit">Sign Up</button>
@@ -72,4 +71,4 @@ const SignupForm = () =>
 
 }
 
-export default SignupForm;
+export default withRouter(SignupForm);
