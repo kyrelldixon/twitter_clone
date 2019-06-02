@@ -207,4 +207,23 @@ defmodule TwitterApi.Accounts do
   def change_credential(%Credential{} = credential) do
     Credential.changeset(credential, %{})
   end
+
+  def get_user_by_email(email) do
+    from(u in User, join: c in assoc(u, :credential), where: c.email == ^email)
+    |> Repo.one()
+    |> Repo.preload(:credential)
+  end
+
+  def authenticate_by_email_and_password(email, given_pass) do
+    user = get_user_by_email(email)
+    cond do
+      user && Bcrypt.verify_pass(given_pass, user.credential.password_hash) ->
+        {:ok, user}
+      user ->
+        {:error, :unauthorized}
+      true ->
+        Bcrypt.no_user_verify()
+        {:error, :not_found}
+      end
+    end
 end
