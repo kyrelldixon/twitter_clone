@@ -2,37 +2,59 @@ defmodule TwitterApi.AccountsTest do
   use TwitterApi.DataCase
 
   alias TwitterApi.Accounts
+  alias TwitterApi.Accounts.User
 
   describe "users" do
-    alias TwitterApi.Accounts.User
 
-    @valid_attrs %{name: "some name", username: "some username"}
-    @update_attrs %{name: "some updated name", username: "some updated username"}
-    @invalid_attrs %{name: nil, username: nil}
+    @valid_attrs %{
+      name: "My Name",
+      username: "my_username",
+      credential: %{
+        email: "some@email.com",
+        password: "my_password"
+      }
+    }
+    @update_attrs %{name: "some updated name", username: "some updated username", credential: %{
+      email: "someother@email.com",
+      password: "my_password"
+    }}
+    @invalid_attrs %{name: nil, username: nil, credential: nil}
 
-    def user_fixture(attrs \\ %{}) do
-      {:ok, user} =
-        attrs
-        |> Enum.into(@valid_attrs)
-        |> Accounts.create_user()
+    test "with valid data inserts user" do
+      assert {:ok, %User{id: id} = user} = Accounts.register_user(@valid_attrs)
+      assert user.name == "My Name"
+      assert user.username == "my_username"
+      assert user.credential.email == "some@email.com"
+      assert [%User{id: ^id}] = Accounts.list_users()
+    end
 
-      user
+    test "with invalid data does not insert user" do
+      assert {:error, _changeset} = Accounts.register_user(@invalid_attrs)
+      assert Accounts.list_users() == []
+    end
+
+    test "enforces unique usernames" do
+      assert {:ok, %User{id: id} = user} = Accounts.register_user(@valid_attrs)
+      assert {:error, changeset} = Accounts.register_user(@valid_attrs)
+      assert %{username: ["has already been taken"]} = errors_on(changeset)
+      assert [%User{id: ^id}] = Accounts.list_users()
     end
 
     test "list_users/0 returns all users" do
-      user = user_fixture()
-      assert Accounts.list_users() == [user]
+      %User{id: id} = user_fixture()
+      assert [%User{id: ^id}] = Accounts.list_users()
     end
 
     test "get_user!/1 returns the user with given id" do
       user = user_fixture()
-      assert Accounts.get_user!(user.id) == user
+      test_user = Accounts.get_user!(user.id)
+      assert test_user.id == user.id
     end
 
     test "create_user/1 with valid data creates a user" do
       assert {:ok, %User{} = user} = Accounts.create_user(@valid_attrs)
-      assert user.name == "some name"
-      assert user.username == "some username"
+      assert user.name == "My Name"
+      assert user.username == "my_username"
     end
 
     test "create_user/1 with invalid data returns error changeset" do
@@ -41,15 +63,16 @@ defmodule TwitterApi.AccountsTest do
 
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
-      assert {:ok, %User{} = user} = Accounts.update_user(user, @update_attrs)
-      assert user.name == "some updated name"
-      assert user.username == "some updated username"
+      assert {:ok, updated_user} = Accounts.update_user(user, @update_attrs)
+      assert updated_user.name == "some updated name"
+      assert updated_user.username == "some updated username"
+      assert user.id == updated_user.id
     end
 
     test "update_user/2 with invalid data returns error changeset" do
       user = user_fixture()
       assert {:error, %Ecto.Changeset{}} = Accounts.update_user(user, @invalid_attrs)
-      assert user == Accounts.get_user!(user.id)
+      assert user.id == Accounts.get_user!(user.id).id
     end
 
     test "delete_user/1 deletes the user" do
@@ -64,64 +87,24 @@ defmodule TwitterApi.AccountsTest do
     end
   end
 
-  describe "credentials" do
-    alias TwitterApi.Accounts.Credential
+  describe "authenticate_by_email_and_password" do
+    @email "user@localhost.com"
+    @password "secretc928"
 
-    @valid_attrs %{email: "some email", password_hash: "some password_hash"}
-    @update_attrs %{email: "some updated email", password_hash: "some updated password_hash"}
-    @invalid_attrs %{email: nil, password_hash: nil}
-
-    def credential_fixture(attrs \\ %{}) do
-      {:ok, credential} =
-        attrs
-        |> Enum.into(@valid_attrs)
-        |> Accounts.create_credential()
-
-      credential
+    setup do
+      {:ok, user: user_fixture(email: @email, password: @password)}
     end
 
-    test "list_credentials/0 returns all credentials" do
-      credential = credential_fixture()
-      assert Accounts.list_credentials() == [credential]
+    test "returns user with correct password", %{user: %User{id: id}} do
+      assert {:ok, %User{id: ^id}} = Accounts.authenticate_by_email_and_password(@email, @password)
     end
 
-    test "get_credential!/1 returns the credential with given id" do
-      credential = credential_fixture()
-      assert Accounts.get_credential!(credential.id) == credential
+    test "return unauthorized error with invalid password" do
+      assert {:error, :unauthorized} = Accounts.authenticate_by_email_and_password(@email, "wrongpassword")
     end
 
-    test "create_credential/1 with valid data creates a credential" do
-      assert {:ok, %Credential{} = credential} = Accounts.create_credential(@valid_attrs)
-      assert credential.email == "some email"
-      assert credential.password_hash == "some password_hash"
-    end
-
-    test "create_credential/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Accounts.create_credential(@invalid_attrs)
-    end
-
-    test "update_credential/2 with valid data updates the credential" do
-      credential = credential_fixture()
-      assert {:ok, %Credential{} = credential} = Accounts.update_credential(credential, @update_attrs)
-      assert credential.email == "some updated email"
-      assert credential.password_hash == "some updated password_hash"
-    end
-
-    test "update_credential/2 with invalid data returns error changeset" do
-      credential = credential_fixture()
-      assert {:error, %Ecto.Changeset{}} = Accounts.update_credential(credential, @invalid_attrs)
-      assert credential == Accounts.get_credential!(credential.id)
-    end
-
-    test "delete_credential/1 deletes the credential" do
-      credential = credential_fixture()
-      assert {:ok, %Credential{}} = Accounts.delete_credential(credential)
-      assert_raise Ecto.NoResultsError, fn -> Accounts.get_credential!(credential.id) end
-    end
-
-    test "change_credential/1 returns a credential changeset" do
-      credential = credential_fixture()
-      assert %Ecto.Changeset{} = Accounts.change_credential(credential)
+    test "returns not found error with no matching user for email" do
+      assert {:error, :not_found} = Accounts.authenticate_by_email_and_password("bademail@mail.com", @password)
     end
   end
 end
