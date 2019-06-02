@@ -5,7 +5,6 @@ defmodule TwitterApi.AccountsTest do
   alias TwitterApi.Accounts.User
 
   describe "users" do
-    alias TwitterApi.Accounts.User
 
     @valid_attrs %{
       name: "My Name",
@@ -20,23 +19,6 @@ defmodule TwitterApi.AccountsTest do
       password: "my_password"
     }}
     @invalid_attrs %{name: nil, username: nil, credential: nil}
-
-    def user_fixture(attrs \\ %{}) do
-      username = "user#{System.unique_integer([:positive])}"
-      {:ok, user} =
-        attrs
-        |> Enum.into(%{
-          name: "some name",
-          username: username,
-          credential: %{
-            email: attrs[:email] || "#{username}@testing.com",
-            password: attrs[:password] || "asupersecret"
-          }
-        })
-        |> Accounts.register_user()
-
-      user
-    end
 
     test "with valid data inserts user" do
       assert {:ok, %User{id: id} = user} = Accounts.register_user(@valid_attrs)
@@ -81,9 +63,10 @@ defmodule TwitterApi.AccountsTest do
 
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
-      assert {:ok, %User{id: id} = updated_user} = Accounts.update_user(user, @update_attrs)
+      assert {:ok, updated_user} = Accounts.update_user(user, @update_attrs)
       assert updated_user.name == "some updated name"
       assert updated_user.username == "some updated username"
+      assert user.id == updated_user.id
     end
 
     test "update_user/2 with invalid data returns error changeset" do
@@ -101,6 +84,27 @@ defmodule TwitterApi.AccountsTest do
     test "change_user/1 returns a user changeset" do
       user = user_fixture()
       assert %Ecto.Changeset{} = Accounts.change_user(user)
+    end
+  end
+
+  describe "authenticate_by_email_and_password" do
+    @email "user@localhost.com"
+    @password "secretc928"
+
+    setup do
+      {:ok, user: user_fixture(email: @email, password: @password)}
+    end
+
+    test "returns user with correct password", %{user: %User{id: id}} do
+      assert {:ok, %User{id: ^id}} = Accounts.authenticate_by_email_and_password(@email, @password)
+    end
+
+    test "return unauthorized error with invalid password" do
+      assert {:error, :unauthorized} = Accounts.authenticate_by_email_and_password(@email, "wrongpassword")
+    end
+
+    test "returns not found error with no matching user for email" do
+      assert {:error, :not_found} = Accounts.authenticate_by_email_and_password("bademail@mail.com", @password)
     end
   end
 end
