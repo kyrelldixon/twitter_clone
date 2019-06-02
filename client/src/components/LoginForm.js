@@ -8,7 +8,7 @@ const LoginForm = () => (
     <Nav />
     <div className="container" id="main-box">
 
-      <form action="#">
+      <form action="#" id="login">
         <h1 id="login-header">Log in to Twitter</h1>
 
         <input type="text" className="login-form" placeholder="Phone, email or username" />

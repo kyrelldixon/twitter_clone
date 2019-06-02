@@ -1,10 +1,9 @@
 #main-box {
   min-height: 20rem;
-  background-color: #FFFFFF;
   border: 0.07rem solid rgba(0,0,0,0.18);
 }
 
-form {
+form#login {
   padding: 1.1rem 0 0 8rem;
   margin-bottom: 1rem;
 }

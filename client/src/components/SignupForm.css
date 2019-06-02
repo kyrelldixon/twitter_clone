@@ -1,0 +1,59 @@
+#signup-box {
+  min-height: 24rem;
+  border: 0.07rem solid rgba(0,0,0,0.18);
+  padding: 3rem 0 3rem 3rem;
+}
+
+#signup-box h1 {
+  font-size: 1.8rem;
+  margin-top: 0;
+}
+
+#signup-box label {
+  display: block;
+  width: 30rem;
+  margin-bottom: 1.2rem;
+  background-color: #f5f8fa;
+}
+
+#signup-box p {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: bold;
+  padding: 0.3rem 0.5rem;
+  color: #1da1f2;
+}
+
+#signup-box input {
+  width: inherit;
+  background-color: inherit;
+  padding: 0.3rem 0.5rem;
+  font-size: 1.2rem;
+  border: 0;
+  border-bottom: 0.1rem solid #bfc8ce;
+  outline: none;
+}
+
+#signup-box input:focus {
+  border-bottom: 0.1rem solid #1da1f2;
+}
+
+#signup-box button {
+  margin-top: 1rem;
+  padding: 0.7rem;
+  font-size: 1rem;
+  background-color: #ffffff;
+  border-radius: 2rem;
+  border-color: #1da1f2;
+  color: #1da1f2;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#signup-box button:hover {
+  background-color: #1da1f2;
+  border-color: #ffffff;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+}
