@@ -23,6 +23,7 @@ defmodule TwitterApiWeb.Endpoint do
 
   plug Plug.RequestId
   plug Plug.Logger
+  plug Corsica, origins: "http://localhost:3000", allow_headers: :all # react server endpoint
 
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
