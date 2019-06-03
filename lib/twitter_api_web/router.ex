@@ -16,14 +16,13 @@ defmodule TwitterApiWeb.Router do
 
     resources "/sessions", SessionController, only: [:create, :delete]
     resources "/users", UserController, only: [:create]
-
   end
 
   scope "/api", TwitterApiWeb do
     pipe_through [:api, :api_auth]
 
     resources "/users", UserController, except: [:new, :edit, :create]
-    resources "/tweets", TweetController, except: [:new, :edit]
+    resources "/tweets", TweetController, only: [:create, :index, :delete, :show]
   end
 
   # Plug function

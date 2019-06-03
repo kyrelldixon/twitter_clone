@@ -12,7 +12,7 @@ defmodule TwitterApiWeb.TweetController do
   end
 
   def create(conn, %{"tweet" => tweet_params}) do
-    with {:ok, %Tweet{} = tweet} <- Tweets.create_tweet(tweet_params) do
+    with {:ok, %Tweet{} = tweet} <- Tweets.create_tweet(conn.assigns.current_user, tweet_params) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.tweet_path(conn, :show, tweet))
@@ -23,14 +23,6 @@ defmodule TwitterApiWeb.TweetController do
   def show(conn, %{"id" => id}) do
     tweet = Tweets.get_tweet!(id)
     render(conn, "show.json", tweet: tweet)
-  end
-
-  def update(conn, %{"id" => id, "tweet" => tweet_params}) do
-    tweet = Tweets.get_tweet!(id)
-
-    with {:ok, %Tweet{} = tweet} <- Tweets.update_tweet(tweet, tweet_params) do
-      render(conn, "show.json", tweet: tweet)
-    end
   end
 
   def delete(conn, %{"id" => id}) do

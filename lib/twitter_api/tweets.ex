@@ -7,6 +7,7 @@ defmodule TwitterApi.Tweets do
   alias TwitterApi.Repo
 
   alias TwitterApi.Tweets.Tweet
+  alias TwitterApi.Accounts
 
   @doc """
   Returns the list of tweets.
@@ -19,6 +20,12 @@ defmodule TwitterApi.Tweets do
   """
   def list_tweets do
     Repo.all(Tweet)
+  end
+
+  def list_user_tweets(%Accounts.User{} = user) do
+    Tweet
+    |> user_tweets_query(user)
+    |> Repo.all()
   end
 
   @doc """
@@ -37,6 +44,12 @@ defmodule TwitterApi.Tweets do
   """
   def get_tweet!(id), do: Repo.get!(Tweet, id)
 
+  def get_user_tweet!(%Accounts.User{} = user, id) do
+    from(t in Tweet, where: t.id == ^id)
+    |> user_tweets_query(user)
+    |> Repo.one!()
+  end
+
   @doc """
   Creates a tweet.
 
@@ -49,9 +62,10 @@ defmodule TwitterApi.Tweets do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_tweet(attrs \\ %{}) do
+  def create_tweet(%Accounts.User{} = user, attrs \\ %{}) do
     %Tweet{}
     |> Tweet.changeset(attrs)
+    |> put_user(user)
     |> Repo.insert()
   end
 
@@ -98,7 +112,17 @@ defmodule TwitterApi.Tweets do
       %Ecto.Changeset{source: %Tweet{}}
 
   """
-  def change_tweet(%Tweet{} = tweet) do
-    Tweet.changeset(tweet, %{})
+  def change_tweet(%Accounts.User{} = user, %Tweet{} = tweet) do
+    tweet
+    |> Tweet.changeset(%{})
+    |> put_user(user)
+  end
+
+  defp put_user(changeset, user) do
+    Ecto.Changeset.put_assoc(changeset, :user, user)
+  end
+
+  defp user_tweets_query(query, %Accounts.User{id: user_id}) do
+    from(v in query, where: v.user_id == ^user_id)
   end
 end
