@@ -20,7 +20,7 @@ defmodule TwitterApi.MixProject do
   def application do
     [
       mod: {TwitterApi.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :corsica]
     ]
   end
 
@@ -42,6 +42,7 @@ defmodule TwitterApi.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:bcrypt_elixir, "~> 2.0"},
+      {:corsica, "~> 1.0"},
     ]
   end
 
