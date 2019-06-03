@@ -1,31 +1,43 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, withRouter } from "react-router-dom";
 import Nav from "./Nav";
 import './LoginForm.css';
+import axios from 'axios';
 
-const LoginForm = () => (
-  <main>
-    <Nav />
-    <div className="container" id="main-box">
+const LoginForm = ({ history }) => 
 
-      <form action="#" id="login">
-        <h1 id="login-header">Log in to Twitter</h1>
+{
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  
+  return (
+    <main>
+      <Nav />
+      <div className="container" id="main-box">
 
-        <input type="text" className="login-form" placeholder="Phone, email or username" />
-        <input type="text" className="login-form" placeholder="Password" />
-        <Link to="#"><button className="login-options">Log in</button></Link>
-        <input type="checkbox" className="login-options" />
-        <p className="login-options">Remember me · <Link to="#">Forgot password?</Link></p>
-      </form>
+        <form action="#" id="login">
+          <h1 id="login-header">Log in to Twitter</h1>
+        
+          <input type="text" className="login-form" placeholder="Phone, email or username" 
+            value={username} onChange={e => setUsername(e.target.value)}/>
+          
+          <input type="password" className="login-form" placeholder="Password"
+            value={password} onChange={e => {setPassword(e.target.value); console.log(password);}}/>
 
-      <section id="signup-links">
-        <p>New to Twitter? <Link to="/signup">Sign up now »</Link></p>
-        <p>Already using Twitter via text message? <Link to="#">Activate your account »</Link></p>
-      </section>
+          <button className="login-options" type="submit">Log in</button>
+          <input type="checkbox" className="login-options" />
+          <p className="login-options">Remember me · <Link to="#">Forgot password?</Link></p>
+        </form>
 
-    </div>
+        <section id="signup-links">
+          <p>New to Twitter? <Link to="/signup">Sign up now »</Link></p>
+          <p>Already using Twitter via text message? <Link to="#">Activate your account »</Link></p>
+        </section>
 
-  </main>
-);
+      </div>
 
-export default LoginForm;
+    </main>
+  );
+}
+
+export default withRouter(LoginForm);
