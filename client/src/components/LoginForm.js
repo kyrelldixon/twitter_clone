@@ -17,7 +17,6 @@ const LoginForm = ({ history }) =>
     }
 
     authenticateUser(credentials);
-    // history.push('/timeline');
     e.preventDefault();
   }
 
@@ -25,6 +24,7 @@ const LoginForm = ({ history }) =>
     try {
       const response = await axios.post('http://localhost:4000/api/sessions', credentials);
       console.log(response);
+      history.push('/timeline');
     } catch (error) {
       console.log(error);
     }
