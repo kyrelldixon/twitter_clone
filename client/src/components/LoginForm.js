@@ -26,7 +26,7 @@ const LoginForm = ({ history }) =>
       console.log(response);
       history.push('/timeline');
     } catch (error) {
-      console.log(error);
+      alert('Invalid username or password, try again');
     }
   }
   
