@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "text_content": "This is my first tweet!",
+      "tweet_id": 1,
+      "user_id": 1
+    },
+    {
+      "text_content": "Here's a new tweet!",
+      "tweet_id": 2,
+      "user_id": 2
+    },
+    {
+      "text_content": "Just stopped by the White House...not a fan of this orange guy they're calling president.",
+      "tweet_id": 3,
+      "user_id": 2
+    }
+  ]
+}
