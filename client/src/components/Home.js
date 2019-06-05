@@ -1,12 +1,33 @@
 import React, { useState } from 'react';
 import './Home.css';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import axios from 'axios';
 
-const Home = () => 
+const Home = ({ history }) => 
 {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  
+
+  const handleSubmit = (e) => {
+    const credentials = {
+      email: username,
+      password: password
+    }
+
+    authenticateUser(credentials);
+    e.preventDefault();
+  }
+
+  const authenticateUser = async (credentials) => {
+    try {
+      const response = await axios.post('http://localhost:4000/api/sessions', credentials);
+      console.log(response);
+      history.push('/timeline');
+    } catch (error) {
+      alert('Invalid username or password, try again');
+    }
+  }
+
   return (
     <div className="wrapper">
 
@@ -22,9 +43,9 @@ const Home = () =>
         <div id="top-login">
           <input type="text" placeholder="Phone, email or username"
             value={username} onChange={e => setUsername(e.target.value)}/>
-          <input type="text" placeholder="Password"
+          <input type="password" placeholder="Password"
             value={password} onChange={e => setPassword(e.target.value)}/>
-          <button className="login-btn" id="small-btn-upper">Log in</button>
+          <button className="login-btn" id="small-btn-upper" onClick={handleSubmit}>Log in</button>
         </div>
         <Link to="/" id="forgot-pass">Forgot password?</Link>
 
@@ -65,4 +86,4 @@ const Home = () =>
   );
 }
 
-  export default Home;
+  export default withRouter(Home);
