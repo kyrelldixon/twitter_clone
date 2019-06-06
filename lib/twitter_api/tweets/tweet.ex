@@ -3,7 +3,7 @@ defmodule TwitterApi.Tweets.Tweet do
   import Ecto.Changeset
 
   schema "tweets" do
-    field :text_content, :string
+    field :text, :string
     belongs_to :user, TwitterApi.Accounts.User
 
     timestamps()
@@ -12,7 +12,7 @@ defmodule TwitterApi.Tweets.Tweet do
   @doc false
   def changeset(tweet, attrs) do
     tweet
-    |> cast(attrs, [:text_content])
-    |> validate_required([:text_content])
+    |> cast(attrs, [:text])
+    |> validate_required([:text])
   end
 end

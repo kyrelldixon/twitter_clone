@@ -3,7 +3,7 @@ defmodule TwitterApi.Repo.Migrations.CreateTweets do
 
   def change do
     create table(:tweets) do
-      add :text_content, :string
+      add :text, :string
       add :user_id, references(:users, on_delete: :nothing)
 
       timestamps()
