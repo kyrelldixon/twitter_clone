@@ -9,8 +9,14 @@ const Tweet = (props) => {
             <div id="name">{props.name || "no name found"}</div>
             <div id="username">@{props.username || "no username found"}</div>
             <div id="time-diff"> · {props.timeDiff || "--m"}</div>
-            <button><i class="fas fa-chevron-down"></i></button>
+            <button><i className="fas fa-chevron-down"></i></button>
             <div id="tweet-message">{props.text_content || "no message found"}</div>
+            <div id="tweet-foot">
+              <i className="far fa-comment"> {props.commentCount || ""}</i>
+              <i className="fas fa-retweet"> {props.retweetCount || ""}</i>
+              <i className="far fa-heart"> {props.likeCount || ""}</i>
+              <i className="far fa-share-square"> {props.share || ""}</i>
+            </div>
           </div>
       </div>
   );
