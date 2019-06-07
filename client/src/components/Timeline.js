@@ -30,7 +30,7 @@ const Timeline = () => {
         <input type="text" placeholder="What's happening?" />
       </div>
       <ul id="tweets-ul">
-        {tweetData.map(tweet => <li><Tweet props={tweet}/></li>)}
+        {tweetData.map(tweet => <li key={tweet.tweet_id}><Tweet userID={tweet.user_id} text={tweet.text}/></li>)}
       </ul>
     </div>
   );

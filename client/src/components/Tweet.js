@@ -3,13 +3,12 @@ import './Tweet.css';
 import axios from 'axios';
 
 const Tweet = (props) => {
-  props = props.props;
   const [nameText, setNameText] = useState('No name found');
 
   useEffect( () => {
     const getName = async () => {
       try {
-        const nameObj = await axios(`http://localhost:4000/api/users/${props.user_id}`);
+        const nameObj = await axios(`http://localhost:4000/api/users/${props.userID}`);
         setNameText(nameObj.data.data.name);
       } catch (error) {
         console.log(error);
@@ -17,7 +16,7 @@ const Tweet = (props) => {
     }
     
     getName();
-  }, []);
+  }, [props.userID]);
 
   return (
       <div id="tweet-wrapper">
@@ -32,7 +31,7 @@ const Tweet = (props) => {
               <i className="far fa-comment"> {props.commentCount || ""}</i>
               <i className="fas fa-retweet"> {props.retweetCount || ""}</i>
               <i className="far fa-heart"> {props.likeCount || ""}</i>
-              <i className="far fa-share-square"> {props.share || ""}</i>
+              <i className="far fa-share-square"></i>
             </div>
           </div>
       </div>
