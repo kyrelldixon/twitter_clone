@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Nav from './Nav';
 import './Timeline.css';
 import Tweet from './Tweet';
+import axios from 'axios';
 
 const Timeline = () => {
+
+  const [tweetData, setTweetData] = useState([]);
+
+  useEffect( () => {
+    const getTweets = async () => {
+      try {
+        const tweetObj = await axios('http://localhost:4000/api/tweets');
+        setTweetData(tweetObj.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    
+    getTweets();
+  }, []);
 
   return (
     <div>
@@ -14,7 +30,7 @@ const Timeline = () => {
         <input type="text" placeholder="What's happening?" />
       </div>
       <ul id="tweets-ul">
-        <Tweet />
+        {tweetData.map(tweet => <li><Tweet props={tweet}/></li>)}
       </ul>
     </div>
   );

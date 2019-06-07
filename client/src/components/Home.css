@@ -132,7 +132,7 @@ footer {
   margin: 0 0.5rem;
 }
 
-li:hover {
+#home-footer-list li:hover {
   text-decoration: underline;
   cursor: pointer;
 }
