@@ -1,9 +1,10 @@
 import React from 'react';
+import './UserNav.css';
 import { Link } from "react-router-dom";
 
 const UserNav = () => (
   <nav id="user-nav">
-    <div className="container">
+    <div className="userhome-container">
       <ul>
         <li> <i className="fas fa-home"></i> </li>
         <li> <Link to="/" className="nav-link"><i className="fas fa-hashtag"></i></Link> </li>

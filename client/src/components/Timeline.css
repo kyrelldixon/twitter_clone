@@ -3,7 +3,7 @@
   font-weight: bold;
   background-color: #ffffff;
   padding: 0.8rem;
-  border: 0.07rem solid #cfdbe2;
+  border-bottom: 0.07rem solid #cfdbe2;
 }
 
 .fa-star {
@@ -36,4 +36,5 @@
 #tweets-ul {
   padding: 0;
   margin: 0;
+  list-style-type: none;
 }
