@@ -13,24 +13,43 @@
 
 #compose {
   background-color: #ffffff;
-  padding: 0.7rem;
+  padding: 0.8rem;
 }
 
-#compose input {
-  display: inline;
-  margin: 0;
-  background-color: #e6ecf0;
-  color: #cfdbe2;
-  border-radius: 1.2rem;
-  border-style: none;
-  padding: 0.6rem;
+#compose:hover {
+  background-color: #fafafa;
+  cursor: pointer;
 }
 
 #compose img {
-  width: 3rem;
-  height: 3rem;
+  width: 2.25rem;
+  height: 2.25rem;
   border-radius: 1.5rem;
-  margin-right: 1rem;
+  margin: 0 0.6rem 0 1rem;
+  vertical-align: middle;
+  color: #e6ecf0;
+}
+
+#compose div {
+  display: inline-block;
+  width: 70%;
+  background-color: #e6ecf0;
+  color: #61676b;
+  border-radius: 1.2rem;
+  border-style: none;
+  padding: 0.6rem 0.6rem 0.6rem 0.85rem;
+  font-size: 0.95rem;
+}
+
+#compose i {
+  color: #1da1f2;
+  font-size: 1.75rem;
+  vertical-align: middle;
+  margin-left: 0.75rem;
+}
+
+.fa-file-video {
+  font-size: 1.5rem !important;
 }
 
 #tweets-ul {
