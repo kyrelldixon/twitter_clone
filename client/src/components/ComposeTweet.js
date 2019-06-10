@@ -5,7 +5,7 @@ const ComposeTweet = () => {
   return (
     <div id="compose-tweet-modal">
       <div id="compose-tweet-head">
-        <button id="close-compose">x</button>
+        <button id="close-compose"><i className="fas fa-times"></i></button>
         <button id="submit-tweet">Tweet</button>
       </div>
       <div id="compose-tweet-body">

@@ -13,7 +13,9 @@
 
 #close-compose {
   border: none;
-  font-size: 1.75rem;
+  height: 2rem;
+  padding: 0 0.5rem;
+  font-size: 1.5rem;
   color: #1da1f2;
 }
 
@@ -47,6 +49,7 @@
   margin-top: 1rem;
   border-radius: 1rem;
   border: none;
+  resize: none;
   background-color: #e6ecf0;
   color: #61676b;
 }
