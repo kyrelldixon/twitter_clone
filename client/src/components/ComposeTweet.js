@@ -1,9 +1,11 @@
 import React from 'react';
 import './ComposeTweet.css';
 
-const ComposeTweet = () => {
+const ComposeTweet = ( {display} ) => {
+  const modalClass = display ? 'showModal' : 'hideModal';
+  
   return (
-    <div id="compose-tweet-modal">
+    <div id="compose-tweet-modal" className={modalClass}>
       <div id="compose-tweet-head">
         <button id="close-compose"><i className="fas fa-times"></i></button>
         <button id="submit-tweet">Tweet</button>
