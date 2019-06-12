@@ -44,7 +44,7 @@
 }
 
 #top-login input {
-  display: inline;
+  display: inline-block;
   width: 13rem;
   margin: 0 0.8rem 0 0;
   padding: 0.7rem;
