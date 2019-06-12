@@ -1,14 +1,13 @@
 import React from 'react';
 import './ComposeTweet.css';
 
-const ComposeTweet = ( {display} ) => {
-  let modalClass = display ? 'showModal' : 'hideModal';
+const ComposeTweet = (props) => {
   
   return (
-    <div id="modal-bg" className={modalClass}>
-      <div id="compose-tweet-modal" className={modalClass}>
+    <div id="modal-bg" className={props.display ? 'showModal' : 'hideModal'}>
+      <div id="compose-tweet-modal">
         <div id="compose-tweet-head">
-          <button id="close-compose" onClick={modalClass='hideModal'}><i className="fas fa-times"></i></button>
+          <button id="close-compose" onClick={() => props.handleDisplay(false)} ><i className="fas fa-times"></i></button>
           <button id="submit-tweet">Tweet</button>
         </div>
         <div id="compose-tweet-body">
