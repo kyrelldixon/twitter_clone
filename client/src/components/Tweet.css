@@ -1,0 +1,58 @@
+#tweet-wrapper {
+  background-color: #ffffff;
+  border-top: 0.07rem solid #e6ecf0;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 10% 90%;
+}
+
+#tweet-wrapper:hover {
+  background-color: #fafafa;
+  cursor: pointer;
+}
+
+#tweet-wrapper img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1.5rem;
+  margin-right: 1rem;
+}
+
+#tweet-container #name {
+  display: inline;
+  font-weight: bold;
+  margin-right: 0.3rem;
+}
+
+#tweet-container #username {
+  display: inline;
+  color: #808080;
+}
+
+#tweet-container #time-diff {
+  display: inline;
+  color: #808080;
+}
+
+#tweet-container button {
+  float: right;
+  font-size: 1rem;
+  color: #808080;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+#tweet-message {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+}
+
+#tweet-foot {
+  color: #808080;
+  margin-top: 1rem;
+}
+
+#tweet-foot i {
+  margin-right: 4rem;
+}

@@ -1,0 +1,63 @@
+#compose-tweet-modal {
+  width: 36rem;
+  height: 12rem;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  margin: 0;
+}
+
+.showModal {
+  display: block;
+}
+
+.hideModal {
+  display: none;
+}
+
+#compose-tweet-head {
+  border-bottom: 0.07rem solid #b1b5b6;
+  padding: 0.75rem;
+}
+
+#close-compose {
+  border: none;
+  height: 2rem;
+  padding: 0 0.5rem;
+  font-size: 1.5rem;
+  color: #1da1f2;
+}
+
+#submit-tweet {
+  float: right;
+  width: 4.5rem;
+  font-size: 0.9rem;
+  padding: 0.4rem;
+  background-color: #1da1f2;
+  color: #ffffff;
+  border-color: #1da1f2;
+  border-radius: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#compose-tweet-body img {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 1.5rem;
+  margin: 1rem 1.2rem 0 1rem;
+  vertical-align: top;
+  color: #e6ecf0;
+}
+
+#compose-tweet-message {
+  width: 30rem;
+  height: 6rem;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  border-radius: 1rem;
+  border: none;
+  resize: none;
+  background-color: #e6ecf0;
+  color: #61676b;
+}

@@ -21,3 +21,11 @@ a {
   margin-left: auto;
   max-width: 840px;
 }
+
+.userhome-container {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 990px;
+  display: grid;
+  grid-template-columns: 62% 35%;
+}

@@ -24,7 +24,7 @@ const LoginForm = ({ history }) =>
     try {
       const response = await axios.post('http://localhost:4000/api/sessions', credentials);
       console.log(response);
-      history.push('/timeline');
+      history.push('/userhome');
     } catch (error) {
       alert('Invalid username or password, try again');
     }
