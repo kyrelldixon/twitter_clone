@@ -1,6 +1,6 @@
-defmodule TwitterApiWeb.TweetView do
+defmodule TwitterApiWeb.V1.TweetView do
   use TwitterApiWeb, :view
-  alias TwitterApiWeb.TweetView
+  alias TwitterApiWeb.V1.TweetView
 
   def render("index.json", %{tweets: tweets}) do
     %{data: render_many(tweets, TweetView, "tweet.json")}
