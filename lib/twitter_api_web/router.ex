@@ -19,7 +19,10 @@ defmodule TwitterApiWeb.Router do
     get "/users/me", UserController, :me
     resources "/users", UserController, except: [:new, :edit]
 
-    resources "/tweets", TweetController, only: [:create, :index, :delete, :show]
+    scope "/tweets" do
+      get "/user_timeline", TweetController, :user_timeline
+      resources "/", TweetController, only: [:create, :index, :delete, :show]
+    end
   end
 
   # Plug function
