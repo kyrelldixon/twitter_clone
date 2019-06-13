@@ -15,7 +15,10 @@ defmodule TwitterApiWeb.Router do
     pipe_through :api
 
     resources "/sessions", SessionController, only: [:create, :delete]
+
+    get "/users/me", UserController, :me
     resources "/users", UserController, except: [:new, :edit]
+
     resources "/tweets", TweetController, only: [:create, :index, :delete, :show]
   end
 
