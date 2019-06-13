@@ -32,4 +32,9 @@ defmodule TwitterApiWeb.TweetController do
       send_resp(conn, :no_content, "")
     end
   end
+
+  def user_timeline(conn, _) do
+    tweets = Tweets.list_user_tweets(conn.assigns.current_user)
+    render(conn, "index.json", tweets: tweets)
+  end
 end
