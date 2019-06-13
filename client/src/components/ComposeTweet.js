@@ -4,7 +4,11 @@ import './ComposeTweet.css';
 const ComposeTweet = (props) => {
   
   return (
-    <div id="modal-bg" className={props.display ? 'showModal' : 'hideModal'}>
+    <div id="modal-bg" className={props.display ? 'showModal' : 'hideModal'} onClick={(event) => {
+      if (event.target.id === 'modal-bg') {
+        props.handleDisplay(false);
+      }
+    }}>
       <div id="compose-tweet-modal">
         <div id="compose-tweet-head">
           <button id="close-compose" onClick={() => props.handleDisplay(false)} ><i className="fas fa-times"></i></button>
