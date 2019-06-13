@@ -13,7 +13,12 @@ defmodule TwitterApiWeb.TweetView do
   def render("tweet.json", %{tweet: tweet}) do
     %{tweet_id: tweet.id,
       text: tweet.text,
-      user_id: tweet.user_id
+      user: %{
+        user_id: tweet.user_id,
+        username: tweet.user.username,
+        name: tweet.user.name
+      },
+      created_at: tweet.inserted_at,
     }
   end
 end
