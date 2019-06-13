@@ -1,4 +1,4 @@
-defmodule TwitterApiWeb.UserView do
+defmodule TwitterApiWeb.V1.UserView do
   use TwitterApiWeb, :view
   alias TwitterApiWeb.UserView
 

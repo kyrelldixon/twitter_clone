@@ -11,7 +11,7 @@ defmodule TwitterApiWeb.Router do
     plug :ensure_authenticated
   end
 
-  scope "/api", TwitterApiWeb do
+  scope "/v1", TwitterApiWeb.V1, as: :v1 do
     pipe_through :api
 
     resources "/sessions", SessionController, only: [:create, :delete]

@@ -1,4 +1,4 @@
-defmodule TwitterApiWeb.SessionController do
+defmodule TwitterApiWeb.V1.SessionController do
   use TwitterApiWeb, :controller
 
   def create(conn, %{"email" => email, "password" => password}) do
