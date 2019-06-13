@@ -19,13 +19,16 @@ defmodule TwitterApi.Tweets do
 
   """
   def list_tweets do
-    Repo.all(Tweet)
+    Tweet
+    |> Repo.all()
+    |> Repo.preload(:user)
   end
 
   def list_user_tweets(%Accounts.User{} = user) do
     Tweet
     |> user_tweets_query(user)
     |> Repo.all()
+    |> Repo.preload(:user)
   end
 
   @doc """
@@ -42,12 +45,17 @@ defmodule TwitterApi.Tweets do
       ** (Ecto.NoResultsError)
 
   """
-  def get_tweet!(id), do: Repo.get!(Tweet, id)
+  def get_tweet!(id) do
+    Tweet
+    |> Repo.get!(id)
+    |> Repo.preload(:user)
+  end
 
   def get_user_tweet!(%Accounts.User{} = user, id) do
     from(t in Tweet, where: t.id == ^id)
     |> user_tweets_query(user)
     |> Repo.one!()
+    |> Repo.preload(:user)
   end
 
   @doc """
