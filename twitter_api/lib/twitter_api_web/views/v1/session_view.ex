@@ -1,4 +1,4 @@
-defmodule TwitterApiWeb.SessionView do
+defmodule TwitterApiWeb.V1.SessionView do
   use TwitterApiWeb, :view
 
   def render("login.json", %{user: user}) do

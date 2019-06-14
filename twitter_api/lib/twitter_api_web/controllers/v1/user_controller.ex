@@ -1,4 +1,4 @@
-defmodule TwitterApiWeb.UserController do
+defmodule TwitterApiWeb.V1.UserController do
   use TwitterApiWeb, :controller
 
   alias TwitterApi.Accounts
@@ -15,7 +15,7 @@ defmodule TwitterApiWeb.UserController do
     with {:ok, %User{} = user} <- Accounts.register_user(user_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", Routes.user_path(conn, :show, user))
+      |> put_resp_header("location", Routes.v1_user_path(conn, :show, user))
       |> render("show.json", user: user)
     end
   end
@@ -38,6 +38,13 @@ defmodule TwitterApiWeb.UserController do
 
     with {:ok, %User{}} <- Accounts.delete_user(user) do
       send_resp(conn, :no_content, "")
+    end
+  end
+
+  def me(conn, _) do
+    user_id = get_session(conn, :user_id)
+    with user <- Accounts.get_user!(user_id) do
+      render(conn, "show.json", user: user)
     end
   end
 end

@@ -11,18 +11,18 @@ defmodule TwitterApiWeb.Router do
     plug :ensure_authenticated
   end
 
-  scope "/api", TwitterApiWeb do
+  scope "/v1", TwitterApiWeb.V1, as: :v1 do
     pipe_through :api
 
     resources "/sessions", SessionController, only: [:create, :delete]
-    resources "/users", UserController, only: [:create]
-  end
 
-  scope "/api", TwitterApiWeb do
-    pipe_through [:api, :api_auth]
+    get "/users/me", UserController, :me
+    resources "/users", UserController, except: [:new, :edit]
 
-    resources "/users", UserController, except: [:new, :edit, :create]
-    resources "/tweets", TweetController, only: [:create, :index, :delete, :show]
+    scope "/tweets" do
+      get "/user_timeline", TweetController, :user_timeline
+      resources "/", TweetController, only: [:create, :index, :delete, :show]
+    end
   end
 
   # Plug function

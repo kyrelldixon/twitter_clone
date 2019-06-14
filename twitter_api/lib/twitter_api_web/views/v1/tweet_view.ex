@@ -1,6 +1,6 @@
-defmodule TwitterApiWeb.TweetView do
+defmodule TwitterApiWeb.V1.TweetView do
   use TwitterApiWeb, :view
-  alias TwitterApiWeb.TweetView
+  alias TwitterApiWeb.V1.TweetView
 
   def render("index.json", %{tweets: tweets}) do
     %{data: render_many(tweets, TweetView, "tweet.json")}
@@ -13,7 +13,12 @@ defmodule TwitterApiWeb.TweetView do
   def render("tweet.json", %{tweet: tweet}) do
     %{tweet_id: tweet.id,
       text: tweet.text,
-      user_id: tweet.user_id
+      user: %{
+        user_id: tweet.user_id,
+        username: tweet.user.username,
+        name: tweet.user.name
+      },
+      created_at: tweet.inserted_at,
     }
   end
 end
