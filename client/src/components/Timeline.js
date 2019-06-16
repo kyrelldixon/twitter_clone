@@ -34,7 +34,9 @@ const Timeline = () => {
         <i className="far fa-chart-bar"></i>
       </div>
       <ul id="tweets-ul">
-        {tweetData.reverse().map(tweet => <li key={tweet.tweet_id}><Tweet userID={tweet.user_id} text={tweet.text}/></li>)}
+        {tweetData.reverse().map(tweet => <li key={tweet.tweet_id}>
+          <Tweet name={tweet.user.name} username={tweet.user.username} text={tweet.text}/>
+          </li>)}
       </ul>
     </div>
   );
