@@ -18,7 +18,7 @@ const ComposeTweet = (props) => {
 
   const sendTweet = async (postObj) => {
     try {
-      const response = await axios.post('http://localhost:4000/api/tweets', postObj);
+      const response = await axios.post('http://localhost:4000/v1/tweets', postObj);
       console.log(response);
     } catch (error) {
       console.log(error);

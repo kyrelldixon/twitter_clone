@@ -12,7 +12,7 @@ const Timeline = () => {
   useEffect( () => {
     const getTweets = async () => {
       try {
-        const tweetObj = await axios('http://localhost:4000/api/tweets');
+        const tweetObj = await axios.get('http://localhost:4000/v1/tweets');
         setTweetData(tweetObj.data.data);
       } catch (error) {
         console.log(error);

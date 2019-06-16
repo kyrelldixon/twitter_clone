@@ -20,7 +20,7 @@ const Home = ({ history }) =>
 
   const authenticateUser = async (credentials) => {
     try {
-      await axios.post('http://localhost:4000/api/sessions', credentials);
+      await axios.post('http://localhost:4000/v1/sessions', credentials);
       history.push('/userhome');
     } catch (error) {
       alert('Invalid username or password, try again');
