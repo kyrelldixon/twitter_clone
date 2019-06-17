@@ -263,35 +263,33 @@ defmodule TwitterApi.Accounts do
 
   ## Examples
 
-      iex> create_relationship(%{field: value})
+      iex> follow(%{field: value})
       {:ok, %Relationship{}}
 
-      iex> create_relationship(%{field: bad_value})
+      iex> follow(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_relationship(attrs \\ %{}) do
+  def follow(attrs \\ %{}) do
     %Relationship{}
     |> Relationship.changeset(attrs)
     |> Repo.insert()
   end
 
   @doc """
-  Updates a relationship.
+  Deletes a Relationship.
 
   ## Examples
 
-      iex> update_relationship(relationship, %{field: new_value})
+      iex> unfollow(relationship)
       {:ok, %Relationship{}}
 
-      iex> update_relationship(relationship, %{field: bad_value})
+      iex> unfollow(relationship)
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_relationship(%Relationship{} = relationship, attrs) do
-    relationship
-    |> Relationship.changeset(attrs)
-    |> Repo.update()
+  def unfollow(%Relationship{} = relationship) do
+    Repo.delete(relationship)
   end
 
   def follower_ids(user_id) do
