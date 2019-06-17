@@ -1,6 +1,6 @@
 defmodule TwitterApiWeb.V1.UserView do
   use TwitterApiWeb, :view
-  alias TwitterApiWeb.UserView
+  alias TwitterApiWeb.V1.UserView
 
   def render("index.json", %{users: users}) do
     %{data: render_many(users, UserView, "user.json")}
