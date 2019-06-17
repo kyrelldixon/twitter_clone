@@ -11,6 +11,6 @@ defmodule TwitterApi.Repo.Migrations.CreateRelationships do
 
     create index(:relationships, [:follower_id])
     create index(:relationships, [:followed_id])
-    create unique_index(:relationships, [:follower_id, :followed_id])
+    create unique_index(:relationships, [:follower_id, :followed_id], name: :unique_relationship)
   end
 end

@@ -14,6 +14,7 @@ defmodule TwitterApi.Accounts.Relationship do
     relationship
     |> cast(attrs, [:follower_id, :followed_id])
     |> validate_required([:follower_id, :followed_id])
+    |> unique_constraint(:no_duplicate_relationships, name: :unique_relationship)
     |> foreign_key_constraint(:follower_id)
     |> foreign_key_constraint(:followed_id)
   end
