@@ -22,7 +22,7 @@ const LoginForm = ({ history }) =>
 
   const authenticateUser = async (credentials) => {
     try {
-      const response = await axios.post('http://localhost:4000/api/sessions', credentials);
+      const response = await axios.post('http://localhost:4000/v1/sessions', credentials);
       console.log(response);
       history.push('/userhome');
     } catch (error) {

@@ -12,8 +12,8 @@ const Timeline = () => {
   useEffect( () => {
     const getTweets = async () => {
       try {
-        const tweetObj = await axios('http://localhost:4000/api/tweets');
-        setTweetData(tweetObj.data.data);
+        const tweetObj = await axios.get('http://localhost:4000/v1/tweets');
+        setTweetData(tweetObj.data.data.reverse());
       } catch (error) {
         console.log(error);
       }
@@ -34,7 +34,9 @@ const Timeline = () => {
         <i className="far fa-chart-bar"></i>
       </div>
       <ul id="tweets-ul">
-        {tweetData.reverse().map(tweet => <li key={tweet.tweet_id}><Tweet userID={tweet.user_id} text={tweet.text}/></li>)}
+        {tweetData.map(tweet => <li key={tweet.tweet_id}>
+          <Tweet name={tweet.user.name} username={tweet.user.username} text={tweet.text}/>
+          </li>)}
       </ul>
     </div>
   );
