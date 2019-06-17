@@ -6,7 +6,7 @@ defmodule TwitterApi.Accounts do
   import Ecto.Query, warn: false
   alias TwitterApi.Repo
 
-  alias TwitterApi.Accounts.User
+  alias TwitterApi.Accounts.{User, Relationship}
 
   def change_registration(%User{} = user, params) do
     User.registration_changeset(user, params)
@@ -294,32 +294,31 @@ defmodule TwitterApi.Accounts do
     |> Repo.update()
   end
 
-  @doc """
-  Deletes a Relationship.
+  def follower_ids(user_id) do
+    query =
+      from r in Relationship,
+        where: r.followed_id == ^user_id,
+        select: r.follower_id
 
-  ## Examples
-
-      iex> delete_relationship(relationship)
-      {:ok, %Relationship{}}
-
-      iex> delete_relationship(relationship)
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def delete_relationship(%Relationship{} = relationship) do
-    Repo.delete(relationship)
+    Repo.all(query)
   end
 
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking relationship changes.
+  def following_ids(user_id) do
+    query =
+      from r in Relationship,
+        where: r.follower_id == ^user_id,
+        select: r.followed_id
 
-  ## Examples
+    Repo.all(query)
+  end
 
-      iex> change_relationship(relationship)
-      %Ecto.Changeset{source: %Relationship{}}
+  def followers(user) do
+    list = user |> Repo.preload(:followers)
+    list.followers
+  end
 
-  """
-  def change_relationship(%Relationship{} = relationship) do
-    Relationship.changeset(relationship, %{})
+  def following(user) do
+    list = user |> Repo.preload(:following)
+    list.following
   end
 end
