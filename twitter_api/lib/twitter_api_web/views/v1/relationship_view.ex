@@ -7,6 +7,11 @@ defmodule TwitterApiWeb.V1.RelationshipView do
   end
 
   def render("relationship.json", %{relationship: relationship}) do
-    %{id: relationship.id}
+    %{
+      id: relationship.id,
+      follower_id: relationship.follower_id,
+      followed_id: relationship.followed_id,
+      created_at: relationship.inserted_at
+    }
   end
 end
