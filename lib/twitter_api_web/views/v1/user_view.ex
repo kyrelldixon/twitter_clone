@@ -15,4 +15,8 @@ defmodule TwitterApiWeb.V1.UserView do
       name: user.name,
       username: user.username}
   end
+
+  def render("ids.json", %{user_ids: user_ids}) do
+    %{data: user_ids}
+  end
 end

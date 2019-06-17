@@ -24,6 +24,16 @@ defmodule TwitterApiWeb.Router do
       get "/user_timeline", TweetController, :user_timeline
       resources "/", TweetController, only: [:create, :index, :delete, :show]
     end
+
+    scope "/followers" do
+      get "/ids", FollowerController, :follower_ids
+      get "/list", FollowerController, :followers
+    end
+
+    scope "/following" do
+      get "/ids", FollowerController, :following_ids
+      get "/list", FollowerController, :following
+    end
   end
 
   # Plug function
