@@ -29,3 +29,9 @@ a {
   display: grid;
   grid-template-columns: 62% 35%;
 }
+
+.userhome-nav-container {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 990px;
+}
