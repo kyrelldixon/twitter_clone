@@ -2,6 +2,10 @@ defmodule TwitterApiWeb.V1.RelationshipView do
   use TwitterApiWeb, :view
   alias TwitterApiWeb.V1.RelationshipView
 
+  def render("index.json", %{relationships: relationships}) do
+    %{data: render_many(relationships, RelationshipView, "relationship.json")}
+  end
+
   def render("show.json", %{relationship: relationship}) do
     %{data: render_one(relationship, RelationshipView, "relationship.json")}
   end
