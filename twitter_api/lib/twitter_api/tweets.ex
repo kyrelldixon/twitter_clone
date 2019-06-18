@@ -144,6 +144,8 @@ defmodule TwitterApi.Tweets do
     from t in query,
       join: r in Accounts.Relationship,
       on: r.followed_id == t.user_id,
-      where: r.follower_id == ^user_id
+      where: r.follower_id == ^user_id,
+      order_by: t.inserted_at,
+      preload: [:user]
   end
 end
