@@ -3,6 +3,7 @@ defmodule TwitterApiWeb.V1.TweetController do
 
   alias TwitterApi.Tweets
   alias TwitterApi.Tweets.Tweet
+  alias TwitterApi.Accounts
 
   action_fallback TwitterApiWeb.FallbackController
 
@@ -33,12 +34,19 @@ defmodule TwitterApiWeb.V1.TweetController do
     end
   end
 
-  def user_timeline(conn, _) do
+  def user_timeline(conn, %{"user_id" => id}) do
+    user = Accounts.get_user!(id)
+
+    tweets = Tweets.list_user_tweets(user)
+    render(conn, "index.json", tweets: tweets)
+  end
+
+  def user_timeline(conn, _params) do
     tweets = Tweets.list_user_tweets(conn.assigns.current_user)
     render(conn, "index.json", tweets: tweets)
   end
 
-  def home_timeline(conn, _) do
+  def home_timeline(conn, _params) do
     tweets = Tweets.list_following_tweets(conn.assigns.current_user)
     render(conn, "index.json", tweets: tweets)
   end
