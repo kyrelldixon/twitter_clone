@@ -22,6 +22,7 @@ defmodule TwitterApiWeb.Router do
 
     scope "/tweets" do
       get "/user_timeline", TweetController, :user_timeline
+      get "/home_timeline", TweetController, :home_timeline
       resources "/", TweetController, only: [:create, :index, :delete, :show]
     end
 
