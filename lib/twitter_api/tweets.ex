@@ -31,6 +31,12 @@ defmodule TwitterApi.Tweets do
     |> Repo.preload(:user)
   end
 
+  def list_following_tweets(%Accounts.User{} = user) do
+    Tweet
+    |> following_tweets_query(user)
+    |> Repo.all()
+  end
+
   @doc """
   Gets a single tweet.
 
@@ -132,5 +138,12 @@ defmodule TwitterApi.Tweets do
 
   defp user_tweets_query(query, %Accounts.User{id: user_id}) do
     from(v in query, where: v.user_id == ^user_id)
+  end
+
+  defp following_tweets_query(query, %Accounts.User{id: user_id}) do
+    from t in query,
+      join: r in Accounts.Relationship,
+      on: r.followed_id == t.user_id,
+      where: r.follower_id == ^user_id
   end
 end

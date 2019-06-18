@@ -6,6 +6,11 @@ defmodule TwitterApiWeb.V1.RelationshipController do
 
   action_fallback TwitterApiWeb.FallbackController
 
+  def index(conn, _) do
+    relationships = Accounts.list_relationships()
+    render(conn, "index.json", relationships: relationships)
+  end
+
   def create(conn, %{"relationship" => relationship_params}) do
     case Accounts.follow(relationship_params) do
       {:ok, %Relationship{} = relationship} ->
