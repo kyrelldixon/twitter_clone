@@ -1,16 +1,13 @@
 #user-nav ul {
   display: inline-block;
-  padding: 0;
+  padding: 0.85rem 0.85rem 0.85rem 1.6rem;
 }
-
 #user-nav li {
-  padding: 0;
+  margin-right: 3rem;
 }
 
 #user-nav .nav-link i {
   font-size: 1.65rem;
-  margin-right: 2rem;
-  padding: 0.8rem;
   color: #808080;
 }
 
