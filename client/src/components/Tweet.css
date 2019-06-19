@@ -34,7 +34,7 @@
   color: #808080;
 }
 
-#tweet-container button {
+#tweet-menu-btn {
   float: right;
   font-size: 0.9rem;
   padding: 0.45rem;
@@ -42,9 +42,10 @@
   background: none;
   border: 0;
   cursor: pointer;
+  outline: none;
 }
 
-#tweet-container button:hover {
+#tweet-menu-btn:hover {
   border-radius: 100%;
   background-color: #dcf3fc;
   color: #1da1f2;
