@@ -2,14 +2,15 @@ defmodule TwitterApiWeb.V1.SessionController do
   use TwitterApiWeb, :controller
 
   def create(conn, %{"email" => email, "password" => password}) do
-    case TwitterApiWeb.Auth.login_by_email_and_password(conn, email, password) do
-      {:ok, conn} ->
+    case TwitterApiWeb.Auth.login_by_email_and_password(email, password) do
+      { :ok, user_data } ->
         conn
+        |> assign(:signed_in, true)
+        |> assign(:current_user, user_data.user)
         |> put_status(:ok)
-        |> render("login.json", user: conn.assigns.current_user)
-      {:error, _reason, conn} ->
+        |> render("login.json", auth_token: user_data.auth_token)
+      {:error, _reason} ->
         conn
-        |> delete_session(:user_id)
         |> put_status(:unauthorized)
         |> put_view(TwitterApiWeb.ErrorView)
         |> render("401.json", message: "Invalid email/password combination")
@@ -17,7 +18,9 @@ defmodule TwitterApiWeb.V1.SessionController do
   end
 
   def delete(conn, _) do
-    TwitterApiWeb.Auth.logout(conn)
-    send_resp(conn, :no_content, "")
+    case TwitterApiWeb.Auth.logout(conn) do
+      { :ok, _ } -> send_resp(conn, :no_content, "")
+      { :error, reason } -> send_resp(conn, 400, reason)
+    end
   end
 end

@@ -42,9 +42,6 @@ defmodule TwitterApiWeb.V1.UserController do
   end
 
   def me(conn, _) do
-    user_id = get_session(conn, :user_id)
-    with user <- Accounts.get_user!(user_id) do
-      render(conn, "show.json", user: user)
-    end
+    render(conn, "show.json", user: conn.assigns.current_user)
   end
 end
