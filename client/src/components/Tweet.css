@@ -1,7 +1,7 @@
 #tweet-wrapper {
   background-color: #ffffff;
   border-top: 0.07rem solid #e6ecf0;
-  padding: 1rem;
+  padding: 0.75rem 0.4rem 1rem 1rem;
   display: grid;
   grid-template-columns: 10% 90%;
 }
@@ -36,11 +36,18 @@
 
 #tweet-container button {
   float: right;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  padding: 0.45rem;
   color: #808080;
   background: none;
   border: 0;
   cursor: pointer;
+}
+
+#tweet-container button:hover {
+  border-radius: 100%;
+  background-color: #dcf3fc;
+  color: #1da1f2;
 }
 
 #tweet-message {
