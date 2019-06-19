@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import './Timeline.css';
-import Tweet from './Tweet';
 import axios from 'axios';
+import { useLocalStorage } from '../hooks/useLocalStorage';
+import Tweet from './Tweet';
 import ComposeTweet from './ComposeTweet';
+import './Timeline.css';
 
 const Timeline = () => {
 
   const [tweetData, setTweetData] = useState([]);
   const [displayState, setDisplayState] = useState(false);
+  // eslint-disable-next-line
+  const [token, setToken] = useLocalStorage('token', window.localStorage.getItem('token'))
 
   useEffect( () => {
     const getTweets = async () => {
       try {
-        const tweetObj = await axios.get('http://localhost:4000/v1/tweets');
+        const tweetObj = await axios.get('http://localhost:4000/v1/tweets/home_timeline', {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        });
         setTweetData(tweetObj.data.data.reverse());
       } catch (error) {
         console.log(error);
@@ -20,7 +27,7 @@ const Timeline = () => {
     }
     
     getTweets();
-  }, []);
+  }, [token]);
 
   return (
     <div>
