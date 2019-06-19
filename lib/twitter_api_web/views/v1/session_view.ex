@@ -1,14 +1,11 @@
 defmodule TwitterApiWeb.V1.SessionView do
   use TwitterApiWeb, :view
 
-  def render("login.json", %{user: user}) do
+  def render("login.json", %{auth_token: auth_token}) do
     %{
       data: %{
-        user: %{
-          id: user.id,
-          name: user.name,
-          email: user.credential.email
-        }
+        token: auth_token.token,
+        user_id: auth_token.user_id
       }
     }
   end
