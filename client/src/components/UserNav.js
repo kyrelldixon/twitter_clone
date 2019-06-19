@@ -6,10 +6,10 @@ const UserNav = () => (
   <nav id="user-nav">
     <div className="userhome-nav-container">
       <ul>
-        <li> <Link to="#" className="nav-link"><i className="fas fa-home"></i></Link> </li>
-        <li> <Link to="#" className="nav-link"><i className="fas fa-hashtag"></i></Link> </li>
-        <li> <Link to="#" className="nav-link"><i className="far fa-bell"></i></Link> </li>
-        <li> <Link to="#" className="nav-link"><i className="far fa-envelope"></i></Link> </li>
+        <Link to="#" className="nav-link active-link"><i className="fas fa-home"></i></Link>
+        <Link to="#" className="nav-link"><i className="fas fa-hashtag"></i></Link>
+        <Link to="#" className="nav-link"><i className="far fa-bell"></i></Link>
+        <Link to="#" className="nav-link"><i className="far fa-envelope"></i></Link>
       </ul>
       <input id="search-box" placeholder="Search Twitter" />
       <span id="acct-link">

@@ -1,14 +1,27 @@
+#user-nav {
+  position: sticky;
+  top: 0;
+}
+
 #user-nav ul {
   display: inline-block;
-  padding: 0.85rem 0.85rem 0.85rem 1.6rem;
+  padding: 0;
 }
-#user-nav li {
-  margin-right: 3rem;
+
+#user-nav a.nav-link {
+  color: #808080;
 }
 
 #user-nav .nav-link i {
-  font-size: 1.65rem;
-  color: #808080;
+  width: 5.625rem;
+  padding: 0.82rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+#user-nav .active-link i {
+  color: #1da1f2;
+  border-bottom: 0.15rem solid #1da1f2;
 }
 
 #user-nav #search-box {
