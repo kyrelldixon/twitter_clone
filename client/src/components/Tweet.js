@@ -15,7 +15,8 @@ const Tweet = (props) => {
             <button id="tweet-menu-btn" onClick={() => setMenuDisplayState(true)}>
               <i className="fas fa-chevron-down"></i>
             </button>
-            <TweetMenu tweetId={props.id} display={menuDisplayState} handleDisplay={setMenuDisplayState} />
+            <TweetMenu tweetId={props.id} display={menuDisplayState}
+              handleDisplay={setMenuDisplayState} setTweetData={props.setTweetData}/>
             <div id="tweet-message">{props.text || "no message found"}</div>
             <div id="tweet-foot">
               <i className="far fa-comment"> {props.commentCount || ""}</i>

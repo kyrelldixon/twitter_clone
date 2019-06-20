@@ -15,8 +15,17 @@ const TweetMenu = (props) => {
   
   const handleDeleteTweet = async () => {
     try {
-      console.log(props.tweetId);
       await axios.delete(`http://localhost:4000/v1/tweets/${props.tweetId}`);
+      reloadTweetData();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const reloadTweetData = async () => {
+    try {
+      const tweetDataObj = await axios.get('http://localhost:4000/v1/tweets');
+      props.setTweetData(tweetDataObj.data.data.reverse());
     } catch (error) {
       console.log(error);
     }
