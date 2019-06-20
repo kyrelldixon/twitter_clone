@@ -26,7 +26,7 @@ const Home = ({ history }) =>
       const response = await axios.post('http://localhost:4000/v1/sessions', credentials);
       setToken(response.data.data.token);
       console.log(token)
-      history.push('/userhome');
+      history.push('/home');
     } catch (error) {
       alert('Invalid username or password, try again');
     }

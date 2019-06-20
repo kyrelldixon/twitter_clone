@@ -11,7 +11,7 @@ const App = () => (
     <Route exact path="/" component={Home} />
     <Route path="/login" component={LoginForm} />
     <Route path="/signup" component={SignupForm} />
-    <Route path="/userhome" component={UserHome} />
+    <Route path="/home" component={UserHome} />
 
   </>
 );
