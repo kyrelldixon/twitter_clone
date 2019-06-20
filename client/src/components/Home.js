@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import './Home.css';
 import { Link, withRouter } from 'react-router-dom';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 import axios from 'axios';
+
+import './Home.css';
 
 const Home = ({ history }) => 
 {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const [token, setToken] = useLocalStorage('token', window.localStorage.getItem('token') || "");
   const handleSubmit = (e) => {
     const credentials = {
       email: username,
@@ -20,7 +23,9 @@ const Home = ({ history }) =>
 
   const authenticateUser = async (credentials) => {
     try {
-      await axios.post('http://localhost:4000/v1/sessions', credentials);
+      const response = await axios.post('http://localhost:4000/v1/sessions', credentials);
+      setToken(response.data.data.token);
+      console.log(token)
       history.push('/userhome');
     } catch (error) {
       alert('Invalid username or password, try again');
