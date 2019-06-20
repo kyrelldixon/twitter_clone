@@ -42,7 +42,7 @@ const Timeline = () => {
       </div>
       <ul id="tweets-ul">
         {tweetData.map(tweet => <li key={tweet.tweet_id}>
-          <Tweet name={tweet.user.name} username={tweet.user.username} text={tweet.text}/>
+          <Tweet name={tweet.user.name} username={tweet.user.username} text={tweet.text} />
           </li>)}
       </ul>
     </div>

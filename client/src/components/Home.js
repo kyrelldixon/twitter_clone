@@ -1,34 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
+import axios from 'axios';
 import { Link, withRouter } from 'react-router-dom';
 import { useLocalStorage } from '../hooks/useLocalStorage';
-import axios from 'axios';
+import { useForm } from "../hooks/useForm";
 
 import './Home.css';
 
 const Home = ({ history }) => 
 {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [, setToken] = useLocalStorage('token', window.localStorage.getItem('token'));
+  const { values, handleChange, handleSubmit } = useForm(login);
 
-  const [token, setToken] = useLocalStorage('token', window.localStorage.getItem('token') || "");
-  const handleSubmit = (e) => {
-    const credentials = {
-      email: username,
-      password: password
-    }
-
-    authenticateUser(credentials);
-    e.preventDefault();
-  }
-
-  const authenticateUser = async (credentials) => {
+  async function login() {
     try {
+      const credentials = {
+        email: values.email,
+        password: values.password
+      }
+
       const response = await axios.post('http://localhost:4000/v1/sessions', credentials);
-      setToken(response.data.data.token);
-      console.log(token)
+      setToken(response.data.data.token)
       history.push('/home');
     } catch (error) {
-      alert('Invalid username or password, try again');
+      console.error(error);
     }
   }
 
@@ -46,9 +40,9 @@ const Home = ({ history }) =>
       <section id="right-half">
         <div id="top-login">
           <input type="text" placeholder="Phone, email or username"
-            value={username} onChange={e => setUsername(e.target.value)}/>
+            value={values.email} onChange={handleChange}/>
           <input type="password" placeholder="Password"
-            value={password} onChange={e => setPassword(e.target.value)}/>
+            value={values.password} onChange={handleChange}/>
           <button className="login-btn" id="small-btn-upper" onClick={handleSubmit}>Log in</button>
         </div>
         <Link to="/" id="forgot-pass">Forgot password?</Link>
