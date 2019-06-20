@@ -13,10 +13,10 @@ const TweetMenu = (props) => {
     }
   }, []);
   
-  const tweetId = 0;
   const handleDeleteTweet = async () => {
     try {
-      await axios.delete(`http://localhost:4000/v1/tweets/${tweetId}`);
+      console.log(props.tweetId);
+      await axios.delete(`http://localhost:4000/v1/tweets/${props.tweetId}`);
     } catch (error) {
       console.log(error);
     }
