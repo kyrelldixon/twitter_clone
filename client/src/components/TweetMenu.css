@@ -1,12 +1,19 @@
 #tweet-menu-box {
-  display: none;
-  position: fixed;
   z-index: 1;
-  left: 40rem;
+  margin-top: -1rem;
+  left: 42rem;
   width: 10rem;
   background-color: #ffffff;
   box-shadow: 0.2rem 0.2rem 1rem #b1b0b0;
   border-radius: 0.4rem;
+}
+
+#tweet-menu-box.showMenu {
+  position: absolute;
+}
+
+#tweet-menu-box.hideMenu {
+  display: none;
 }
 
 .tweet-menu-btn {
