@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import './TweetMenu.css';
+import axios from 'axios';
 
 const TweetMenu = (props) => {
   
@@ -10,10 +11,18 @@ const TweetMenu = (props) => {
     return () => {
       document.removeEventListener('mousedown', handleClose);
     }
-   }, []);
+  }, []);
+  
+  const tweetId = 0;
+  const handleDeleteTweet = async () => {
+    try {
+      await axios.delete(`http://localhost:4000/v1/tweets/${tweetId}`);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-   const handleClose = e => {
-    console.log(node.current);
+  const handleClose = e => {
     if (node.current.contains(e.target)) {
       // inside click
       return;
@@ -26,7 +35,7 @@ const TweetMenu = (props) => {
         <button className="tweet-menu-btn">View Tweet Activity</button>
         <button className="tweet-menu-btn">Embed Tweet</button>
         <button className="tweet-menu-btn">Pin to your profile</button>
-        <button className="tweet-menu-btn" id="delete-tweet">Delete</button>
+        <button className="tweet-menu-btn" id="delete-tweet" onClick={handleDeleteTweet}>Delete</button>
       </div>
   );
 }
