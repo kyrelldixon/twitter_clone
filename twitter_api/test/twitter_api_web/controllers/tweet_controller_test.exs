@@ -5,12 +5,12 @@ defmodule TwitterApiWeb.TweetControllerTest do
   alias TwitterApi.Tweets.Tweet
 
   @create_attrs %{
-    text_content: "some text_content"
+    text: "some text"
   }
   @update_attrs %{
-    text_content: "some updated text_content"
+    text: "some updated text"
   }
-  @invalid_attrs %{text_content: nil}
+  @invalid_attrs %{text: nil}
 
   def fixture(:tweet) do
     {:ok, tweet} = Tweets.create_tweet(@create_attrs)
@@ -37,7 +37,7 @@ defmodule TwitterApiWeb.TweetControllerTest do
 
       assert %{
                "id" => id,
-               "text_content" => "some text_content"
+               "text" => "some text"
              } = json_response(conn, 200)["data"]
     end
 
@@ -58,7 +58,7 @@ defmodule TwitterApiWeb.TweetControllerTest do
 
       assert %{
                "id" => id,
-               "text_content" => "some updated text_content"
+               "text" => "some updated text"
              } = json_response(conn, 200)["data"]
     end
 

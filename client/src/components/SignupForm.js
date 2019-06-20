@@ -30,7 +30,7 @@ const SignupForm = ({ history }) =>
 
   const createUser = async (user) => {
     try {
-      const response = await axios.post('http://localhost:4000/api/users', user);
+      const response = await axios.post('http://localhost:4000/v1/users', user);
       console.log(response);
     } catch (error) {
       console.error(error);

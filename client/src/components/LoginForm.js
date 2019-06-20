@@ -1,31 +1,63 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, withRouter } from "react-router-dom";
 import Nav from "./Nav";
 import './LoginForm.css';
+import axios from 'axios';
 
-const LoginForm = () => (
-  <main>
-    <Nav />
-    <div className="container" id="main-box">
+const LoginForm = ({ history }) => 
 
-      <form action="#" id="login">
-        <h1 id="login-header">Log in to Twitter</h1>
+{
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-        <input type="text" className="login-form" placeholder="Phone, email or username" />
-        <input type="text" className="login-form" placeholder="Password" />
-        <Link to="#"><button className="login-options">Log in</button></Link>
-        <input type="checkbox" className="login-options" />
-        <p className="login-options">Remember me · <Link to="#">Forgot password?</Link></p>
-      </form>
+  const handleSubmit = (e) => {
+    const credentials = {
+      email: username,
+      password: password
+    }
 
-      <section id="signup-links">
-        <p>New to Twitter? <Link to="/signup">Sign up now »</Link></p>
-        <p>Already using Twitter via text message? <Link to="#">Activate your account »</Link></p>
-      </section>
+    authenticateUser(credentials);
+    e.preventDefault();
+  }
 
-    </div>
+  const authenticateUser = async (credentials) => {
+    try {
+      const response = await axios.post('http://localhost:4000/v1/sessions', credentials);
+      console.log(response);
+      history.push('/userhome');
+    } catch (error) {
+      alert('Invalid username or password, try again');
+    }
+  }
+  
+  return (
+    <main>
+      <Nav />
+      <div className="container" id="main-box">
 
-  </main>
-);
+        <form action="#" id="login" onSubmit={handleSubmit}>
+          <h1 id="login-header">Log in to Twitter</h1>
+        
+          <input type="text" className="login-form" placeholder="Phone, email or username" 
+            value={username} onChange={e => setUsername(e.target.value)}/>
+          
+          <input type="password" className="login-form" placeholder="Password"
+            value={password} onChange={e => {setPassword(e.target.value)}}/>
 
-export default LoginForm;
+          <button className="login-options" type="submit">Log in</button>
+          <input type="checkbox" className="login-options" />
+          <p className="login-options">Remember me · <Link to="#">Forgot password?</Link></p>
+        </form>
+
+        <section id="signup-links">
+          <p>New to Twitter? <Link to="/signup">Sign up now »</Link></p>
+          <p>Already using Twitter via text message? <Link to="#">Activate your account »</Link></p>
+        </section>
+
+      </div>
+
+    </main>
+  );
+}
+
+export default withRouter(LoginForm);

@@ -6,9 +6,9 @@ defmodule TwitterApi.TweetsTest do
   describe "tweets" do
     alias TwitterApi.Tweets.Tweet
 
-    @valid_attrs %{text_content: "some text_content"}
-    @update_attrs %{text_content: "some updated text_content"}
-    @invalid_attrs %{text_content: nil}
+    @valid_attrs %{text: "some text"}
+    @update_attrs %{text: "some updated text"}
+    @invalid_attrs %{text: nil}
 
     def tweet_fixture(attrs \\ %{}) do
       {:ok, tweet} =
@@ -31,7 +31,7 @@ defmodule TwitterApi.TweetsTest do
 
     test "create_tweet/1 with valid data creates a tweet" do
       assert {:ok, %Tweet{} = tweet} = Tweets.create_tweet(@valid_attrs)
-      assert tweet.text_content == "some text_content"
+      assert tweet.text == "some text"
     end
 
     test "create_tweet/1 with invalid data returns error changeset" do
@@ -41,7 +41,7 @@ defmodule TwitterApi.TweetsTest do
     test "update_tweet/2 with valid data updates the tweet" do
       tweet = tweet_fixture()
       assert {:ok, %Tweet{} = tweet} = Tweets.update_tweet(tweet, @update_attrs)
-      assert tweet.text_content == "some updated text_content"
+      assert tweet.text == "some updated text"
     end
 
     test "update_tweet/2 with invalid data returns error changeset" do

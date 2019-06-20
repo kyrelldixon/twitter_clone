@@ -6,7 +6,7 @@ defmodule TwitterApi.Accounts do
   import Ecto.Query, warn: false
   alias TwitterApi.Repo
 
-  alias TwitterApi.Accounts.User
+  alias TwitterApi.Accounts.{User, Relationship}
 
   def change_registration(%User{} = user, params) do
     User.registration_changeset(user, params)
@@ -226,4 +226,97 @@ defmodule TwitterApi.Accounts do
         {:error, :not_found}
       end
     end
+
+  alias TwitterApi.Accounts.Relationship
+
+  @doc """
+  Returns the list of relationships.
+
+  ## Examples
+
+      iex> list_relationships()
+      [%Relationship{}, ...]
+
+  """
+  def list_relationships do
+    Repo.all(Relationship)
+  end
+
+  @doc """
+  Gets a single relationship.
+
+  Raises `Ecto.NoResultsError` if the Relationship does not exist.
+
+  ## Examples
+
+      iex> get_relationship!(123)
+      %Relationship{}
+
+      iex> get_relationship!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_relationship!(id), do: Repo.get!(Relationship, id)
+
+  @doc """
+  Creates a relationship.
+
+  ## Examples
+
+      iex> follow(%{field: value})
+      {:ok, %Relationship{}}
+
+      iex> follow(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def follow(attrs \\ %{}) do
+    %Relationship{}
+    |> Relationship.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Deletes a Relationship.
+
+  ## Examples
+
+      iex> unfollow(relationship)
+      {:ok, %Relationship{}}
+
+      iex> unfollow(relationship)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def unfollow(%Relationship{} = relationship) do
+    Repo.delete(relationship)
+  end
+
+  def follower_ids(user_id) do
+    query =
+      from r in Relationship,
+        where: r.followed_id == ^user_id,
+        select: r.follower_id
+
+    Repo.all(query)
+  end
+
+  def following_ids(user_id) do
+    query =
+      from r in Relationship,
+        where: r.follower_id == ^user_id,
+        select: r.followed_id
+
+    Repo.all(query)
+  end
+
+  def followers(user) do
+    list = user |> Repo.preload(:followers)
+    list.followers
+  end
+
+  def following(user) do
+    list = user |> Repo.preload(:following)
+    list.following
+  end
 end
