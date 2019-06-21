@@ -1,0 +1,17 @@
+#action-btn {
+  width: 100%;
+  padding: 0.33rem 0.95rem;
+  font-size: 0.9375rem;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  border-color: #1da1f2;
+  color: #1da1f2;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+}
+
+#action-btn:hover {
+  background-color: #dcf3fc;
+  transition: 0.3s;
+}
