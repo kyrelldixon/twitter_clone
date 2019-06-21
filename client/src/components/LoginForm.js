@@ -36,10 +36,10 @@ const LoginForm = ({ history }) => {
           <h1 id="login-header">Log in to Twitter</h1>
         
           <input className="login-form" type="email" placeholder="Email" 
-            name="email" value={values.email} onChange={handleChange} required />
+            name="email" value={values.email || ''} onChange={handleChange} required />
           
           <input className="login-form" type="password" placeholder="Password"
-            name="password" value={values.password} onChange={handleChange} required />
+            name="password" value={values.password || ''} onChange={handleChange} required />
 
           <button className="login-options" type="submit">Log in</button>
           <input className="login-options" type="checkbox" />

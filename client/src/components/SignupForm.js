@@ -45,19 +45,19 @@ const SignupForm = ({ history }) =>
           <h1>Create your account</h1>
           <label>
             <p>Name</p>
-            <input type="text" name="name" value={values.name} onChange={handleChange} required />
+            <input type="text" name="name" value={values.name || ''} onChange={handleChange} required />
           </label>
           <label>
             <p>Username</p>
-            <input type="text" name="username" value={values.username} onChange={handleChange} required />
+            <input type="text" name="username" value={values.username || ''} onChange={handleChange} required />
           </label>
           <label>
             <p>Email</p>
-            <input type="text" name="email" value={values.email} onChange={handleChange} required />
+            <input type="text" name="email" value={values.email || ''} onChange={handleChange} required />
           </label>
           <label>
             <p>Password</p>
-            <input type="password" name="password" value={values.password} onChange={handleChange} required />
+            <input type="password" name="password" value={values.password || ''} onChange={handleChange} required />
           </label>
           <button type="submit">Sign Up</button>
         </form>
