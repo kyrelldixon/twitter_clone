@@ -11,6 +11,7 @@ const TweetMenu = (props) => {
     return () => {
       document.removeEventListener('mousedown', handleClose);
     }
+    //eslint-disable-next-line
   }, []);
   
   const handleDeleteTweet = async () => {
