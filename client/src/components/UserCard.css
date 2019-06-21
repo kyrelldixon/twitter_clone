@@ -1,10 +1,19 @@
 #usercard-wrapper {
   background-color: #ffffff;
   border-bottom: 0.07rem solid #e6ecf0;
-  padding: 0.75rem 0.4rem 1rem 1rem;
+  padding: 0.75rem 0.4rem 1.5rem 1rem;
+  display: grid;
+  grid-template-columns: 15% 65% 20%;
 }
 
 #usercard-wrapper:hover {
   background-color: #fafafa;
   cursor: pointer;
+}
+
+#usercard-wrapper img {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 1.5rem;
+  margin-right: 1rem;
 }
