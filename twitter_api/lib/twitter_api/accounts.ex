@@ -214,6 +214,10 @@ defmodule TwitterApi.Accounts do
     |> Repo.preload(:credential)
   end
 
+  def get_user_by_username!(username) do
+    Repo.get_by!(User, username: username)
+  end
+
   def authenticate_by_email_and_password(email, given_pass) do
     user = get_user_by_email(email)
     cond do
