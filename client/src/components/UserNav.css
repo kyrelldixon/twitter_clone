@@ -25,6 +25,7 @@
   border-radius: 100%;
   background-color: #dcf3fc;
   color: #1da1f2;
+  transition: 0.2s;
 }
 
 #user-nav #active-link {
@@ -33,13 +34,13 @@
 }
 
 #user-nav #search-box {
-  width: 45.5%;
+  width: 28rem;
   background-color: #e6ecf0;
   border-radius: 1rem;
   border-style: none;
   padding: 0.45rem 3rem;
   font-size: 0.95rem;
-  margin: 0.6rem 0.35rem 0.6rem 1.4rem;
+  margin: 0.6rem 0 0.6rem 1.4rem;
   vertical-align: top;
 }
 
@@ -47,22 +48,41 @@
   color: #61676b;
 }
 
+#acct-link {
+  float: right;
+  height: 2.15rem;
+  color: #838b91;
+  border: none;
+  border-radius: 1rem;
+  margin: 0.6rem 0.35rem 0 1rem;
+  padding-right: 0.5rem;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+#acct-link:hover {
+  background-color: #dcf3fc;
+  color: #1da1f2;
+  transition: 0.4s;
+}
+
 #acct-link img {
   width: 2.05rem;
   height: 2.15rem;
   border-radius: 50%;
-  margin: 0.6rem 0.6rem 0 1rem;
-  vertical-align: top;
+  margin-right: 0.6rem;
+  vertical-align: middle;
 }
 
 #acct-link span {
   display: inline-block;
+  color: #000000;
   font-size: 1rem;
-  margin: 0 0.4rem 0.4rem 0;
+  margin-right: 0.4rem;
   vertical-align: middle;
 }
 
 #acct-link i {
   font-size: 1rem;
-  color: #838b91;
+  vertical-align: middle;
 }
