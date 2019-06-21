@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './WhoToFollow.css';
 import UserCard from './UserCard';
 import axios from 'axios';
+import LinkBar from './LinkBar';
 
 const WhoToFollow = () => {
 
@@ -28,6 +29,7 @@ const WhoToFollow = () => {
           <UserCard name={user.name} username={user.username} id={user.id} />
           </li>)}
       </ul>
+      <LinkBar text="Show more"/>
     </div>
   );
 }

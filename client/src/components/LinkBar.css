@@ -1,0 +1,11 @@
+#link-bar {
+  font-size: 0.9375rem;
+  background-color: #ffffff;
+  color: #1da1f2;
+  padding: 0.9rem;
+  cursor: pointer;
+}
+
+#link-bar:hover {
+  background-color: #fafafa;
+}
