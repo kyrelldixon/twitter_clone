@@ -1,8 +1,21 @@
 import React from 'react';
 import './UserCard.css';
 import ActionButton from './ActionButton';
+import axios from 'axios';
 
 const UserCard = (props) => {
+
+  const handleRelationshipUpdate = async () => {
+    const followInfo = {
+      follower: props.currentUserId,
+      follwed: props.id
+    }
+    try {
+      await axios.post('http://localhost:4000/v1/relationships', followInfo);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div id="usercard-wrapper">
@@ -10,7 +23,7 @@ const UserCard = (props) => {
       <div>
         <div id="name">{props.name || "no name found"}</div>
         <div id="btn-box">
-          <ActionButton text="Follow" />
+          <ActionButton text="Follow" onClick={handleRelationshipUpdate}/>
         </div>
         <div id="username">@{props.username || "no username found"}</div>
       </div>
