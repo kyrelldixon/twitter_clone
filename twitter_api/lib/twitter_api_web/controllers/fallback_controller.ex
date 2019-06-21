@@ -6,11 +6,11 @@ defmodule TwitterApiWeb.FallbackController do
   """
   use TwitterApiWeb, :controller
 
-  def call(conn, {:error, %Ecto.Changeset{}}) do
+  def call(conn, {:error, %Ecto.Changeset{} = changeset}) do
     conn
     |> put_status(:unprocessable_entity)
     |> put_view(TwitterApiWeb.ChangesetView)
-    |> render(:"422")
+    |> render(:"422", changeset: changeset)
   end
 
   def call(conn, {:error, :not_found}) do

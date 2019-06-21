@@ -4,26 +4,38 @@ defmodule TwitterApiWeb.Router do
   pipeline :api do
     plug :accepts, ["json"]
     plug :fetch_session
-    plug TwitterApiWeb.Auth
   end
 
   pipeline :api_auth do
-    plug :ensure_authenticated
+    plug TwitterApiWeb.Plugs.Auth
   end
 
   scope "/v1", TwitterApiWeb.V1, as: :v1 do
     pipe_through :api
 
-    resources "/sessions", SessionController, only: [:create, :delete]
-    resources "/relationships", RelationshipController, only: [:create, :delete, :show, :index]
+    post "/sessions", SessionController, :create
+    post "/users", UserController, :create
+  end
 
-    get "/users/me", UserController, :me
-    resources "/users", UserController, except: [:new, :edit]
+  scope "/v1", TwitterApiWeb.V1, as: :v1 do
+    pipe_through [:api, :api_auth]
+
+    delete "/sessions", SessionController, :delete
+    delete "/relationships", RelationshipController, :delete
+    resources "/relationships", RelationshipController, only: [:create, :show, :index]
+
+    scope "/users" do
+      get "/me", UserController, :me
+      get "/show", UserController, :show
+      resources "/", UserController, except: [:new, :edit, :create, :show]
+    end
 
     scope "/tweets" do
       get "/user_timeline", TweetController, :user_timeline
       get "/home_timeline", TweetController, :home_timeline
-      resources "/", TweetController, only: [:create, :index, :delete, :show]
+      get "/show", TweetController, :show
+      delete "/", TweetController, :delete
+      resources "/", TweetController, only: [:create, :index]
     end
 
     scope "/followers" do
@@ -34,21 +46,6 @@ defmodule TwitterApiWeb.Router do
     scope "/following" do
       get "/ids", FollowerController, :following_ids
       get "/list", FollowerController, :following
-    end
-  end
-
-  # Plug function
-  defp ensure_authenticated(conn, _opts) do
-    user_id = get_session(conn, :user_id)
-
-    if user_id do
-      conn
-    else
-      conn
-      |> put_status(:unauthorized)
-      |> put_view(TwitterApiWeb.ErrorView)
-      |> render("401.json", message: "Unauthenticated user")
-      |> halt()
     end
   end
 end
