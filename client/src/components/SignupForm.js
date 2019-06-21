@@ -53,7 +53,7 @@ const SignupForm = ({ history }) =>
           </label>
           <label>
             <p>Email</p>
-            <input type="text" name="email" value={values.email || ''} onChange={handleChange} required />
+            <input type="email" name="email" value={values.email || ''} onChange={handleChange} required />
           </label>
           <label>
             <p>Password</p>
