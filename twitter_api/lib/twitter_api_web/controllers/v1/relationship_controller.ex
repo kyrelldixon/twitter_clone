@@ -12,21 +12,15 @@ defmodule TwitterApiWeb.V1.RelationshipController do
   end
 
   def create(conn, %{"relationship" => relationship_params}) do
-    case Accounts.follow(relationship_params) do
-      {:ok, %Relationship{} = relationship} ->
-        conn
-        |> put_status(:created)
-        |> put_resp_header("location", Routes.v1_relationship_path(conn, :show, relationship))
-        |> render("show.json", relationship: relationship)
-      {:error, _} ->
-        conn
-        |> put_status(:unauthorized)
-        |> put_view(TwitterApiWeb.ErrorView)
-        |> render("401.json", message: "You are already following this user.")
+    with {:ok, %Relationship{} = relationship} <- Accounts.follow(relationship_params) do
+      conn
+      |> put_status(:created)
+      |> put_resp_header("location", Routes.v1_relationship_path(conn, :show, relationship))
+      |> render("show.json", relationship: relationship)
     end
   end
 
-  def delete(conn, %{"id" => id}) do
+  def delete(conn, %{"user_id" => id}) do
     relationship = Accounts.get_relationship!(id)
 
     with {:ok, %Relationship{}} <- Accounts.unfollow(relationship) do
