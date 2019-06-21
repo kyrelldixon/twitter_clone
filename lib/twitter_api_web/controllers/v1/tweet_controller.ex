@@ -21,12 +21,12 @@ defmodule TwitterApiWeb.V1.TweetController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
+  def show(conn, %{"user_id" => id}) do
     tweet = Tweets.get_tweet!(id)
     render(conn, "show.json", tweet: tweet)
   end
 
-  def delete(conn, %{"id" => id}) do
+  def delete(conn, %{"user_id" => id}) do
     tweet = Tweets.get_tweet!(id)
 
     with {:ok, %Tweet{}} <- Tweets.delete_tweet(tweet) do
