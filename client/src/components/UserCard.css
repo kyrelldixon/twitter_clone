@@ -1,9 +1,10 @@
 #usercard-wrapper {
   background-color: #ffffff;
   border-bottom: 0.07rem solid #e6ecf0;
-  padding: 0.75rem 0.7rem 1.5rem 0.7rem;
+  padding: 1rem 0.7rem;
   display: grid;
   grid-template-columns: 15% 85%;
+  font-size: 0.9375rem;
 }
 
 #usercard-wrapper:hover {
@@ -22,7 +23,15 @@
   display: inline-block;
 }
 
+#usercard-wrapper #name {
+  font-weight: bold;
+}
+
 #btn-box {
   float: right;
   min-width: 5rem;
+}
+
+#usercard-wrapper #username {
+  color: #808080;
 }
