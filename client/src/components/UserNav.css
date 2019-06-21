@@ -9,17 +9,25 @@
 }
 
 #user-nav a.nav-link {
+  display: inline-block;
   color: #808080;
+  width: 5.625rem;
+  padding: 0.4rem;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 #user-nav .nav-link i {
-  width: 5.625rem;
-  padding: 0.82rem;
-  text-align: center;
-  font-size: 1.5rem;
+  padding: 0.5rem;
 }
 
-#user-nav .active-link i {
+#user-nav .nav-link i:hover {
+  border-radius: 100%;
+  background-color: #dcf3fc;
+  color: #1da1f2;
+}
+
+#user-nav #active-link {
   color: #1da1f2;
   border-bottom: 0.15rem solid #1da1f2;
 }

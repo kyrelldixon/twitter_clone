@@ -6,7 +6,7 @@ const UserNav = () => (
   <nav id="user-nav">
     <div className="userhome-nav-container">
       <ul>
-        <Link to="#" className="nav-link active-link"><i className="fas fa-home"></i></Link>
+        <Link to="#" className="nav-link" id="active-link"><i className="fas fa-home"></i></Link>
         <Link to="#" className="nav-link"><i className="fas fa-hashtag"></i></Link>
         <Link to="#" className="nav-link"><i className="far fa-bell"></i></Link>
         <Link to="#" className="nav-link"><i className="far fa-envelope"></i></Link>
