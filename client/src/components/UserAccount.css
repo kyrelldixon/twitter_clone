@@ -1,0 +1,14 @@
+#user-acct #user-bg {
+  width: 100%;
+}
+
+#user-acct #user-photo {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 100%;
+  margin-right: 1rem;
+}
+
+#user-acct #btn-box {
+  width: 20%;
+}

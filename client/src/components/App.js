@@ -12,6 +12,7 @@ const App = () => (
     <Route path="/login" component={LoginForm} />
     <Route path="/signup" component={SignupForm} />
     <Route path="/userhome" component={UserHome} />
+    <Route path="/useraccount" component={UserHome} />
 
   </>
 );
