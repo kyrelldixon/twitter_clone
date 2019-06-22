@@ -11,7 +11,10 @@ const UserAccount = (props) => {
   useEffect(() => {
     const getUserTweets = async () => {
       try {
-        const tweetObj = await axios.get('http://localhost:4000/v1/tweets');
+        const token = localStorage.getItem('token');
+        const tweetObj = await axios.get('http://localhost:4000/v1/tweets/user_timeline', {
+          headers: {Authorization: `Bearer ${token}`}
+        });
         setUserTweets(tweetObj.data.data);
       } catch (error) {
         console.log(error);
