@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import UserCard from './UserCard';
-import LinkBar from './LinkBar';
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import UserCard from '../UserCard/UserCard';
+import LinkBar from '../LinkBar/LinkBar';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 import './WhoToFollow.css';
 

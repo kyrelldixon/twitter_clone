@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import ActionButton from './ActionButton';
+import ActionButton from '../ActionButton/ActionButton';
 
 import './UserCard.css';
 

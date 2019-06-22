@@ -1,8 +1,8 @@
 import  React from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
-import Nav from './Nav';
-import { useForm } from '../hooks/useForm';
+import Nav from '../Nav/Nav';
+import { useForm } from '../../hooks/useForm';
 
 import './SignupForm.css';
 

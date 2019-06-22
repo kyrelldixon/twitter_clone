@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Tweet from './Tweet';
-import ComposeTweet from './ComposeTweet';
-import { useLocalStorage } from '../hooks/useLocalStorage';
-import { useBoolean } from '../hooks/useBoolean';
+import Tweet from '../Tweet/Tweet';
+import ComposeTweet from '../ComposeTweet/ComposeTweet';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { useBoolean } from '../../hooks/useBoolean';
 
 import './Timeline.css';
 

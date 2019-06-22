@@ -4,9 +4,9 @@ import { Link, withRouter } from 'react-router-dom';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useForm } from '../hooks/useForm';
 
-import './Home.css';
+import './LandingPage.css';
 
-const Home = ({ history }) => 
+const LandingPage = ({ history }) => 
 {
   const [, setToken] = useLocalStorage('token', window.localStorage.getItem('token'));
   const { values, handleChange, handleSubmit } = useForm(login);
@@ -56,9 +56,9 @@ const Home = ({ history }) =>
           <Link to="login"><button className="login-btn">Log in</button></Link>
         </div>
       </section>
-      
+
     </div>
   );
 }
 
-  export default withRouter(Home);
+  export default withRouter(LandingPage);
