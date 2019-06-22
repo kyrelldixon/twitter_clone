@@ -11,7 +11,10 @@ const WhoToFollow = () => {
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const userListObj = await axios.get('http://localhost:4000/v1/users');
+        const token = localStorage.getItem('token');
+        const userListObj = await axios.get('http://localhost:4000/v1/users', {
+          headers: {Authorization: `Bearer ${token}`}
+        });
         setUserData(userListObj.data.data);
       } catch (error) {
         console.log(error);

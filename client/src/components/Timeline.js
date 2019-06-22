@@ -9,10 +9,13 @@ const Timeline = () => {
   const [tweetData, setTweetData] = useState([]);
   const [displayState, setDisplayState] = useState(false);
 
-  useEffect( () => {
+  useEffect(() => {
     const getTweets = async () => {
       try {
-        const tweetObj = await axios.get('http://localhost:4000/v1/tweets');
+        const token = localStorage.getItem('token');
+        const tweetObj = await axios.get('http://localhost:4000/v1/tweets', {
+          headers: {Authorization: `Bearer ${token}`}
+        });
         setTweetData(tweetObj.data.data.reverse());
       } catch (error) {
         console.log(error);
