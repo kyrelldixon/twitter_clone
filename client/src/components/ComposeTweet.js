@@ -8,18 +8,18 @@ const ComposeTweet = (props) => {
   const [tweetText, setTweetText] = useState('');
 
   const handleSubmitTweet = (e) => {
-    const postObj = {
+    const tweet = {
       "tweet": {
         "text": tweetText
       }
     } 
-    sendTweet(postObj);
+    sendTweet(tweet);
     e.preventDefault();
   }
 
-  const sendTweet = async (postObj) => {
+  const sendTweet = async (tweet) => {
     try {
-      const response = await axios.post('http://localhost:4000/v1/tweets', postObj);
+      const response = await axios.post('http://localhost:4000/v1/tweets', tweet);
       console.log(response);
     } catch (error) {
       console.log(error);
