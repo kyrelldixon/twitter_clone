@@ -1,0 +1,32 @@
+#tweet-menu-box {
+  z-index: 1;
+  margin-top: -1rem;
+  left: 42rem;
+  width: 10rem;
+  background-color: #ffffff;
+  box-shadow: 0.2rem 0.2rem 1rem #b1b0b0;
+  border-radius: 0.4rem;
+}
+
+#tweet-menu-box.showMenu {
+  position: absolute;
+}
+
+#tweet-menu-box.hideMenu {
+  display: none;
+}
+
+.tweet-menu-btn {
+  display: block;
+  width: 100%;
+  font-size: 0.85rem;
+  text-align: left;
+  padding: 1rem 0.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.tweet-menu-btn:hover {
+  background-color: #f0f2f3;
+}

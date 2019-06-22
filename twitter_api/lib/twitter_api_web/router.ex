@@ -21,15 +21,21 @@ defmodule TwitterApiWeb.Router do
     pipe_through [:api, :api_auth]
 
     delete "/sessions", SessionController, :delete
-    resources "/relationships", RelationshipController, only: [:create, :delete, :show, :index]
+    delete "/relationships", RelationshipController, :delete
+    resources "/relationships", RelationshipController, only: [:create, :show, :index]
 
-    get "/users/me", UserController, :me
-    resources "/users", UserController, except: [:new, :edit, :create]
+    scope "/users" do
+      get "/me", UserController, :me
+      get "/show", UserController, :show
+      resources "/", UserController, except: [:new, :edit, :create, :show]
+    end
 
     scope "/tweets" do
       get "/user_timeline", TweetController, :user_timeline
       get "/home_timeline", TweetController, :home_timeline
-      resources "/", TweetController, only: [:create, :index, :delete, :show]
+      get "/show", TweetController, :show
+      delete "/", TweetController, :delete
+      resources "/", TweetController, only: [:create, :index]
     end
 
     scope "/followers" do

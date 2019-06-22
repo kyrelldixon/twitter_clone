@@ -1,6 +1,88 @@
-#user-nav i {
-  font-size: 1.65rem;
-  margin-right: 2rem;
-  padding: 0.25rem;
+#user-nav {
+  position: sticky;
+  top: 0;
+}
+
+#user-nav ul {
+  display: inline-block;
+  padding: 0;
+}
+
+#user-nav a.nav-link {
+  display: inline-block;
   color: #808080;
+  width: 5.625rem;
+  padding: 0.4rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+#user-nav .nav-link i {
+  padding: 0.5rem;
+}
+
+#user-nav .nav-link i:hover {
+  border-radius: 100%;
+  background-color: #dcf3fc;
+  color: #1da1f2;
+  transition: 0.2s;
+}
+
+#user-nav #active-link {
+  color: #1da1f2;
+  border-bottom: 0.15rem solid #1da1f2;
+}
+
+#user-nav #search-box {
+  width: 28rem;
+  background-color: #e6ecf0;
+  border-radius: 1rem;
+  border-style: none;
+  padding: 0.45rem 3rem;
+  font-size: 0.95rem;
+  margin: 0.6rem 0 0.6rem 1.4rem;
+  vertical-align: top;
+}
+
+#user-nav #search-box::placeholder {
+  color: #61676b;
+}
+
+#acct-link {
+  float: right;
+  height: 2.15rem;
+  color: #838b91;
+  border: none;
+  border-radius: 1rem;
+  margin: 0.6rem 0.35rem 0 1rem;
+  padding-right: 0.5rem;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+#acct-link:hover {
+  background-color: #dcf3fc;
+  color: #1da1f2;
+  transition: 0.4s;
+}
+
+#acct-link img {
+  width: 2.05rem;
+  height: 2.15rem;
+  border-radius: 50%;
+  margin-right: 0.6rem;
+  vertical-align: middle;
+}
+
+#acct-link span {
+  display: inline-block;
+  color: #000000;
+  font-size: 1rem;
+  margin-right: 0.4rem;
+  vertical-align: middle;
+}
+
+#acct-link i {
+  font-size: 1rem;
+  vertical-align: middle;
 }

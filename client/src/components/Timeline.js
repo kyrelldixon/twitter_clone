@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useLocalStorage } from '../hooks/useLocalStorage';
 import Tweet from './Tweet';
 import ComposeTweet from './ComposeTweet';
+import { useLocalStorage } from '../hooks/useLocalStorage';
+
 import './Timeline.css';
 
 const Timeline = () => {
 
   const [tweetData, setTweetData] = useState([]);
   const [displayState, setDisplayState] = useState(false);
-  // eslint-disable-next-line
-  const [token, setToken] = useLocalStorage('token', window.localStorage.getItem('token'))
+  const [token,] = useLocalStorage('token', window.localStorage.getItem('token'));
+  console.log({token})
 
   useEffect( () => {
     const getTweets = async () => {
@@ -42,7 +43,8 @@ const Timeline = () => {
       </div>
       <ul id="tweets-ul">
         {tweetData.map(tweet => <li key={tweet.tweet_id}>
-          <Tweet name={tweet.user.name} username={tweet.user.username} text={tweet.text} />
+          <Tweet name={tweet.user.name} username={tweet.user.username}
+            text={tweet.text} id={tweet.tweet_id} setTweetData={setTweetData}/>
           </li>)}
       </ul>
     </div>
