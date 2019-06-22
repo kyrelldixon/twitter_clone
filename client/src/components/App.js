@@ -5,6 +5,7 @@ import Home from './Home';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import UserHome from './UserHome';
+import Footer from './Footer';
 
 const App = () => (
   <>
@@ -12,7 +13,7 @@ const App = () => (
     <Route path="/login" component={LoginForm} />
     <Route path="/signup" component={SignupForm} />
     <Route path="/home" component={UserHome} />
-
+    <Footer />
   </>
 );
 
