@@ -3,15 +3,15 @@ import axios from 'axios';
 import Tweet from './Tweet';
 import ComposeTweet from './ComposeTweet';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { useBoolean } from '../hooks/useBoolean';
 
 import './Timeline.css';
 
 const Timeline = () => {
 
   const [tweetData, setTweetData] = useState([]);
-  const [displayState, setDisplayState] = useState(false);
+  const [isVisible, showModal, hideModal] = useBoolean(false);
   const [token,] = useLocalStorage('token', window.localStorage.getItem('token'));
-  console.log({token})
 
   useEffect( () => {
     const getTweets = async () => {
@@ -32,9 +32,9 @@ const Timeline = () => {
 
   return (
     <div>
-      <ComposeTweet display={displayState} handleDisplay={setDisplayState}/>
+      <ComposeTweet isVisible={isVisible} hideModal={hideModal} />
       <div id="home-bar">Home<i className="far fa-star"></i></div>
-      <div id="compose" onClick={() => setDisplayState(true) }>
+      <div id="compose" onClick={showModal}>
         <img alt="user" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"/>
         <div id="input-box">What's happening?</div>
         <i className="far fa-image"></i>

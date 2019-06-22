@@ -27,14 +27,14 @@ const ComposeTweet = (props) => {
   }
 
   return (
-    <div id="modal-bg" className={props.display ? 'showModal' : 'hideModal'} onClick={(event) => {
+    <div id="modal-bg" className={props.isVisible ? 'showModal' : 'hideModal'} onClick={(event) => {
       if (event.target.id === 'modal-bg') {
-        props.handleDisplay(false);
+        props.hideModal();
       }
     }}>
       <div id="compose-tweet-modal">
         <div id="compose-tweet-head">
-          <button id="close-compose" onClick={() => props.handleDisplay(false)} ><i className="fas fa-times"></i></button>
+          <button id="close-compose" onClick={props.hideModal} ><i className="fas fa-times"></i></button>
           <button id="submit-tweet" onClick={handleSubmitTweet}>Tweet</button>
         </div>
         <div id="compose-tweet-body">

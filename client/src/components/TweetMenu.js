@@ -38,11 +38,11 @@ const TweetMenu = (props) => {
       // inside click
       return;
     }
-    props.handleDisplay(false);
+    props.hideMenu();
   };
 
   return (
-      <div ref={node} id="tweet-menu-box" className={props.display ? "showMenu" : "hideMenu"}>
+      <div ref={node} id="tweet-menu-box" className={props.isVisible ? "showMenu" : "hideMenu"}>
         <button className="tweet-menu-btn">View Tweet Activity</button>
         <button className="tweet-menu-btn">Embed Tweet</button>
         <button className="tweet-menu-btn">Pin to your profile</button>
