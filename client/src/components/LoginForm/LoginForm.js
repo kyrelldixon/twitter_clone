@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import { Link, withRouter } from 'react-router-dom';
-import Nav from '../Nav';
 import { useForm } from '../../hooks/useForm';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 
@@ -28,9 +27,7 @@ const LoginForm = ({ history }) => {
   }
 
   return (
-    <main>
-      <Nav />
-      <div className="container" id="main-box">
+    <div className="container" id="main-box">
 
         <form id="login" onSubmit={handleSubmit}>
           <h1 id="login-header">Log in to Twitter</h1>
@@ -52,8 +49,6 @@ const LoginForm = ({ history }) => {
         </section>
 
       </div>
-
-    </main>
   );
 }
 
