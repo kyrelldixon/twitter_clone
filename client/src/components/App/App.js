@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route } from "react-router-dom";
 import './App.css';
-import LandingPage from '../../routes/LandingPage';
+import LandingPage from '../../routes/LandingPage/LandingPage';
 import LoginForm from '../LoginForm';
 import SignupForm from '../SignupForm/SignupForm';
-import HomePage from '../../routes/HomePage';
+import HomePage from '../../routes/HomePage/HomePage';
 import Footer from '../Footer/Footer';
 
 const App = () => (

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route } from 'react-router-dom'
-import UserNav from '../components/UserNav/UserNav';
-import Timeline from '../components/Timeline';
-import WhoToFollow from '../components/WhoToFollow/WhoToFollow';
+import UserNav from '../../components/UserNav/UserNav';
+import Timeline from '../../components/Timeline';
+import WhoToFollow from '../../components/WhoToFollow/WhoToFollow';
 
 const HomePage = () => (
   <div>
