@@ -41,9 +41,23 @@ defmodule TwitterApiWeb.V1.TweetController do
     render(conn, "index.json", tweets: tweets)
   end
 
-  def user_timeline(conn, _params) do
-    tweets = Tweets.list_user_tweets(conn.assigns.current_user)
+  def user_timeline(conn, %{"username" => username}) do
+    user = Accounts.get_user_by_username!(username)
+
+    tweets = Tweets.list_user_tweets(user)
     render(conn, "index.json", tweets: tweets)
+  end
+
+  def user_timeline(conn, _params) do
+    if Map.has_key?(conn.assigns, :current_user) do
+      tweets = Tweets.list_user_tweets(conn.assigns.current_user)
+      render(conn, "index.json", tweets: tweets)
+    else
+      conn
+      |> put_status(:unauthorized)
+      |> put_view(TwitterApiWeb.ErrorView)
+      |> render("401.json", message: "You must be signed in to access this endpoint.")
+    end
   end
 
   def home_timeline(conn, _params) do
