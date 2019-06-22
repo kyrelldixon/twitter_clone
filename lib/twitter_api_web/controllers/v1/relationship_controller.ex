@@ -11,7 +11,26 @@ defmodule TwitterApiWeb.V1.RelationshipController do
     render(conn, "index.json", relationships: relationships)
   end
 
-  def create(conn, %{"relationship" => relationship_params}) do
+  def create(conn, %{"user_id" => user_id}) do
+    relationship_params = %{
+      "follower_id" => conn.assigns.current_user.id,
+      "followed_id" => user_id
+    }
+    with {:ok, %Relationship{} = relationship} <- Accounts.follow(relationship_params) do
+      conn
+      |> put_status(:created)
+      |> put_resp_header("location", Routes.v1_relationship_path(conn, :show, relationship))
+      |> render("show.json", relationship: relationship)
+    end
+  end
+
+  def create(conn, %{"username" => username}) do
+    followed_user = Accounts.get_user_by_username!(username)
+
+    relationship_params = %{
+      "follower_id" => conn.assigns.current_user.id,
+      "followed_id" => followed_user.id
+    }
     with {:ok, %Relationship{} = relationship} <- Accounts.follow(relationship_params) do
       conn
       |> put_status(:created)
