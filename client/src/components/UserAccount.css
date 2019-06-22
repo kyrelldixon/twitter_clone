@@ -2,6 +2,11 @@
   width: 100%;
 }
 
+#user-acct #acct-main {
+  background: #ffffff;
+  padding: 1rem;
+}
+
 #user-acct #user-photo {
   width: 7rem;
   height: 7rem;
@@ -11,4 +16,10 @@
 
 #user-acct #btn-box {
   width: 20%;
+}
+
+#user-tweets-ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
 }
