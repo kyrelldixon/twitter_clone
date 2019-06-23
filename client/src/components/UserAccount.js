@@ -40,7 +40,7 @@ const UserAccount = (props) => {
 
     getFollowCount();
     getUserTweets();
-  }, []);
+  }, [token]);
 
   return (
     <div id="user-acct">

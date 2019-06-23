@@ -4,14 +4,21 @@ import ActionButton from './ActionButton';
 import axios from 'axios';
 
 const UserCard = (props) => {
+  
+  const token = localStorage.getItem('token');
+  const currentUserId = localStorage.getItem('user_id');
 
   const handleRelationshipUpdate = async () => {
     const followInfo = {
-      follower: props.currentUserId,
-      follwed: props.id
+      relationship: {
+        follower_id: currentUserId,
+        followed_id: props.id
+      }
     }
     try {
-      await axios.post('http://localhost:4000/v1/relationships', followInfo);
+      await axios.post('http://localhost:4000/v1/relationships', followInfo, {
+        headers: {Authorization: `Bearer ${token}`}
+      });
     } catch (error) {
       console.log(error);
     }
