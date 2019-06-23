@@ -38,10 +38,10 @@ const LandingPage = ({ history }) =>
 
       <section id="right-half">
         <div id="top-login">
-          <input type="text" placeholder="Phone, email or username"
-            value={values.email || ''} onChange={handleChange}/>
+          <input type="email" placeholder="Phone, email or username"
+            name="email" value={values.email || ''} onChange={handleChange}/>
           <input type="password" placeholder="Password"
-            value={values.password || ''} onChange={handleChange}/>
+            name="password" value={values.password || ''} onChange={handleChange}/>
           <button className="login-btn" id="small-btn-upper" onClick={handleSubmit}>Log in</button>
         </div>
         <Link to="/" id="forgot-pass">Forgot password?</Link>
