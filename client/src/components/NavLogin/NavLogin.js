@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import authClient from '../../services/authClient';
-import { useForm } from '../../hooks/useForm';
-import { useAuth } from '../../hooks/useAuth';
+import { useForm, useAuth } from '../../hooks';
 
 const NavLogin = ({ history }) => {
   const { values, handleChange, handleSubmit } = useForm(login);

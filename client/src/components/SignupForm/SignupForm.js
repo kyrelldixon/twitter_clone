@@ -1,6 +1,6 @@
 import  React from 'react';
 import { withRouter } from 'react-router-dom';
-import { useForm } from '../../hooks/useForm';
+import { useForm } from '../../hooks';
 import authClient from '../../services/authClient';
 
 import './SignupForm.css';

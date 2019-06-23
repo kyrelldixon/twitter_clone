@@ -1,6 +1,6 @@
 import React from 'react';
 import TweetMenu from '../TweetMenu/TweetMenu';
-import { useBoolean } from '../../hooks/useBoolean';
+import { useBoolean } from '../../hooks';
 
 import './Tweet.css';
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Tweet from '../Tweet/Tweet';
 import ComposeTweet from '../ComposeTweet/ComposeTweet';
 import { getHomeTimeline } from '../../services/tweetClient';
-import { useBoolean } from '../../hooks/useBoolean';
+import { useBoolean } from '../../hooks';
 
 import './Timeline.css';
 
