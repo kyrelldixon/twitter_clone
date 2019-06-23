@@ -2,12 +2,14 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import authClient from '../../services/authClient';
 import { useForm } from '../../hooks/useForm';
+import { useAuth } from '../../hooks/useAuth';
 
 import './LoginForm.css';
 
 const LoginForm = ({ history }) => {
 
   const { values, handleChange, handleSubmit } = useForm(login);
+  const [state, setState] = useAuth();
   
   async function login() {
     const credentials = {
@@ -18,7 +20,12 @@ const LoginForm = ({ history }) => {
     try {
       const userId = await authClient.login(credentials)
       const user = await authClient.getCurrentUser();
-      if (userId === user.id) console.log('user is',user);
+      setState({
+        ...state,
+        isAuthenticated: userId === user.id,
+        user
+      });
+      history.push('/home');
     } catch (error) {
       alert(error)
     }
