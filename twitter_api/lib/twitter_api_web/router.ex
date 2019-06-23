@@ -14,7 +14,15 @@ defmodule TwitterApiWeb.Router do
     pipe_through :api
 
     post "/sessions", SessionController, :create
-    post "/users", UserController, :create
+    scope "/users" do
+      post "/", UserController, :create
+      get "/show", UserController, :show
+    end
+
+    scope "/tweets" do
+      get "/show", TweetController, :show
+      get "/user_timeline", TweetController, :user_timeline
+    end
   end
 
   scope "/v1", TwitterApiWeb.V1, as: :v1 do
@@ -26,14 +34,11 @@ defmodule TwitterApiWeb.Router do
 
     scope "/users" do
       get "/me", UserController, :me
-      get "/show", UserController, :show
       resources "/", UserController, except: [:new, :edit, :create, :show]
     end
 
     scope "/tweets" do
-      get "/user_timeline", TweetController, :user_timeline
       get "/home_timeline", TweetController, :home_timeline
-      get "/show", TweetController, :show
       delete "/", TweetController, :delete
       resources "/", TweetController, only: [:create, :index]
     end

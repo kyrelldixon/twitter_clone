@@ -6,9 +6,9 @@ defmodule TwitterApiWeb.Plugs.Auth do
   def call(conn, _default) do
     case TwitterApi.Services.Authenticator.get_auth_token(conn) do
       {:ok, token} ->
-        case IO.inspect(TwitterApi.Repo.get_by(TwitterApi.AuthToken, %{token: token, revoked: false}), label: "Result of getting token") |> TwitterApi.Repo.preload(:user) do
+        case TwitterApi.Repo.get_by(TwitterApi.AuthToken, %{token: token, revoked: false}) |> TwitterApi.Repo.preload(:user) do
           nil -> unauthorized(conn)
-          auth_token -> IO.inspect(authorized(conn, auth_token.user), label: "Conn if authorized")
+          auth_token -> authorized(conn, auth_token.user)
         end
       _ -> unauthorized(conn)
     end
