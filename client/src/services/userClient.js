@@ -1,25 +1,24 @@
-import client from './apiClient';
+import client, { handleSuccess, handleFailure } from './apiClient';
 
-const USER_ENDPOINT = 'v1/users'
-const handleResponseFailure = ({ response }) => {
-  return Promise.reject(response.data.errors.detail);
-}
+const USER_ENDPOINT = 'v1/users';
 
 const createUser = (user) => {
-  client(USER_ENDPOINT, { data: user }, false)
-  .catch(handleResponseFailure);
+  return client(USER_ENDPOINT, { data: user }, false)
+  .catch(handleFailure);
 }
 const getUser = (params) => {
-  client(`${USER_ENDPOINT}/show`, { params })
-  .catch(handleResponseFailure);;
+  return client(`${USER_ENDPOINT}/show`, { params })
+  .then(handleSuccess)
+  .catch(handleFailure);
 }
-const getUsers = (params) => {
-  client(USER_ENDPOINT, { params })
-  .catch(handleResponseFailure);;
+const getUsers = () => {
+  return client(USER_ENDPOINT)
+  .then(handleSuccess)
+  .catch(handleFailure);
 }
 const deleteUser = (params) => {
-  client(USER_ENDPOINT, { params })
-  .catch(handleResponseFailure);;
+  return client(USER_ENDPOINT, { params })
+  .catch(handleFailure);
 }
 
 export { createUser, getUser, getUsers, deleteUser };

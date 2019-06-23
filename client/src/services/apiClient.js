@@ -24,4 +24,12 @@ const client = (endpoint, {data, ...customConfig} = {}, useToken = true) => {
   return axios(config);
 }
 
+export const handleSuccess = ({ data: { data } }) => {
+  return Promise.resolve(data);
+}
+
+export const handleFailure = ({ response }) => {
+  return Promise.reject(response.data.errors.detail);
+}
+
 export default client;
