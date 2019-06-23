@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import axios from 'axios';
+import { deleteTweet, getTweets } from '../../services/tweetClient';
 
 import './TweetMenu.css';
 
@@ -17,7 +17,7 @@ const TweetMenu = (props) => {
   
   const handleDeleteTweet = async () => {
     try {
-      await axios.delete(`http://localhost:4000/v1/tweets/${props.tweetId}`);
+      await deleteTweet({ tweetId: props.tweetId })
       reloadTweetData();
     } catch (error) {
       console.log(error);
@@ -26,8 +26,9 @@ const TweetMenu = (props) => {
 
   const reloadTweetData = async () => {
     try {
-      const tweetDataObj = await axios.get('http://localhost:4000/v1/tweets');
-      props.setTweetData(tweetDataObj.data.data.reverse());
+      // TODO: add correct get tweets function call. Will depend on route
+      const response = await getTweets();
+      props.setTweetData(response.data.data.reverse());
     } catch (error) {
       console.log(error);
     }
