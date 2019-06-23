@@ -13,8 +13,8 @@ const UserTimeline = (props) => {
   useEffect(() => {
     const fetchUserTweets = async () => {
       try {
-        const response = await getUserTimeline({username: props.match.params.username});
-        setUserTweets(response.data.data);
+        const userTimeline = await getUserTimeline({username: props.match.params.username});
+        setUserTweets(userTimeline);
       } catch (error) {
         console.log(error);
       }
@@ -22,8 +22,8 @@ const UserTimeline = (props) => {
 
     const fetchUser = async () => {
       try {
-        const response = await getUser({username: props.match.params.username});
-        setUser(response.data.data);
+        const user = await getUser({username: props.match.params.username});
+        setUser(user);
       } catch (error) {
         console.log(error);
       }

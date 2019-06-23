@@ -14,8 +14,8 @@ const Timeline = () => {
   useEffect( () => {
     const getTweets = async () => {
       try {
-        const response = await getHomeTimeline();
-        setTweetData(response.data.data.reverse());
+        const timeline = await getHomeTimeline();
+        setTweetData(timeline);
       } catch (error) {
         console.log(error);
       }
