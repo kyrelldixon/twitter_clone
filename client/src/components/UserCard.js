@@ -11,7 +11,7 @@ const UserCard = (props) => {
 
   useEffect(() => {
     if (props.isFollowed) {
-      setfollowButtonText("Unfollow");
+      setfollowButtonText("Following");
     }
   });
 
