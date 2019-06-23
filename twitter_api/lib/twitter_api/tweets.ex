@@ -159,6 +159,6 @@ defmodule TwitterApi.Tweets do
     user_tweets_query(Tweet, user)
     |> union_all(^following_tweets_query(Tweet, user))
 
-    from q in subquery(query), order_by: [desc: q.inserted_at]
+    from q in subquery(query), order_by: [desc: q.inserted_at], preload: :user
   end
 end
