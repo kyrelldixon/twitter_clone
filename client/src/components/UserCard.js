@@ -7,7 +7,6 @@ const UserCard = (props) => {
   
   const [followButtonText, setfollowButtonText] = useState('Follow');
   const token = localStorage.getItem('token');
-  const currentUserId = localStorage.getItem('user_id');
 
   useEffect(() => {
     if (props.isFollowed) {
@@ -16,20 +15,14 @@ const UserCard = (props) => {
   });
 
   const handleRelationshipUpdate = async () => {
-    const followInfo = {
-      relationship: {
-        follower_id: currentUserId,
-        followed_id: props.id
-      }
-    }
-    const relationship_id = 22;
+    
     try {
       if (!props.isFollowed) {
-        await axios.post('http://localhost:4000/v1/relationships', followInfo, {
+        await axios.post(`http://localhost:4000/v1/relationships?user_id=${props.id}`, {}, {
           headers: {Authorization: `Bearer ${token}`}
         });
       } else {
-        await axios.delete(`http://localhost:4000/v1/relationships?user_id=${relationship_id}`, {
+        await axios.delete(`http://localhost:4000/v1/relationships?user_id=${props.id}`, {
           headers: {Authorization: `Bearer ${token}`}
         });
       }
