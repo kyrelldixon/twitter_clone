@@ -1,7 +1,7 @@
 import  React from 'react';
-import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
+import authClient from '../../services/authClient';
 
 import './SignupForm.css';
 
@@ -20,20 +20,21 @@ const SignupForm = ({ history }) =>
         }
       }
     }
-    
-    try {
-      const response = await axios.post('http://localhost:4000/v1/users', user);
-      console.log(response);
-      return true;
-    } catch (error) {
-      console.error(error);
-      return false;
+
+    const onSuccess = () => {
+      history.push('/login');
     }
+
+    const onFailure = (error) => {
+      console.error(error);
+    }
+    
+    authClient.signup(user, onSuccess, onFailure);
   }
 
   function signup() {
-    const isSuccess = createUser();
-    if (isSuccess) history.push('/login');
+    createUser();
+    history.push('/login');
   }
 
   return (

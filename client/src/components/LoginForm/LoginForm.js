@@ -1,29 +1,29 @@
 import React from 'react';
-import axios from 'axios';
 import { Link, withRouter } from 'react-router-dom';
+import authClient from '../../services/authClient';
 import { useForm } from '../../hooks/useForm';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 import './LoginForm.css';
 
 const LoginForm = ({ history }) => {
-  
-  const [, setToken] = useLocalStorage('token', window.localStorage.getItem('token'));
+
   const { values, handleChange, handleSubmit } = useForm(login);
   
   async function login() {
-    try {
-      const credentials = {
-        email: values.email,
-        password: values.password
-      }
+    const credentials = {
+      email: values.email,
+      password: values.password
+    };
 
-      const response = await axios.post('http://localhost:4000/v1/sessions', credentials);
-      setToken(response.data.data.token)
+    const onLoginSuccess = () => {
       history.push('/home');
-    } catch (error) {
+    }
+
+    const onLoginFailure = (error) => {
       console.error(error);
     }
+
+    authClient.login(credentials, onLoginSuccess, onLoginFailure)
   }
 
   return (
