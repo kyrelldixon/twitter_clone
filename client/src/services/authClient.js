@@ -1,11 +1,8 @@
-import axios from 'axios';
-
-const LOCAL_STORAGE_KEY = '__twitter_api_token__';
-const API_URL = process.env.API_URL || 'http://localhost:4000';
+import client, { LOCAL_STORAGE_KEY } from './apiClient';
 
 const login = async (credentials, onSuccess, onFailure) => {
   try {
-    const response = await axios.post(`${API_URL}/v1/sessions`, credentials);
+    const response = await client('v1/sessions', { data: credentials }, false);
     window.localStorage.setItem(LOCAL_STORAGE_KEY, response.data.data.token);
     onSuccess();
   } catch (error) {
@@ -17,9 +14,9 @@ const logout = () => {
   window.localStorage.removeItem(LOCAL_STORAGE_KEY);
 }
 
-const signup = async (userDetails, onSuccess, onFailure) => {
+const signup = async (user, onSuccess, onFailure) => {
   try {
-    await axios.post(`${API_URL}/v1/users`, userDetails);
+    await client('v1/users', { data: user }, false);
     onSuccess();
   } catch (error) {
     onFailure(error);
