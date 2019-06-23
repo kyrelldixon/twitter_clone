@@ -1,18 +1,18 @@
 import React from 'react';
 import { Route } from "react-router-dom";
 import './App.css';
-import Home from './Home';
+import Landing from './Landing';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
-import UserHome from './UserHome';
+import Home from './Home';
 
 const App = () => (
   <>
-    <Route exact path="/" component={Home} />
+    <Route exact path="/" component={Landing} />
     <Route path="/login" component={LoginForm} />
     <Route path="/signup" component={SignupForm} />
-    <Route path="/userhome" component={UserHome} />
-    <Route path="/useraccount" component={UserHome} />
+    <Route path="/home" component={Home} />
+    <Route path="/useraccount" component={Home} />
 
   </>
 );

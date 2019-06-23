@@ -7,19 +7,40 @@ import './UserAccount.css';
 const UserAccount = (props) => {
 
   const [userTweets, setUserTweets] = useState([]);
+  const [followingCount, setFollowingCount] = useState(0);
+  const [followersCount, setFollowersCount] = useState(0);
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
-    const getUserTweets = async () => {
+    const getFollowCount = async () => {
       try {
-        const tweetObj = await axios.get('http://localhost:4000/v1/tweets');
-        setUserTweets(tweetObj.data.data);
+        const followingObj = await axios.get('http://localhost:4000/v1/following/ids', {
+          headers: {Authorization: `Bearer ${token}`}
+        });
+        setFollowingCount(followingObj.data.data.length);
+        const followersObj = await axios.get('http://localhost:4000/v1/followers/ids', {
+          headers: {Authorization: `Bearer ${token}`}
+        });
+        setFollowersCount(followersObj.data.data.length);
       } catch (error) {
         console.log(error);
       }
     }
-    
+
+    const getUserTweets = async () => {
+      try {
+        const tweetObj = await axios.get('http://localhost:4000/v1/tweets/user_timeline', {
+          headers: {Authorization: `Bearer ${token}`}
+        });
+        setUserTweets(tweetObj.data.data.reverse());
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    getFollowCount();
     getUserTweets();
-  }, []);
+  }, [token]);
 
   return (
     <div id="user-acct">
@@ -32,8 +53,8 @@ const UserAccount = (props) => {
         <div id="username">@{props.username || "no username found"}</div>
         <div id="btn-box"><ActionButton text="Edit Profile" /></div>
         <div id="user-bio">{props.bio || "no bio found"}</div>
-        <div id="following-count">{props.following_count || "0"} Following </div>
-        <div id="follower-count">{props.follower_count || "0"} Followers</div>
+        <div id="following-count">{followingCount || "0"} Following </div>
+        <div id="follower-count">{followersCount || "0"} Followers</div>
         <div id="user-tabs">
           <button className="acct-tab">Tweets</button>
           <button className="acct-tab">Tweets & replies</button>

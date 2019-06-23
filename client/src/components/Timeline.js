@@ -9,10 +9,13 @@ const Timeline = () => {
   const [tweetData, setTweetData] = useState([]);
   const [displayState, setDisplayState] = useState(false);
 
-  useEffect( () => {
+  useEffect(() => {
     const getTweets = async () => {
       try {
-        const tweetObj = await axios.get('http://localhost:4000/v1/tweets');
+        const token = localStorage.getItem('token');
+        const tweetObj = await axios.get('http://localhost:4000/v1/tweets', {
+          headers: {Authorization: `Bearer ${token}`}
+        });
         setTweetData(tweetObj.data.data.reverse());
       } catch (error) {
         console.log(error);
@@ -24,7 +27,7 @@ const Timeline = () => {
 
   return (
     <div>
-      <ComposeTweet display={displayState} handleDisplay={setDisplayState}/>
+      <ComposeTweet display={displayState} handleDisplay={setDisplayState} setTweetData={setTweetData}/>
       <div id="home-bar">Home<i className="far fa-star"></i></div>
       <div id="compose" onClick={() => setDisplayState(true) }>
         <img alt="user" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"/>

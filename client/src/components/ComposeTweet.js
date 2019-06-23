@@ -18,8 +18,24 @@ const ComposeTweet = (props) => {
 
   const sendTweet = async (postObj) => {
     try {
-      const response = await axios.post('http://localhost:4000/v1/tweets', postObj);
+      const token = localStorage.getItem('token');
+      const response = await axios.post('http://localhost:4000/v1/tweets', postObj, {
+        headers: {Authorization: `Bearer ${token}`}
+      });
+      reloadTweetData();
       console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const reloadTweetData = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const tweetDataObj = await axios.get('http://localhost:4000/v1/tweets', {
+        headers: {Authorization: `Bearer ${token}`}
+      });
+      props.setTweetData(tweetDataObj.data.data.reverse());
     } catch (error) {
       console.log(error);
     }
