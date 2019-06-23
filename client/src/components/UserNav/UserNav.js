@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AuthButton from '../AuthButton';
 import { useAuth } from '../../hooks/useAuth';
 
 import './UserNav.css';
@@ -24,7 +23,6 @@ const UserNav = () => {
           <i className="fas fa-chevron-down"></i>
         </span>
         </Link>
-        {<AuthButton />}
       </div>
     </nav>
   )
