@@ -5,7 +5,7 @@ import Timeline from '../../components/Timeline';
 import WhoToFollow from '../../components/WhoToFollow';
 import UserTimeline from '../../components/UserTimeline';
 
-const TimelinePage = () => (
+const TimelineScreen = () => (
   <div>
     <UserNav />
     <div className="userhome-container">
@@ -22,4 +22,4 @@ const TimelinePage = () => (
   </div>
 )
 
-export default TimelinePage;
+export default TimelineScreen;

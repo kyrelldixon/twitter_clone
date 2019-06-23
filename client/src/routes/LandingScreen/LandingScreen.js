@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import NavLogin from '../../components/NavLogin';
 
-import './LandingPage.css';
+import './LandingScreen.css';
 
-const LandingPage = () => (
+const LandingScreen = () => (
   <div className="wrapper">
 
     <section id="left-half">
@@ -31,4 +31,4 @@ const LandingPage = () => (
   </div>
 );
 
-export default LandingPage;
+export default LandingScreen;

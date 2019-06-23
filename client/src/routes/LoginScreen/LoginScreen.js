@@ -2,11 +2,11 @@ import React from 'react';
 import Nav from '../../components/Nav';
 import LoginForm from '../../components/LoginForm';
 
-const LoginPage = () => (
+const LoginScreen = () => (
   <main>
     <Nav />
     <LoginForm />
   </main>
 );
 
-export default LoginPage;
+export default LoginScreen;
