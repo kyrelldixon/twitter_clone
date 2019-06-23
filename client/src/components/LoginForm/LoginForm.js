@@ -15,15 +15,13 @@ const LoginForm = ({ history }) => {
       password: values.password
     };
 
-    const onLoginSuccess = () => {
-      history.push('/home');
+    try {
+      const userId = await authClient.login(credentials)
+      const user = await authClient.getCurrentUser();
+      if (userId === user.id) console.log('user is',user);
+    } catch (error) {
+      alert(error)
     }
-
-    const onLoginFailure = (error) => {
-      console.error(error);
-    }
-
-    authClient.login(credentials, onLoginSuccess, onLoginFailure)
   }
 
   return (

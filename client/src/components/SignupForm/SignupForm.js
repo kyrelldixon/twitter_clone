@@ -20,16 +20,11 @@ const SignupForm = ({ history }) =>
         }
       }
     }
-
-    const onSuccess = () => {
-      history.push('/login');
+    try {
+      await authClient.signup(user);
+    } catch (error) {
+      alert(error);
     }
-
-    const onFailure = (error) => {
-      console.error(error);
-    }
-    
-    authClient.signup(user, onSuccess, onFailure);
   }
 
   function signup() {
