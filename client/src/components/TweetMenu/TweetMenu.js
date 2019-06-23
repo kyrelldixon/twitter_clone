@@ -17,7 +17,7 @@ const TweetMenu = (props) => {
   
   const handleDeleteTweet = async () => {
     try {
-      await deleteTweet({ tweetId: props.tweetId })
+      await deleteTweet({ tweet_id: props.tweetId })
       reloadTweetData();
     } catch (error) {
       console.log(error);

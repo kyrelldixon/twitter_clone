@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import ActionButton from '../ActionButton';
 import Tweet from '../Tweet';
 import { getUserTimeline } from '../../services/tweetClient';
+import { getUser } from '../../services/userClient';
 import './UserTimeline.css';
 
 const UserTimeline = (props) => {
@@ -11,7 +11,7 @@ const UserTimeline = (props) => {
   const [user, setUser] = useState({})
 
   useEffect(() => {
-    const getUserTweets = async () => {
+    const fetchUserTweets = async () => {
       try {
         const response = await getUserTimeline({username: props.match.params.username});
         setUserTweets(response.data.data);
@@ -20,17 +20,17 @@ const UserTimeline = (props) => {
       }
     }
 
-    const getUser = async () => {
+    const fetchUser = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/v1/users/show?username=${props.match.params.username}`);
+        const response = await getUser({username: props.match.params.username});
         setUser(response.data.data);
       } catch (error) {
         console.log(error);
       }
     }
     
-    getUserTweets();
-    getUser();
+    fetchUserTweets();
+    fetchUser();
   }, [props.match.params.username]);
 
   return (
