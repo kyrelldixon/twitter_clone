@@ -22,7 +22,7 @@ a {
   max-width: 840px;
 }
 
-.userhome-container {
+.home-container {
   margin-right: auto;
   margin-left: auto;
   max-width: 990px;
@@ -30,7 +30,7 @@ a {
   grid-template-columns: 62% 35%;
 }
 
-.userhome-nav-container {
+.home-nav-container {
   margin-right: auto;
   margin-left: auto;
   max-width: 990px;
