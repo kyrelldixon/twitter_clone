@@ -61,7 +61,7 @@ defmodule TwitterApiWeb.V1.TweetController do
   end
 
   def home_timeline(conn, _params) do
-    tweets = Tweets.list_following_tweets(conn.assigns.current_user)
+    tweets = Tweets.list_user_and_following_tweets(conn.assigns.current_user)
     render(conn, "index.json", tweets: tweets)
   end
 end
