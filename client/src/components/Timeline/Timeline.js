@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import Tweet from '../Tweet/Tweet';
 import ComposeTweet from '../ComposeTweet/ComposeTweet';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { getHomeTimeline } from '../../services/tweetClient';
 import { useBoolean } from '../../hooks/useBoolean';
 
 import './Timeline.css';
@@ -11,24 +10,19 @@ const Timeline = () => {
 
   const [tweetData, setTweetData] = useState([]);
   const [isVisible, showModal, hideModal] = useBoolean(false);
-  const [token,] = useLocalStorage('token', window.localStorage.getItem('token'));
 
   useEffect( () => {
     const getTweets = async () => {
       try {
-        const tweetObj = await axios.get('http://localhost:4000/v1/tweets/home_timeline', {
-          headers: {
-            "Authorization": `Bearer ${token}`
-          }
-        });
-        setTweetData(tweetObj.data.data.reverse());
+        const response = await getHomeTimeline();
+        setTweetData(response.data.data.reverse());
       } catch (error) {
         console.log(error);
       }
     }
     
     getTweets();
-  }, [token]);
+  }, []);
 
   return (
     <div>

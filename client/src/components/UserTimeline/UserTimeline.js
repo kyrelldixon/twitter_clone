@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ActionButton from '../ActionButton';
 import Tweet from '../Tweet';
+import { getUserTimeline } from '../../services/tweetClient';
 import './UserTimeline.css';
 
 const UserTimeline = (props) => {
@@ -12,7 +13,7 @@ const UserTimeline = (props) => {
   useEffect(() => {
     const getUserTweets = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/v1/tweets/user_timeline?username=${props.match.params.username}`);
+        const response = await getUserTimeline({username: props.match.params.username});
         setUserTweets(response.data.data);
       } catch (error) {
         console.log(error);

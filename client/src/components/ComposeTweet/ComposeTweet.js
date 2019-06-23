@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { postTweet } from '../../services/tweetClient';
 
 import './ComposeTweet.css';
 
@@ -14,13 +14,13 @@ const ComposeTweet = (props) => {
       }
     } 
     sendTweet(tweet);
+    props.hideModal();
     e.preventDefault();
   }
 
   const sendTweet = async (tweet) => {
     try {
-      const response = await axios.post('http://localhost:4000/v1/tweets', tweet);
-      console.log(response);
+      await postTweet(tweet);
     } catch (error) {
       console.log(error);
     }
