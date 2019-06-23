@@ -1,30 +1,49 @@
 import client, { LOCAL_STORAGE_KEY } from './apiClient';
+import { createUser } from './userClient';
 
-const login = async (credentials, onSuccess, onFailure) => {
-  try {
-    const response = await client('v1/sessions', { data: credentials }, false);
-    window.localStorage.setItem(LOCAL_STORAGE_KEY, response.data.data.token);
-    onSuccess();
-  } catch (error) {
-    onFailure(error);
+const handleLoginSuccess = (response) => {
+  const { data: { data } } = response;
+  window.localStorage.setItem(LOCAL_STORAGE_KEY, data.token);
+  return data.user_id;
+}
+
+const handleLoginFailure = ({ response }) => {
+  return Promise.reject(response.data.errors.detail);
+}
+
+const getCurrentUser = () => {
+  const token = getToken();
+  if (!token) {
+    return Promise.resolve(null);
   }
+  return client('v1/users/me')
+  .then(({ data }) => Promise.resolve(data.data))
+  .catch(({ response }) => {
+    logout();
+    return Promise.reject(response.data.errors.detail);
+  });
+}
+
+const login = (credentials) => {
+  return client('v1/sessions', { data: credentials }, false)
+  .then(handleLoginSuccess)
+  .catch(handleLoginFailure);
 }
 
 const logout = () => {
   window.localStorage.removeItem(LOCAL_STORAGE_KEY);
 }
 
-const signup = async (user, onSuccess, onFailure) => {
-  try {
-    await client('v1/users', { data: user }, false);
-    onSuccess();
-  } catch (error) {
-    onFailure(error);
-  }
+const signup = (user) => {
+  return createUser(user)
 }
 
+const getToken = () => window.localStorage.getItem(LOCAL_STORAGE_KEY);
+
 export default {
+  getCurrentUser,
   login,
   logout,
-  signup
+  signup,
+  getToken
 }
