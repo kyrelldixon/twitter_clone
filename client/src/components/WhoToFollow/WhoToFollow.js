@@ -1,32 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import UserCard from '../UserCard/UserCard';
+import UserCard from '../UserCard';
 import LinkBar from '../LinkBar/LinkBar';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { getUsers } from '../../services/userClient';
 
 import './WhoToFollow.css';
 
 const WhoToFollow = () => {
 
   const [userData, setUserData] = useState([]);
-  const [token,] = useLocalStorage('token', window.localStorage.getItem('token'));
 
   useEffect(() => {
-    const getUsers = async () => {
+    const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/v1/users', {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        });
-        setUserData(response.data.data);
+        const users = await getUsers();
+        setUserData(users);
       } catch (error) {
         console.log(error);
       }
     }
-    
-    getUsers();
-  }, [token]);
+
+    fetchUsers();
+  }, []);
 
   return (
     <div>
