@@ -8,7 +8,7 @@ defmodule TwitterApiWeb.V1.SessionController do
         |> assign(:signed_in, true)
         |> assign(:current_user, user_data.user)
         |> put_status(:ok)
-        |> render("login.json", auth_token: user_data.auth_token)
+        |> render("login.json", auth_token: user_data.auth_token, user: user_data.user)
       {:error, _reason} ->
         conn
         |> put_status(:unauthorized)
