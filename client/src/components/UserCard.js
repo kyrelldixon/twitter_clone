@@ -1,42 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './UserCard.css';
-import ActionButton from './ActionButton';
-import axios from 'axios';
+import FollowButton from './FollowButton';
 
 const UserCard = (props) => {
-  
-  const [followButtonText, setfollowButtonText] = useState('Follow');
-  const token = localStorage.getItem('token');
-  const currentUserId = localStorage.getItem('user_id');
 
+  const [isFollowed, setIsFollowed] = useState(false);
   useEffect(() => {
-    if (props.isFollowed) {
-      setfollowButtonText("Unfollow");
+    const checkFollowed = props.userList.includes(props.userId);
+    if (checkFollowed) {
+      setIsFollowed(true);
     }
-  });
-
-  const handleRelationshipUpdate = async () => {
-    const followInfo = {
-      relationship: {
-        follower_id: currentUserId,
-        followed_id: props.id
-      }
-    }
-    const relationship_id = 22;
-    try {
-      if (!props.isFollowed) {
-        await axios.post('http://localhost:4000/v1/relationships', followInfo, {
-          headers: {Authorization: `Bearer ${token}`}
-        });
-      } else {
-        await axios.delete(`http://localhost:4000/v1/relationships?user_id=${relationship_id}`, {
-          headers: {Authorization: `Bearer ${token}`}
-        });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  }, [isFollowed]);
 
   return (
     <div id="usercard-wrapper">
@@ -44,7 +18,7 @@ const UserCard = (props) => {
       <div>
         <div id="name">{props.name || "no name found"}</div>
         <div id="btn-box">
-          <ActionButton text={followButtonText} onClick={handleRelationshipUpdate}/>
+          <FollowButton userId={props.userId} isFollowed={isFollowed} setIsFollowed={setIsFollowed}/>
         </div>
         <div id="username">@{props.username || "no username found"}</div>
       </div>

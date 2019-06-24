@@ -35,15 +35,15 @@ const WhoToFollow = () => {
     getFollowing();
     getUsers();
   }, [token]);
-
+  
   return (
     <div>
       <div id="follow-who-header">Who to follow</div>
       <ul id="tweets-ul">
         {userData.map(user => {
           if (user.id !== currentUserId) {
-            return <li key={user.id}><UserCard name={user.name} username={user.username} id={user.id}
-            isFollowed={followingList.includes(user.id) ? true : false} /></li>;
+            return <li key={user.id}><UserCard name={user.name} username={user.username} userId={user.id}
+              userList={followingList}/></li>;
           }
         })}
       </ul>

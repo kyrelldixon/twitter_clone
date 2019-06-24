@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import UserNav from './UserNav';
 import Timeline from './Timeline';
 import WhoToFollow from './WhoToFollow';
@@ -10,8 +10,10 @@ const home = () => (
     <UserNav />
     <div className="home-container">
       <div className="left-side">
-        <Route path="/home" component={Timeline} />
-        <Route path="/useraccount" component={UserAccount} />
+        <Switch>
+          <Route path="/home" component={Timeline} />
+          <Route path="/:username" component={UserAccount} />
+        </Switch>
       </div>
       <div>
         <WhoToFollow />
