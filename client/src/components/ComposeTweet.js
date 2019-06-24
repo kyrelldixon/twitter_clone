@@ -33,10 +33,10 @@ const ComposeTweet = (props) => {
   const reloadTweetData = async () => {
     try {
       const token = localStorage.getItem('token');
-      const tweetDataObj = await axios.get('http://localhost:4000/v1/tweets', {
+      const tweetDataObj = await axios.get('http://localhost:4000/v1/tweets/home_timeline', {
         headers: {Authorization: `Bearer ${token}`}
       });
-      props.setTweetData(tweetDataObj.data.data.reverse());
+      props.setTweetData(tweetDataObj.data.data);
     } catch (error) {
       console.log(error);
     }
