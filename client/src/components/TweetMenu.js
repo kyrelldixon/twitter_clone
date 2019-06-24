@@ -5,6 +5,7 @@ import axios from 'axios';
 const TweetMenu = (props) => {
   
   const node = useRef();
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClose);
@@ -16,7 +17,9 @@ const TweetMenu = (props) => {
   
   const handleDeleteTweet = async () => {
     try {
-      await axios.delete(`http://localhost:4000/v1/tweets/${props.tweetId}`);
+      await axios.delete(`http://localhost:4000/v1/tweets?tweet_id=${props.tweetId}`, {
+        headers: {Authorization: `Bearer ${token}`}
+      });
       reloadTweetData();
     } catch (error) {
       console.log(error);
@@ -25,7 +28,9 @@ const TweetMenu = (props) => {
 
   const reloadTweetData = async () => {
     try {
-      const tweetDataObj = await axios.get('http://localhost:4000/v1/tweets');
+      const tweetDataObj = await axios.get('http://localhost:4000/v1/tweets', {
+        headers: {Authorization: `Bearer ${token}`}
+      });
       props.setTweetData(tweetDataObj.data.data.reverse());
     } catch (error) {
       console.log(error);
