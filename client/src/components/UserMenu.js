@@ -18,8 +18,8 @@ const UserMenu = (props) => {
         <div className="menu-username">@{props.username || "no username found"}</div>
         <div className="menu-follow-count">{props.following || "0"} Following </div>
         <div className="menu-follow-count">{props.follower || "0"} Followers</div>
-        <div><Link>Profile</Link></div>
-        <div><Link>Logout</Link></div>
+        <div><Link to="useraccount" onClick={() => props.handleDisplay(false)}>Profile</Link></div>
+        <div><Link to="#">Logout</Link></div>
       </div>
     </div>
   );
