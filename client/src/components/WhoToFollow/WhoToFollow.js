@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react';
 import UserCard from '../UserCard';
 import LinkBar from '../LinkBar/LinkBar';
 import { getUsers } from '../../services/userClient';
+import { useAuth } from '../../hooks';
 
 import './WhoToFollow.css';
 
 const WhoToFollow = () => {
 
   const [userData, setUserData] = useState([]);
+  const [{ user }, ] = useAuth();
+  console.log(user)
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -26,11 +29,12 @@ const WhoToFollow = () => {
     <div>
       <div id="follow-who-header">Who to follow</div>
       <ul id="tweets-ul">
-        {userData.map(user => {
+        {userData.map(u => {
           return (
-            <li key={user.id}>
-              <UserCard name={user.name} username={user.username} userId={user.id}/>
-            </li>
+            (user.user_id !== u.id) &&
+              <li key={u.id}>
+                <UserCard name={u.name} username={u.username} userId={u.id}/>
+              </li>
           )
         })}
       </ul>
