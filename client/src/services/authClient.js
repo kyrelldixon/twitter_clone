@@ -1,5 +1,7 @@
-import client, { LOCAL_STORAGE_TOKEN_KEY, LOCAL_STORAGE_USER_KEY } from './apiClient';
+import client, { LOCAL_STORAGE_TOKEN_KEY, LOCAL_STORAGE_USER_KEY, handleFailure } from './apiClient';
 import { createUser } from './userClient';
+
+const SESSIONS_ENDPOINT = 'v1/sessions';
 
 const handleLoginSuccess = (response) => {
   const { data: { data } } = response;
@@ -26,7 +28,7 @@ const getCurrentUser = () => {
 }
 
 const login = (credentials) => {
-  return client('v1/sessions', { data: credentials }, false)
+  return client(SESSIONS_ENDPOINT, { data: credentials }, false)
   .then(handleLoginSuccess)
   .catch(handleLoginFailure);
 }
@@ -34,10 +36,12 @@ const login = (credentials) => {
 const logout = () => {
   window.localStorage.removeItem(LOCAL_STORAGE_USER_KEY);
   window.localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
+  return client(SESSIONS_ENDPOINT, { method: 'delete' })
+  .catch(handleFailure)
 }
 
 const signup = (user) => {
-  return createUser(user)
+  return createUser(user).catch(handleFailure)
 }
 
 const getToken = () => window.localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
