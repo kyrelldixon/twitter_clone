@@ -55,4 +55,16 @@ defmodule TwitterApiWeb.V1.RelationshipController do
       send_resp(conn, :no_content, "")
     end
   end
+
+  def lookup(conn, %{"user_id" => id}) do
+    is_following = Accounts.following?(conn.assigns.current_user.id, id)
+    render(conn, "connection.json", is_following: is_following)
+  end
+
+  def lookup(conn, %{"username" => username}) do
+    user = Accounts.get_user_by_username!(username)
+
+    is_following = Accounts.following?(conn.assigns.current_user.id, user.id)
+    render(conn, "connection.json", is_following: is_following)
+  end
 end

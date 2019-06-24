@@ -328,4 +328,12 @@ defmodule TwitterApi.Accounts do
     list = user |> Repo.preload(:following)
     list.following
   end
+
+  def following?(follower_id, followed_id) do
+    Relationship
+    |> Repo.get_by([follower_id: follower_id, followed_id: followed_id])
+    |> relationship_exists
+  end
+
+  defp relationship_exists(relationship), do: is_nil(relationship)
 end

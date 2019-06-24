@@ -18,4 +18,12 @@ defmodule TwitterApiWeb.V1.RelationshipView do
       created_at: relationship.inserted_at
     }
   end
+
+  def render("connection.json", %{is_following: is_following}) do
+    %{
+      connections: %{
+        following: is_following,
+      }
+    }
+  end
 end
