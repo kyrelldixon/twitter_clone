@@ -39,7 +39,7 @@ const UserTimeline = (props) => {
   return (
     <div id="user-acct">
       <div>
-        <img id="user-bg" alt="user background" src="https://www.solidbackgrounds.com/images/950x350/950x350-cadet-grey-solid-color-background.jpg"/>
+        <img id="user-bg" alt="user background" src="https://picsum.photos/950/300" />
       </div>
       <div id="acct-main">
         <img id="user-photo" alt="user" src={userIcon} />
