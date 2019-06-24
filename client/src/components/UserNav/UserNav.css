@@ -86,3 +86,8 @@
   font-size: 1rem;
   vertical-align: middle;
 }
+
+#nav-icon-button {
+  border: none;
+  background: none;
+}
