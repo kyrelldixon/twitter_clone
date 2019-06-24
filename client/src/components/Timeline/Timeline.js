@@ -12,7 +12,7 @@ const Timeline = () => {
   const [tweetData, setTweetData] = useState([]);
   const [isVisible, showModal, hideModal] = useBoolean(false);
 
-  useEffect( () => {
+  useEffect(() => {
     const getTweets = async () => {
       try {
         const timeline = await getHomeTimeline();
@@ -27,7 +27,7 @@ const Timeline = () => {
 
   return (
     <div>
-      <ComposeTweet isVisible={isVisible} hideModal={hideModal} />
+      <ComposeTweet isVisible={isVisible} hideModal={hideModal} setTweetData={setTweetData} />
       <div id="home-bar">Home<i className="far fa-star"></i></div>
       <div id="compose" onClick={showModal}>
         <img alt="user" src={generateRandomIconUrl()} />

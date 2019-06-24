@@ -9,12 +9,12 @@ const UserNav = () => {
 
   return (
     <nav id="user-nav">
-      <div className="userhome-nav-container">
+      <div className="home-nav-container">
         <ul>
-          <Link to="#" className="nav-link" id="active-link"><i className="fas fa-home"></i></Link>
-          <Link to="#" className="nav-link"><i className="fas fa-hashtag"></i></Link>
-          <Link to="#" className="nav-link"><i className="far fa-bell"></i></Link>
-          <Link to="#" className="nav-link"><i className="far fa-envelope"></i></Link>
+          <Link to="/home" className="nav-link" id="active-link"><i className="fas fa-home"></i></Link>
+          <Link to="/home" className="nav-link"><i className="fas fa-hashtag"></i></Link>
+          <Link to="/home" className="nav-link"><i className="far fa-bell"></i></Link>
+          <Link to="/home" className="nav-link"><i className="far fa-envelope"></i></Link>
         </ul>
         <input id="search-box" placeholder="Search Twitter" />
         <Link to={`/${user ? user.username : 'home'}`}><span id="acct-link">

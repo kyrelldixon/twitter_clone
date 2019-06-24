@@ -27,8 +27,8 @@ const TweetMenu = (props) => {
   const reloadTweetData = async () => {
     try {
       // TODO: add correct get tweets function call. Will depend on route
-      const response = await getTweets();
-      props.setTweetData(response.data.data.reverse());
+      const tweets = await getTweets();
+      props.setTweetData(tweets);
     } catch (error) {
       console.log(error);
     }

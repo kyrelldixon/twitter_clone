@@ -8,7 +8,7 @@ import UserTimeline from '../../components/UserTimeline';
 const TimelineScreen = () => (
   <div>
     <UserNav />
-    <div className="userhome-container">
+    <div className="home-container">
       <div className="left-side">
         <Switch>
           <Route path="/home" component={Timeline} />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { postTweet } from '../../services/tweetClient';
+import { postTweet, getHomeTimeline } from '../../services/tweetClient';
 
 import './ComposeTweet.css';
 
@@ -21,6 +21,18 @@ const ComposeTweet = (props) => {
   const sendTweet = async (tweet) => {
     try {
       await postTweet(tweet);
+      reloadTweetData();
+      setTweetText('');
+      props.handleDisplay(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const reloadTweetData = async () => {
+    try {
+      const timeline = await getHomeTimeline();
+      props.setTweetData(timeline);
     } catch (error) {
       console.log(error);
     }

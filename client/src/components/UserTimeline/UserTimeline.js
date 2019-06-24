@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import ActionButton from '../ActionButton';
 import Tweet from '../Tweet';
 import { getUserTimeline } from '../../services/tweetClient';
 import { getUser } from '../../services/userClient';
 import { generateRandomIconUrl } from '../../services/randomImageClient';
+import { getFollowerIds, getFollowingIds } from '../../services/relationshipClient';
 
 import './UserTimeline.css';
 
@@ -11,9 +11,21 @@ const UserTimeline = (props) => {
 
   const [userTweets, setUserTweets] = useState([]);
   const [user, setUser] = useState({});
+  const [followersCount, setFollowersCount] = useState(0);
+  const [followingCount, setFollowingCount] = useState(0);
   const userIcon = generateRandomIconUrl();
 
   useEffect(() => {
+    const fetchFollowCount = async () => {
+      try {
+        const followingIds = await getFollowerIds();
+        setFollowingCount(followingIds.length);
+        const followerIds = await getFollowingIds();
+        setFollowersCount(followerIds.length);
+      } catch (error) {
+        console.log(error);
+      }
+    }
     const fetchUserTweets = async () => {
       try {
         const userTimeline = await getUserTimeline({username: props.match.params.username});
@@ -34,6 +46,7 @@ const UserTimeline = (props) => {
     
     fetchUserTweets();
     fetchUser();
+    fetchFollowCount();
   }, [props.match.params.username]);
 
   return (
@@ -45,16 +58,16 @@ const UserTimeline = (props) => {
         <img id="user-photo" alt="user" src={userIcon} />
         <div id="name">{user.name || "no name found"}</div>
         <div id="username">@{user.username || "no username found"}</div>
-        <div id="btn-box"><ActionButton text="Edit Profile" /></div>
-        <div id="user-bio">{user.bio || "no bio found"}</div>
-        <div id="following-count">{user.following_count || "0"} Following </div>
-        <div id="follower-count">{user.follower_count || "0"} Followers</div>
-        <div id="user-tabs">
+        {/* <div id="btn-box"><ActionButton text="Edit Profile" /></div> */}
+        {/* <div id="user-bio">{user.bio || "no bio found"}</div> */}
+        <div id="following-count">{followingCount || "0"} Following </div>
+        <div id="follower-count">{followersCount || "0"} Followers</div>
+        {/* <div id="user-tabs">
           <button className="acct-tab">Tweets</button>
           <button className="acct-tab">Tweets & replies</button>
           <button className="acct-tab">Media</button>
           <button className="acct-tab">Likes</button>
-        </div>
+        </div> */}
       </div>
       <ul id="user-tweets-ul">
         {userTweets.map(tweet => <li key={tweet.tweet_id}>

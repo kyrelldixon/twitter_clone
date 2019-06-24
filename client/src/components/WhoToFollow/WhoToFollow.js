@@ -15,20 +15,24 @@ const WhoToFollow = () => {
         const users = await getUsers();
         setUserData(users);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     }
 
     fetchUsers();
   }, []);
-
+  
   return (
     <div>
       <div id="follow-who-header">Who to follow</div>
       <ul id="tweets-ul">
-        {userData.map(user => <li key={user.id}>
-          <UserCard name={user.name} username={user.username} id={user.id} />
-          </li>)}
+        {userData.map(user => {
+          return (
+            <li key={user.id}>
+              <UserCard name={user.name} username={user.username} userId={user.id}/>
+            </li>
+          )
+        })}
       </ul>
       <LinkBar text="Show more"/>
     </div>

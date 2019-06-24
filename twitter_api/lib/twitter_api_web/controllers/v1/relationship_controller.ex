@@ -41,7 +41,7 @@ defmodule TwitterApiWeb.V1.RelationshipController do
 
   def delete(conn, %{"user_id" => id}) do
     relationship = Accounts.get_relationship_by_follower_followed_id!(conn.assigns.current_user.id, id)
-
+    IO.inspect(relationship, label: "relationship from delete/unfollow")
     with {:ok, %Relationship{}} <- Accounts.unfollow(relationship) do
       send_resp(conn, :no_content, "")
     end
