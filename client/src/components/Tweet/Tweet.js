@@ -1,6 +1,7 @@
 import React from 'react';
 import TweetMenu from '../TweetMenu/TweetMenu';
 import { useBoolean } from '../../hooks';
+import { generateRandomIconUrl } from '../../services/randomImageClient';
 
 import './Tweet.css';
 
@@ -9,7 +10,7 @@ const Tweet = (props) => {
 
   return (
       <div id="tweet-wrapper">
-          <img alt="user" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"/>
+          <img alt="user" src={generateRandomIconUrl()} />
           <div id="tweet-container">
             <div id="name">{props.name}</div>
             <div id="username">@{props.username || "no username found"}</div>

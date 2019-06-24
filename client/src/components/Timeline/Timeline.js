@@ -3,6 +3,7 @@ import Tweet from '../Tweet';
 import ComposeTweet from '../ComposeTweet';
 import { getHomeTimeline } from '../../services/tweetClient';
 import { useBoolean } from '../../hooks';
+import { generateRandomIconUrl } from '../../services/randomImageClient';
 
 import './Timeline.css';
 
@@ -29,7 +30,7 @@ const Timeline = () => {
       <ComposeTweet isVisible={isVisible} hideModal={hideModal} />
       <div id="home-bar">Home<i className="far fa-star"></i></div>
       <div id="compose" onClick={showModal}>
-        <img alt="user" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"/>
+        <img alt="user" src={generateRandomIconUrl()} />
         <div id="input-box">What's happening?</div>
         <i className="far fa-image"></i>
         <i className="far fa-file-video"></i>

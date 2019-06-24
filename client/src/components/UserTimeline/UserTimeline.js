@@ -3,6 +3,8 @@ import ActionButton from '../ActionButton';
 import Tweet from '../Tweet';
 import { getUserTimeline } from '../../services/tweetClient';
 import { getUser } from '../../services/userClient';
+import { generateRandomIconUrl } from '../../services/randomImageClient';
+
 import './UserTimeline.css';
 
 const UserTimeline = (props) => {
@@ -39,7 +41,7 @@ const UserTimeline = (props) => {
         <img id="user-bg" alt="user background" src="https://www.solidbackgrounds.com/images/950x350/950x350-cadet-grey-solid-color-background.jpg"/>
       </div>
       <div id="acct-main">
-        <img id="user-photo" alt="user" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"/>
+        <img id="user-photo" alt="user" src={generateRandomIconUrl()} />
         <div id="name">{user.name || "no name found"}</div>
         <div id="username">@{user.username || "no username found"}</div>
         <div id="btn-box"><ActionButton text="Edit Profile" /></div>

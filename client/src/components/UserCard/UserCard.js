@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import ActionButton from '../ActionButton/ActionButton';
+import { generateRandomIconUrl } from '../../services/randomImageClient';
 
 import './UserCard.css';
 
@@ -22,7 +23,7 @@ const UserCard = (props) => {
 
   return (
     <div id="usercard-wrapper">
-      <img alt="user" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"/>
+      <img alt="user" src={generateRandomIconUrl()} />
       <div>
         <div>{props.id}</div>
         <div id="name">{props.name || "no name found"}</div>
