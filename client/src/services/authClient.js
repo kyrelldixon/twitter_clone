@@ -1,10 +1,11 @@
-import client, { LOCAL_STORAGE_KEY } from './apiClient';
+import client, { LOCAL_STORAGE_TOKEN_KEY, LOCAL_STORAGE_USER_KEY } from './apiClient';
 import { createUser } from './userClient';
 
 const handleLoginSuccess = (response) => {
   const { data: { data } } = response;
-  window.localStorage.setItem(LOCAL_STORAGE_KEY, data.token);
-  return data.user_id;
+  window.localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, data.token);
+  window.localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(data.user));
+  return data.user;
 }
 
 const handleLoginFailure = ({ response }) => {
@@ -31,14 +32,15 @@ const login = (credentials) => {
 }
 
 const logout = () => {
-  window.localStorage.removeItem(LOCAL_STORAGE_KEY);
+  window.localStorage.removeItem(LOCAL_STORAGE_USER_KEY);
+  window.localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
 }
 
 const signup = (user) => {
   return createUser(user)
 }
 
-const getToken = () => window.localStorage.getItem(LOCAL_STORAGE_KEY);
+const getToken = () => window.localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
 
 export default {
   getCurrentUser,

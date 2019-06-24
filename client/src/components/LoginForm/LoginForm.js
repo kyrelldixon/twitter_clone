@@ -17,11 +17,10 @@ const LoginForm = ({ history }) => {
     };
 
     try {
-      const userId = await authClient.login(credentials)
-      const user = await authClient.getCurrentUser();
+      const user = await authClient.login(credentials)
       setState({
         ...state,
-        isAuthenticated: userId === user.id,
+        isAuthenticated: user != null,
         user
       });
       history.push('/home');

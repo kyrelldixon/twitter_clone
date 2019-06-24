@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Tweet from '../Tweet/Tweet';
-import ComposeTweet from '../ComposeTweet/ComposeTweet';
+import Tweet from '../Tweet';
+import ComposeTweet from '../ComposeTweet';
 import { getHomeTimeline } from '../../services/tweetClient';
 import { useBoolean } from '../../hooks';
 
