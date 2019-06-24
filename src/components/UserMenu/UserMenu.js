@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { useAuth } from '../../hooks';
 import authClient from '../../services/authClient';
+import { generateRandomIconUrl } from '../../services/randomImageClient';
 
 import './UserMenu.css';
 
@@ -27,7 +28,7 @@ const UserMenu = (props) => {
         {user ? <>
           <h2 className="title-user-menu">Account Info</h2>
           <button className="menu-close-btn" onClick={() => props.handleDisplay(false)}>X</button>
-          <img className="img-user-menu" alt="user" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"/>
+          <img className="img-user-menu" alt="user" src={generateRandomIconUrl()} />
           <div className="menu-name">{user.name || "no name found"}</div>
           <div className="menu-username">@{user.username || "no username found"}</div>
           <div className="menu-follow-count">{props.following || "0"} Following </div>
