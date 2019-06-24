@@ -21,17 +21,17 @@ const TweetMenu = (props) => {
       await deleteTweet({ tweet_id: props.tweetId })
       reloadTweetData();
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 
   const reloadTweetData = async () => {
     try {
       const tweets = props.location.pathname === "/home" ? await getHomeTimeline() : getUserTimeline({ username: props.match.params.username });
-      console.log(tweets)
+      console.error(tweets)
       props.setTweetData(tweets);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 

@@ -18,7 +18,7 @@ const Timeline = () => {
         const timeline = await getHomeTimeline();
         setTweetData(timeline);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     }
     

@@ -23,7 +23,7 @@ const UserTimeline = (props) => {
         const followerIds = await getFollowingIds({ username: props.match.params.username });
         setFollowersCount(followerIds.length);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     }
     const fetchUserTweets = async () => {
@@ -31,7 +31,7 @@ const UserTimeline = (props) => {
         const userTimeline = await getUserTimeline({username: props.match.params.username});
         setUserTweets(userTimeline);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     }
 
@@ -40,7 +40,7 @@ const UserTimeline = (props) => {
         const user = await getUser({username: props.match.params.username});
         setUser(user);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     }
     

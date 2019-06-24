@@ -10,7 +10,6 @@ const WhoToFollow = () => {
 
   const [userData, setUserData] = useState([]);
   const [{ user }, ] = useAuth();
-  console.log(user)
 
   useEffect(() => {
     const fetchUsers = async () => {

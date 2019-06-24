@@ -13,7 +13,6 @@ const FollowButton = ({ userId }) => {
       try {
         const response = await getIsFollowing({user_id: userId});
         setIsFollowing(response.data.connections.following);
-        // console.log({userId, following: response.data.connections.following})
       } catch (error) {
         console.error(error)
       }
@@ -40,7 +39,7 @@ const FollowButton = ({ userId }) => {
         setIsFollowing(!isFollowing);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 

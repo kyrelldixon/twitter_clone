@@ -25,7 +25,7 @@ const ComposeTweet = (props) => {
       setTweetText('');
       props.handleDisplay(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 
@@ -34,7 +34,7 @@ const ComposeTweet = (props) => {
       const timeline = await getHomeTimeline();
       props.setTweetData(timeline);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 

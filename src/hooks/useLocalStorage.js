@@ -11,7 +11,7 @@ export const useLocalStorage = (key, defaultValue) => {
       return item ? JSON.parse(item) : defaultValue;
     } catch (error) {
       // If error also return defaultValue
-      console.log(error);
+      console.error(error);
       return defaultValue;
     }
   });
@@ -28,7 +28,7 @@ export const useLocalStorage = (key, defaultValue) => {
       window.localStorage.setItem(key, JSON.stringify(valueToStore));
     } catch (error) {
       // A more advanced implementation would handle the error case
-      console.log(error);
+      console.error(error);
     }
   };
 
