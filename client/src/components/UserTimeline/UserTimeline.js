@@ -10,7 +10,8 @@ import './UserTimeline.css';
 const UserTimeline = (props) => {
 
   const [userTweets, setUserTweets] = useState([]);
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState({});
+  const userIcon = generateRandomIconUrl();
 
   useEffect(() => {
     const fetchUserTweets = async () => {
@@ -41,7 +42,7 @@ const UserTimeline = (props) => {
         <img id="user-bg" alt="user background" src="https://www.solidbackgrounds.com/images/950x350/950x350-cadet-grey-solid-color-background.jpg"/>
       </div>
       <div id="acct-main">
-        <img id="user-photo" alt="user" src={generateRandomIconUrl()} />
+        <img id="user-photo" alt="user" src={userIcon} />
         <div id="name">{user.name || "no name found"}</div>
         <div id="username">@{user.username || "no username found"}</div>
         <div id="btn-box"><ActionButton text="Edit Profile" /></div>
@@ -57,7 +58,7 @@ const UserTimeline = (props) => {
       </div>
       <ul id="user-tweets-ul">
         {userTweets.map(tweet => <li key={tweet.tweet_id}>
-          <Tweet name={tweet.user.name} username={tweet.user.username}
+          <Tweet name={tweet.user.name} icon={userIcon} username={tweet.user.username}
             text={tweet.text} id={tweet.tweet_id} setTweetData={setUserTweets}/>
         </li>)}
       </ul>

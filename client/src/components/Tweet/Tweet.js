@@ -10,7 +10,7 @@ const Tweet = (props) => {
 
   return (
       <div id="tweet-wrapper">
-          <img alt="user" src={generateRandomIconUrl()} />
+          <img alt="user" src={props.icon || generateRandomIconUrl()} />
           <div id="tweet-container">
             <div id="name">{props.name}</div>
             <div id="username">@{props.username || "no username found"}</div>
