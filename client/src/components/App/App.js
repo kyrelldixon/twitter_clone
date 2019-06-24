@@ -15,7 +15,7 @@ const App = () => (
     <Route path="/login" component={LoginScreen} />
     <Route path="/signup" component={SignupScreen} />
     <PrivateRoute path="/home" component={TimelineScreen} />
-    <Route exact path="/:username" component={TimelineScreen} />
+    <PrivateRoute exact path="/:username" component={TimelineScreen} />
     <Footer />
   </Switch>
 );
