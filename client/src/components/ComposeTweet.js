@@ -23,7 +23,8 @@ const ComposeTweet = (props) => {
         headers: {Authorization: `Bearer ${token}`}
       });
       reloadTweetData();
-      console.log(response);
+      setTweetText('');
+      props.handleDisplay(false);
     } catch (error) {
       console.log(error);
     }
