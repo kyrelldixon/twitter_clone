@@ -10,6 +10,7 @@ const UserAccount = (props) => {
   const [followingCount, setFollowingCount] = useState(0);
   const [followersCount, setFollowersCount] = useState(0);
   const token = localStorage.getItem('token');
+  const userId = localStorage.getItem('user_id');
 
   useEffect(() => {
     const getFollowCount = async () => {
@@ -29,7 +30,7 @@ const UserAccount = (props) => {
 
     const getUserTweets = async () => {
       try {
-        const tweetObj = await axios.get('http://localhost:4000/v1/tweets/user_timeline', {
+        const tweetObj = await axios.get(`http://localhost:4000/v1/tweets/user_timeline?user_id=${userId}`, {
           headers: {Authorization: `Bearer ${token}`}
         });
         setUserTweets(tweetObj.data.data.reverse());
