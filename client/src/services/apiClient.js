@@ -3,7 +3,7 @@ import axios from 'axios';
 export const LOCAL_STORAGE_TOKEN_KEY = '__twitter_api_token__';
 export const LOCAL_STORAGE_USER_KEY = '__twitter_api_user__';
 
-const API_URL = process.env.API_URL || 'http://localhost:4000';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
 
 const client = (endpoint, {data, ...customConfig} = {}, useToken = true) => {
   const headers = {'content-type': 'application/json'};
