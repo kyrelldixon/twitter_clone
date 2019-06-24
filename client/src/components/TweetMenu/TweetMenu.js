@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
-import { deleteTweet, getTweets } from '../../services/tweetClient';
+import { withRouter } from 'react-router-dom';
+import { deleteTweet, getHomeTimeline, getUserTimeline } from '../../services/tweetClient';
 
 import './TweetMenu.css';
 
@@ -26,8 +27,8 @@ const TweetMenu = (props) => {
 
   const reloadTweetData = async () => {
     try {
-      // TODO: add correct get tweets function call. Will depend on route
-      const tweets = await getTweets();
+      const tweets = props.location.pathname === "/home" ? await getHomeTimeline() : getUserTimeline({ username: props.match.params.username });
+      console.log(tweets)
       props.setTweetData(tweets);
     } catch (error) {
       console.log(error);
@@ -52,4 +53,4 @@ const TweetMenu = (props) => {
   );
 }
 
-export default TweetMenu;
+export default withRouter(TweetMenu);
