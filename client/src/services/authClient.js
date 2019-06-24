@@ -14,6 +14,11 @@ const handleLoginFailure = ({ response }) => {
   return Promise.reject(response.data.errors.detail);
 }
 
+const handleLogoutSuccess = (response) => {
+  window.localStorage.removeItem(LOCAL_STORAGE_USER_KEY);
+  window.localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
+}
+
 const handleLogoutFailure = ({ response }) => {
   return Promise.reject(response.data);
 }
@@ -38,10 +43,9 @@ const login = (credentials) => {
 }
 
 const logout = () => {
-  window.localStorage.removeItem(LOCAL_STORAGE_USER_KEY);
-  window.localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
   return client(SESSIONS_ENDPOINT, { method: 'delete' })
-  .catch(handleLogoutFailure)
+  .then(handleLogoutSuccess)
+  .catch(handleLogoutFailure);
 }
 
 const signup = (user) => {
