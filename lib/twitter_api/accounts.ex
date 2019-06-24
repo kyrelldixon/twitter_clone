@@ -335,5 +335,5 @@ defmodule TwitterApi.Accounts do
     |> relationship_exists
   end
 
-  defp relationship_exists(relationship), do: is_nil(relationship)
+  defp relationship_exists(relationship), do: !is_nil(relationship)
 end

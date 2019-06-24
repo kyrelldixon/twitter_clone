@@ -10,7 +10,6 @@ defmodule TwitterApiWeb.V1.SessionView do
           username: user.username,
           name: user.name
         }
-
       }
     }
   end

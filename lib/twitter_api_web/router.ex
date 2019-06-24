@@ -31,8 +31,8 @@ defmodule TwitterApiWeb.Router do
     delete "/sessions", SessionController, :delete
 
     scope "/relationships" do
-      delete "/", RelationshipController, :delete
       get "/lookup", RelationshipController, :lookup
+      delete "/", RelationshipController, :delete
       resources "/", RelationshipController, only: [:create, :show, :index]
     end
 
