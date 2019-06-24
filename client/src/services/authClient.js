@@ -14,6 +14,10 @@ const handleLoginFailure = ({ response }) => {
   return Promise.reject(response.data.errors.detail);
 }
 
+const handleLogoutFailure = ({ response }) => {
+  return Promise.reject(response.data);
+}
+
 const getCurrentUser = () => {
   const token = getToken();
   if (!token) {
@@ -37,7 +41,7 @@ const logout = () => {
   window.localStorage.removeItem(LOCAL_STORAGE_USER_KEY);
   window.localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
   return client(SESSIONS_ENDPOINT, { method: 'delete' })
-  .catch(handleFailure)
+  .catch(handleLogoutFailure)
 }
 
 const signup = (user) => {

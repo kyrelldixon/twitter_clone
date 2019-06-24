@@ -6,7 +6,7 @@ import { useForm, useAuth } from '../../hooks';
 const NavLogin = ({ history }) => {
   const { values, handleChange, handleSubmit } = useForm(login);
   const [state, setState] = useAuth();
-  
+
   async function login() {
     const credentials = {
       email: values.email,
@@ -14,11 +14,10 @@ const NavLogin = ({ history }) => {
     };
 
     try {
-      const userId = await authClient.login(credentials)
-      const user = await authClient.getCurrentUser();
+      const user = await authClient.login(credentials)
       setState({
         ...state,
-        isAuthenticated: userId === user.id,
+        isAuthenticated: user != null,
         user
       });
       history.push('/home');

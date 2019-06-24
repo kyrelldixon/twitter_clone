@@ -18,9 +18,9 @@ const UserTimeline = (props) => {
   useEffect(() => {
     const fetchFollowCount = async () => {
       try {
-        const followingIds = await getFollowerIds();
+        const followingIds = await getFollowerIds({ username: props.match.params.username });
         setFollowingCount(followingIds.length);
-        const followerIds = await getFollowingIds();
+        const followerIds = await getFollowingIds({ username: props.match.params.username });
         setFollowersCount(followerIds.length);
       } catch (error) {
         console.log(error);
