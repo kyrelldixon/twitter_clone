@@ -18,9 +18,9 @@ const UserTimeline = (props) => {
   useEffect(() => {
     const fetchFollowCount = async () => {
       try {
-        const followingIds = await getFollowerIds({ username: props.match.params.username });
+        const followingIds = await getFollowingIds({ username: props.match.params.username });
         setFollowingCount(followingIds.length);
-        const followerIds = await getFollowingIds({ username: props.match.params.username });
+        const followerIds = await getFollowerIds({ username: props.match.params.username });
         setFollowersCount(followerIds.length);
       } catch (error) {
         console.error(error);
@@ -60,8 +60,8 @@ const UserTimeline = (props) => {
         <div id="username">@{user.username || "no username found"}</div>
         {/* <div id="btn-box"><ActionButton text="Edit Profile" /></div> */}
         {/* <div id="user-bio">{user.bio || "no bio found"}</div> */}
-        <div id="following-count">{followingCount || "0"} Following </div>
-        <div id="follower-count">{followersCount || "0"} Followers</div>
+        <div id="following-count">{followingCount || 0} Following </div>
+        <div id="follower-count">{followersCount || 0} Followers</div>
         {/* <div id="user-tabs">
           <button className="acct-tab">Tweets</button>
           <button className="acct-tab">Tweets & replies</button>

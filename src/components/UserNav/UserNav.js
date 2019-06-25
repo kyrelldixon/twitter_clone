@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import UserMenu from '../UserMenu';
 import { useAuth } from '../../hooks';
+import { generateRandomIconUrl } from '../../services/randomImageClient';
 
 import './UserNav.css';
 
@@ -21,7 +22,7 @@ const UserNav = () => {
         </ul>
         <input id="search-box" placeholder="Search Twitter" />
         <button id="nav-icon-button" onClick={() => setMenuDisplayState(true)}><span id="acct-link">
-          {isAuthenticated && <img alt="user" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"/>}
+          {isAuthenticated && <img alt="user" src={generateRandomIconUrl()} />}
           <span>{user ? user.name : 'Not Signed In'}</span>
           <i className="fas fa-chevron-down"></i>
         </span>

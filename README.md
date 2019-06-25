@@ -2,7 +2,23 @@
 
 > A recreation of the Twitter Website
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/456ef1fe-c750-40da-b92f-1ecab766fe98/deploy-status)](https://app.netlify.com/sites/twitter-cloned/deploys)
+
 This is a demo project meant for learning/teaching purposes. It is using a React front-end with a Twitter API developed concurrently in Elixir/Phoenix, but it should work well with any REST API backend.
+
+## Features
+
+As this is meant to be a replica of both the back-end and front-end of the Twitter site. The project will have as many features of modern Twitter as possible. This will include:
+
+- [x] Account Creation
+- [x] User Authentication (Login/Logout)
+- [x] Create and Delete Tweets
+- [x] Follow/Unfollow Users
+- [x] View Timeline of Tweets from Followed Users
+- [x] View Recommendations of Who to Follow
+- [ ] Like/Retweet Tweets
+- [ ] Filter Tweets by tags
+- [ ] View Trends
 
 ## Installing / Getting started
 
@@ -17,7 +33,6 @@ You will also see any lint errors in the console.
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
@@ -26,38 +41,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Features
-
-As this is meant to be a replica of both the back-end and front-end of the Twitter site. The project will have as many features of modern Twitter as possible. This will include:
-
-* Account Creation
-* User Authentication (Login/Logout)
-* Create and Delete Tweets
-* Follow/Unfollow Users
-* View Timeline of Tweets from Followed Users
-* Like/Retweet Tweets
-* Filter Tweets by tags
-* View Trends
-
-## Tech Stack
-
-### Front-end
-
-* React
-* React Router v4
 
 ## Licensing
 
