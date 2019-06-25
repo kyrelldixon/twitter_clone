@@ -1,7 +1,7 @@
 import React from 'react';
 import TimeAgo from 'timeago-react';
 import { Link } from 'react-router-dom';
-import TweetMenu from '../TweetMenu/TweetMenu';
+import TweetMenu from '../TweetMenu';
 import { useBoolean } from '../../hooks';
 import { generateRandomIconUrl } from '../../services/randomImageClient';
 

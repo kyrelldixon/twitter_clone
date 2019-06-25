@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import UserCard from '../UserCard';
-import LinkBar from '../LinkBar/LinkBar';
+import LinkBar from '../LinkBar';
 import { getUsers } from '../../services/userClient';
 import { useAuth } from '../../hooks';
 
