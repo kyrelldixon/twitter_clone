@@ -1,5 +1,6 @@
 import React from 'react';
 import TimeAgo from 'timeago-react';
+import { Link } from 'react-router-dom';
 import TweetMenu from '../TweetMenu/TweetMenu';
 import { useBoolean } from '../../hooks';
 import { generateRandomIconUrl } from '../../services/randomImageClient';
@@ -13,8 +14,8 @@ const Tweet = ({ tweet, setTweets }) => {
     <div id="tweet-wrapper">
       <img alt="user" src={tweet.user.icon || generateRandomIconUrl()} />
       <div id="tweet-container">
-        <div id="name">{tweet.user.name}</div>
-        <div id="username">@{`${tweet.user.username} · ` || "no username found"}</div>
+        <Link to={tweet.user.username} id="name">{tweet.user.name}</Link>
+        <Link to={tweet.user.username} id="username">@{`${tweet.user.username} · ` || "no username found"}</Link>
         <TimeAgo id="time-diff" datetime={tweet.created_at} />
         <button id="tweet-menu-btn" onClick={showMenu}>
           <i className="fas fa-chevron-down"></i>
