@@ -3,7 +3,7 @@ import Tweet from '../Tweet';
 import { getUserTimeline } from '../../services/tweetClient';
 import { getUser } from '../../services/userClient';
 import { generateRandomIconUrl } from '../../services/randomImageClient';
-import { getFollowerIds, getFollowingIds } from '../../services/relationshipClient';
+import { getFollowerCount, getFollowingCount } from '../../services/relationshipClient';
 
 import './UserTimeline.css';
 
@@ -18,10 +18,10 @@ const UserTimeline = (props) => {
   useEffect(() => {
     const fetchFollowCount = async () => {
       try {
-        const followingIds = await getFollowingIds({ username: props.match.params.username });
-        setFollowingCount(followingIds.length);
-        const followerIds = await getFollowerIds({ username: props.match.params.username });
-        setFollowersCount(followerIds.length);
+        const followingCountResponse = await getFollowingCount({ username: props.match.params.username });
+        setFollowingCount(followingCountResponse);
+        const followerCountResponse = await getFollowerCount({ username: props.match.params.username });
+        setFollowersCount(followerCountResponse);
       } catch (error) {
         console.error(error);
       }

@@ -48,11 +48,21 @@ const isFollowing = (params) => {
   .catch(handleFailure);
 }
 
+const getFollowingCount = (params) => {
+  return getFollowingIds(params).then(ids => ids.length);
+}
+
+const getFollowerCount = (params) => {
+  return getFollowerIds(params).then(ids => ids.length);
+}
+
 export { 
   getFollowerIds,
   getFollowerList,
   getFollowingIds,
   getFollowingList,
+  getFollowerCount,
+  getFollowingCount,
   follow,
   unfollow,
   isFollowing
