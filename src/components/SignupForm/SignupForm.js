@@ -9,7 +9,7 @@ const SignupForm = ({ history }) =>
 {
   const { values, handleChange, handleSubmit } = useForm(signup);
   
-  async function createUser() {
+  async function signup() {
     const user = {
       user: {
         name: values.name,
@@ -22,14 +22,10 @@ const SignupForm = ({ history }) =>
     }
     try {
       await authClient.signup(user);
+      history.push('/login');
     } catch (error) {
       alert(error);
     }
-  }
-
-  function signup() {
-    createUser();
-    history.push('/login');
   }
 
   return (

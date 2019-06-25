@@ -31,7 +31,7 @@ export const handleSuccess = ({ data: { data } }) => {
 }
 
 export const handleFailure = ({ response }) => {
-  return Promise.reject(response.data.errors.detail);
+  return Promise.reject(response);
 }
 
 export default client;

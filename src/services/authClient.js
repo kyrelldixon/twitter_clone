@@ -1,4 +1,4 @@
-import client, { LOCAL_STORAGE_TOKEN_KEY, LOCAL_STORAGE_USER_KEY, handleFailure } from './apiClient';
+import client, { LOCAL_STORAGE_TOKEN_KEY, LOCAL_STORAGE_USER_KEY } from './apiClient';
 import { createUser } from './userClient';
 
 const SESSIONS_ENDPOINT = 'v1/sessions';
@@ -21,6 +21,10 @@ const handleLogoutSuccess = (response) => {
 
 const handleLogoutFailure = ({ response }) => {
   return Promise.reject(response.data);
+}
+
+const handleSignupFailure = (response) => {
+  return Promise.reject("Email has already been taken.")
 }
 
 const getCurrentUser = () => {
@@ -49,7 +53,8 @@ const logout = () => {
 }
 
 const signup = (user) => {
-  return createUser(user).catch(handleFailure)
+  return createUser(user)
+  .catch(handleSignupFailure)
 }
 
 const getToken = () => window.localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
