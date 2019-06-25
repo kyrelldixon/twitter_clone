@@ -27,9 +27,15 @@ const TweetMenu = (props) => {
 
   const reloadTweetData = async () => {
     try {
-      const tweets = props.location.pathname === "/home" ? await getHomeTimeline() : getUserTimeline({ username: props.match.params.username });
-      console.error(tweets)
-      props.setTweetData(tweets);
+      let tweets = [];
+      if (props.location.pathname === "/home") {
+        tweets = await getHomeTimeline();
+      } else {
+        tweets = await getUserTimeline({
+          username: props.match.params.username
+        });
+      }
+      props.setTweets(tweets);
     } catch (error) {
       console.error(error);
     }

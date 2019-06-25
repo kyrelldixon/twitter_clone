@@ -9,7 +9,7 @@ import './UserTimeline.css';
 
 const UserTimeline = (props) => {
 
-  const [userTweets, setUserTweets] = useState([]);
+  const [tweets, setTweets] = useState([]);
   const [user, setUser] = useState({});
   const [followersCount, setFollowersCount] = useState(0);
   const [followingCount, setFollowingCount] = useState(0);
@@ -29,7 +29,7 @@ const UserTimeline = (props) => {
     const fetchUserTweets = async () => {
       try {
         const userTimeline = await getUserTimeline({username: props.match.params.username});
-        setUserTweets(userTimeline);
+        setTweets(userTimeline);
       } catch (error) {
         console.error(error);
       }
@@ -70,10 +70,10 @@ const UserTimeline = (props) => {
         </div> */}
       </div>
       <ul id="user-tweets-ul">
-        {userTweets.map(tweet => <li key={tweet.tweet_id}>
-          <Tweet name={tweet.user.name} icon={userIcon} username={tweet.user.username}
-            text={tweet.text} id={tweet.tweet_id} setTweetData={setUserTweets}/>
-        </li>)}
+        {tweets.map(tweet =>
+          <li key={tweet.tweet_id}>
+            <Tweet tweet={tweet} setTweets={setTweets}/>
+          </li>)}
       </ul>
     </div>
   );

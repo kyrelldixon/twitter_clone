@@ -9,14 +9,14 @@ import './Timeline.css';
 
 const Timeline = () => {
 
-  const [tweetData, setTweetData] = useState([]);
+  const [tweets, setTweets] = useState([]);
   const [isVisible, showModal, hideModal] = useBoolean(false);
 
   useEffect(() => {
     const getTweets = async () => {
       try {
         const timeline = await getHomeTimeline();
-        setTweetData(timeline);
+        setTweets(timeline);
       } catch (error) {
         console.error(error);
       }
@@ -27,7 +27,7 @@ const Timeline = () => {
 
   return (
     <div>
-      <ComposeTweet isVisible={isVisible} hideModal={hideModal} setTweetData={setTweetData} />
+      <ComposeTweet isVisible={isVisible} hideModal={hideModal} setTweets={setTweets} />
       <div id="home-bar">Home<i className="far fa-star"></i></div>
       <div id="compose" onClick={showModal}>
         <img alt="user" src={generateRandomIconUrl()} />
@@ -37,9 +37,9 @@ const Timeline = () => {
         <i className="far fa-chart-bar"></i>
       </div>
       <ul id="tweets-ul">
-        {tweetData.map(tweet => <li key={tweet.tweet_id}>
-          <Tweet name={tweet.user.name} username={tweet.user.username}
-            text={tweet.text} id={tweet.tweet_id} setTweetData={setTweetData}/>
+        {tweets.map(tweet => 
+          <li key={tweet.tweet_id}>
+            <Tweet tweet={tweet} setTweets={setTweets}/>
           </li>)}
       </ul>
     </div>

@@ -33,7 +33,7 @@ const ComposeTweet = (props) => {
   const reloadTweetData = async () => {
     try {
       const timeline = await getHomeTimeline();
-      props.setTweetData(timeline);
+      props.setTweets(timeline);
     } catch (error) {
       console.error(error);
     }
