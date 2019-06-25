@@ -32,7 +32,7 @@ const WhoToFollow = () => {
           return (
             (user.user_id !== u.id) &&
               <li key={u.id}>
-                <UserCard name={u.name} username={u.username} userId={u.id}/>
+                <UserCard user={u} />
               </li>
           )
         })}
