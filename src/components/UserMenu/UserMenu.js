@@ -44,8 +44,10 @@ const UserMenu = (props) => {
     }}>
       <div className="user-menu">
         {user ? <>
-          <h2 className="title-user-menu">Account Info</h2>
-          <button className="menu-close-btn" onClick={() => props.handleDisplay(false)}>X</button>
+          <div className="user-menu-head">
+            <h2 className="title-user-menu">Account Info</h2>
+            <button className="menu-close-btn" onClick={() => props.handleDisplay(false)}>X</button>
+          </div>
           <img className="img-user-menu" alt="user" src={generateRandomIconUrl()} />
           <div className="menu-name">{user.name || "no name found"}</div>
           <div className="menu-username">@{user.username || "no username found"}</div>
