@@ -48,13 +48,15 @@ const UserMenu = (props) => {
             <h2 className="title-user-menu">Account Info</h2>
             <button className="menu-close-btn" onClick={() => props.handleDisplay(false)}>X</button>
           </div>
-          <img className="img-user-menu" alt="user" src={generateRandomIconUrl()} />
-          <div className="menu-name">{user.name || "no name found"}</div>
-          <div className="menu-username">@{user.username || "no username found"}</div>
-          <div className="menu-follow-count">{followingCount || 0} Following </div>
-          <div className="menu-follow-count">{followerCount || 0} Followers</div>
-          <div><Link to={`/${user.username}`} onClick={() => props.handleDisplay(false)}>Profile</Link></div>
-          <div><button onClick={logout}>Logout</button></div>
+          <div className="user-menu-main">
+            <img className="img-user-menu" alt="user" src={generateRandomIconUrl()} />
+            <div className="menu-name">{user.name || "no name found"}</div>
+            <div className="menu-username">@{user.username || "no username found"}</div>
+            <div className="menu-follow-count">{followingCount || 0} Following </div>
+            <div className="menu-follow-count">{followerCount || 0} Followers</div>
+            <div><Link to={`/${user.username}`} onClick={() => props.handleDisplay(false)}>Profile</Link></div>
+            <div><button onClick={logout}>Logout</button></div>
+          </div>
         </> :
         <div><Link to="/login">Login</Link></div>
       }

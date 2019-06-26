@@ -52,11 +52,22 @@
   border: 0.06rem solid #72c2f3;
 }
 
+.user-menu-main {
+  padding: 1rem;
+  font-size: 0.9375rem;
+}
+
 .img-user-menu {
   display: block;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 1.5rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 2rem;
+  margin-bottom: 1rem;
+}
+
+.menu-username {
+  color: #808080;
+  font-weight: initial;
 }
 
 .menu-follow-count {
