@@ -1,4 +1,5 @@
 nav {
+  height: 46px;
   background-color: #FFFFFF;
   font-size: 0.8125rem;
   font-weight: bold;
@@ -25,7 +26,20 @@ nav li {
   color: #66757f;
 }
 
-#nav-right {
+.pull-right {
   float: right;
-  margin-right: 0;
+  text-align: left;
 }
+
+@media only screen and (max-width: 968px) {
+  .home span, .about {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 468px) {
+  .nav-link span {
+    display: none;
+  }
+}
+
