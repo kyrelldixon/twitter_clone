@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NavLogin from '../../components/NavLogin';
+import Footer from '../../components/Footer';
 
 import './LandingScreen.css';
 
@@ -27,7 +28,7 @@ const LandingScreen = () => (
         <Link to="login"><button className="login-btn">Log in</button></Link>
       </div>
     </section>
-
+    <Footer />
   </div>
 );
 

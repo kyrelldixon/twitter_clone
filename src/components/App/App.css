@@ -1,3 +1,5 @@
+/* App.css */
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -17,8 +19,7 @@ a {
 
 .container {
   background-color: #FFFFFF;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0 auto;
   max-width: 840px;
 }
 
