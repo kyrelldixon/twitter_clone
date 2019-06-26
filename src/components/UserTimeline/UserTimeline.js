@@ -51,11 +51,11 @@ const UserTimeline = (props) => {
 
   return (
     <div id="user-acct">
-      <div>
-        <img id="user-bg" alt="user background" src="https://picsum.photos/950/300" />
+      <div className="usertl-bg-container">
+        <img className="usertl-bg" alt="user background" src="https://picsum.photos/950/300" />
       </div>
       <div id="acct-main">
-        <img id="user-photo" alt="user" src={userIcon} />
+        <img className="usertl-photo" alt="user" src={userIcon} />
         <div className="usertl-name">{user.name || "no name found"}</div>
         <div className="usertl-username">@{user.username || "no username found"}</div>
         {/* <div id="btn-box"><ActionButton text="Edit Profile" /></div> */}
