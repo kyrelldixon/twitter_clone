@@ -55,7 +55,7 @@ const UserMenu = (props) => {
             <span className="user-follow-num">{followingCount || 0}</span>
             <span className="user-follow-text"> Following</span>
             <span className="user-follow-num">{followerCount || 0}</span>
-            <span className="user-follow-text"> Followers</span>
+            <span className="user-follow-text"> Follower{followerCount === 1 ? "" : "s"}</span>
             <div><Link className="user-menu-link" to={`/${user.username}`} onClick={() => props.handleDisplay(false)}>Profile</Link></div>
             <div><Link className="user-menu-link" onClick={logout}>Logout</Link></div>
           </div>

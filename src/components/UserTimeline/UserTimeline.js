@@ -63,7 +63,7 @@ const UserTimeline = (props) => {
         <span className="user-follow-num">{followingCount || 0}</span>
         <span className="user-follow-text">Following</span>
         <span className="user-follow-num">{followersCount || 0}</span>
-        <span className="user-follow-text">Followers</span>
+        <span className="user-follow-text">Follower{followersCount === 1 ? "" : "s"}</span>
         {/* <div id="user-tabs">
           <button className="acct-tab">Tweets</button>
           <button className="acct-tab">Tweets & replies</button>
