@@ -1,7 +1,17 @@
+#signup {
+  width: 100%;
+}
+
 #signup-box {
   min-height: 24rem;
-  border: 0.07rem solid rgba(0,0,0,0.18);
-  padding: 3rem 0 3rem 3rem;
+  border: 0.07rem solid rgba(0, 0, 0, 0.18);
+  padding: 3rem;
+  margin: 0 auto;
+}
+
+#signup-box .form-container {
+  max-width: 565px;
+  margin: 0 auto;
 }
 
 #signup-box h1 {
@@ -11,7 +21,6 @@
 
 #signup-box label {
   display: block;
-  width: 30rem;
   margin-bottom: 1.2rem;
   background-color: #f5f8fa;
 }
@@ -25,7 +34,7 @@
 }
 
 #signup-box input {
-  width: inherit;
+  width: 100%;
   background-color: inherit;
   padding: 0.3rem 0.5rem;
   font-size: 1.2rem;
@@ -56,4 +65,15 @@
   color: #ffffff;
   font-weight: bold;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 480px) {
+  #signup-box h1 {
+    font-size: 1.5rem;
+    margin-top: 0;
+  }
+
+  #signup-box {
+    padding: 2rem;
+  }
 }
