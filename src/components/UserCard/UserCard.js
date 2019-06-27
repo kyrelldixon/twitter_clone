@@ -1,21 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import FollowButton from '../FollowButton';
 import { generateRandomIconUrl } from '../../services/randomImageClient';
 
 import './UserCard.css';
 
-const UserCard = (props) => {
+const UserCard = ({ user }) => {
 
   return (
     <div id="usercard-wrapper">
       <img alt="user" src={generateRandomIconUrl()} />
       <div>
-        <div>{props.id}</div>
-        <div id="name">{props.name || "no name found"}</div>
+        <Link to={user.username} id="name">{user.name || "no name found"}</Link>
         <div id="btn-box">
-          <FollowButton userId={props.userId} />
+          <FollowButton userId={user.id} />
         </div>
-        <div id="username">@{props.username || "no username found"}</div>
+        <Link to={user.username} id="username">@{user.username || "no username found"}</Link>
       </div>
     </div>
   );

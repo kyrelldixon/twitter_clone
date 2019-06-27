@@ -32,24 +32,28 @@ const LoginForm = ({ history }) => {
   return (
     <div className="container" id="main-box">
 
-        <form id="login" onSubmit={handleSubmit}>
-          <h1 id="login-header">Log in to Twitter</h1>
-        
-          <input className="login-form" type="email" placeholder="Email" 
-            name="email" value={values.email || ''} onChange={handleChange} required />
-          
-          <input className="login-form" type="password" placeholder="Password"
-            name="password" value={values.password || ''} onChange={handleChange} required />
+        <div className="form-container">
+          <div className="login-wrapper">
+            <form id="login" onSubmit={handleSubmit}>
+              <h1 id="login-header">Log in to Twitter</h1>
+            
+              <input className="login-form" type="email" placeholder="Email" 
+                name="email" value={values.email || ''} onChange={handleChange} required />
+              
+              <input className="login-form" type="password" placeholder="Password"
+                name="password" value={values.password || ''} onChange={handleChange} required />
 
-          <button className="login-options" type="submit">Log in</button>
-          <input className="login-options" type="checkbox" />
-          <p className="login-options">Remember me · <Link to="/">Forgot password?</Link></p>
-        </form>
+              <button className="login-options" type="submit">Log in</button>
+              <input className="login-options" type="checkbox" />
+              <p className="login-options">Remember me · <Link to="/">Forgot password?</Link></p>
+            </form>
+          </div>
 
-        <section id="signup-links">
-          <p>New to Twitter? <Link to="/signup">Sign up now »</Link></p>
-          <p>Already using Twitter via text message? <Link to="/">Activate your account »</Link></p>
-        </section>
+          <section id="signup-links">
+            <p>New to Twitter? <Link to="/signup">Sign up now »</Link></p>
+            <p>Already using Twitter via text message? <Link to="/">Activate your account »</Link></p>
+          </section>
+        </div>
 
       </div>
   );

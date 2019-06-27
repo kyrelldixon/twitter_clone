@@ -5,7 +5,6 @@ import TimelineScreen from '../../routes/TimelineScreen';
 import LoginScreen from '../../routes/LoginScreen';
 import SignupScreen from '../../routes/SignupScreen';
 import PrivateRoute from '../PrivateRoute';
-import Footer from '../Footer';
 
 import './App.css';
 
@@ -16,7 +15,6 @@ const App = () => (
     <Route path="/signup" component={SignupScreen} />
     <PrivateRoute path="/home" component={TimelineScreen} />
     <PrivateRoute exact path="/:username" component={TimelineScreen} />
-    <Footer />
   </Switch>
 );
 
