@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import UserCard from '../UserCard';
-import LinkBar from '../LinkBar';
+import ShowMoreButton from '../ShowMoreButton';
 import { getUsers } from '../../services/userClient';
-import { useAuth } from '../../hooks';
+import { useAuth, useBoolean } from '../../hooks';
 
 import './WhoToFollow.css';
 
 const WhoToFollow = () => {
 
-  const [userData, setUserData] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [isShowingMore, showMore, showLess] = useBoolean(false);
   const [{ user }, ] = useAuth();
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         const users = await getUsers();
-        setUserData(users);
+        setUsers(users);
       } catch (error) {
         console.error(error);
       }
     }
-
+    
     fetchUsers();
   }, []);
   
@@ -28,7 +29,8 @@ const WhoToFollow = () => {
     <div>
       <div id="follow-who-header">Who to follow</div>
       <ul id="tweets-ul">
-        {userData.map(u => {
+        {users.slice(0, isShowingMore ? users.length : 3)
+          .map(u => {
           return (
             (user.user_id !== u.id) &&
               <li key={u.id}>
@@ -37,7 +39,10 @@ const WhoToFollow = () => {
           )
         })}
       </ul>
-      <LinkBar text="Show more"/>
+      <ShowMoreButton
+        isShowingMore={isShowingMore}
+        showMore={showMore}
+        showLess={showLess} />
     </div>
   );
 }

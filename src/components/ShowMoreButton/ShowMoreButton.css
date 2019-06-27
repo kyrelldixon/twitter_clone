@@ -1,0 +1,11 @@
+.show-more {
+  font-size: 0.9375rem;
+  background-color: #ffffff;
+  color: #1da1f2;
+  padding: 0.9rem;
+  cursor: pointer;
+}
+
+.show-more:hover {
+  background-color: #fafafa;
+}
