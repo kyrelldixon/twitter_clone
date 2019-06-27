@@ -22,6 +22,7 @@
   display: inline;
   font-weight: bold;
   margin-right: 0.3rem;
+  color: inherit;
 }
 
 #tweet-container #username {

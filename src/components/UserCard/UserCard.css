@@ -22,6 +22,8 @@
 #usercard-wrapper #name {
   display: inline-block;
   font-weight: bold;
+  color: inherit;
+  cursor: pointer;
 }
 
 #btn-box {
@@ -30,5 +32,6 @@
 }
 
 #usercard-wrapper #username {
+  display: block;
   color: #808080;
 }
