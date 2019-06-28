@@ -156,10 +156,6 @@ footer {
 }
 
 @media only screen and (max-width: 500px), (max-height: 660px) {
-  #left-half {
-    justify-content: flex-start;
-    padding: 0.5rem;
-  }
   #left-half h2 {
     margin-bottom: 2rem;
     font-size: 1rem;
@@ -171,14 +167,15 @@ footer {
   #home-logo {
     font-size: 2rem;
   }
-  
   #right-half .right-container h1 {
     font-size: 1.3rem;
-    margin: 0.8rem 0 1.4rem 0;
+    margin: 0.8rem 0 2rem 0;
   }
-  #small-btn-lower {
-    line-height: 1.2rem;
-    font-size: 0.6rem;
+  #right-half .right-container h3 {
+    font-size: 0.75rem;
+  }
+  footer {
+    display: none;
   }
 }
 
@@ -189,12 +186,13 @@ footer {
   #left-half {
     width: 100%;
     height: 50%;
+    padding: 0.5rem;
   }
   #bird-bg {
     font-size: 30rem;
-    top: 35%;
-    left: 65%;
-    width: 35%;
+    top: 40%;
+    left: 15%;
+    width: 85%;
   }
   #right-half {
     width: 100%;
@@ -205,16 +203,19 @@ footer {
     display: none;
   }
   #right-half .right-container {
-    margin: 1rem auto;
+    margin: auto auto;
+  }
+}
+
+@media only screen and (min-width: 801px) and (max-width: 1023px) {
+  #small-btn-lower {
+    display: inline-block;
   }
 }
 
 @media only screen and (max-width: 1024px), (max-height: 660px) {
   #top-login {
     visibility: hidden;
-  }
-  #small-btn-lower {
-    display: inline-block;
   }
 }
 
