@@ -46,3 +46,19 @@ a {
     margin: 0 10px;
   }
 }
+
+@media only screen and (max-width: 1000px) {
+  .tl-right-side {
+    display: none;
+  }
+  .home-container {
+    grid-template-columns: 70%;
+    justify-content: center;
+  }
+  #user-nav #search-box {
+    display: none;
+  }
+  #compose #input-box {
+    width: 60%;
+  }
+}

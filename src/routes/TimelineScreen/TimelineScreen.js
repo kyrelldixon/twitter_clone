@@ -15,7 +15,7 @@ const TimelineScreen = () => (
           <Route path="/:username" component={UserTimeline} />
         </Switch>
       </div>
-      <div>
+      <div className="tl-right-side">
         <WhoToFollow />
       </div>
     </div>
