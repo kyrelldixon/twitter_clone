@@ -48,15 +48,21 @@ const UserMenu = (props) => {
     }}>
       <div className="user-menu">
         {user ? <>
-          <h2 className="title-user-menu">Account Info</h2>
-          <button className="menu-close-btn" onClick={() => props.handleDisplay(false)}>X</button>
-          <img className="img-user-menu" alt="user" src={generateRandomIconUrl()} />
-          <div className="menu-name">{user.name || "no name found"}</div>
-          <div className="menu-username">@{user.username || "no username found"}</div>
-          <div className="menu-follow-count">{followingCount || 0} Following </div>
-          <div className="menu-follow-count">{followerCount || 0} Followers</div>
-          <div><Link to={`/${user.username}`} onClick={() => props.handleDisplay(false)}>Profile</Link></div>
-          <div><button onClick={logout}>Logout</button></div>
+          <div className="user-menu-head">
+            <h2 className="title-user-menu">Account Info</h2>
+            <button className="menu-close-btn" onClick={() => props.handleDisplay(false)}>X</button>
+          </div>
+          <div className="user-menu-main">
+            <img className="img-user-menu" alt="user" src={generateRandomIconUrl()} />
+            <div className="menu-name">{user.name || "no name found"}</div>
+            <div className="username">@{user.username || "no username found"}</div>
+            <span className="user-follow-num">{followingCount || 0}</span>
+            <span className="user-follow-text"> Following</span>
+            <span className="user-follow-num">{followerCount || 0}</span>
+            <span className="user-follow-text"> Follower{followerCount === 1 ? "" : "s"}</span>
+            <div><Link className="user-menu-link" to={`/${user.username}`} onClick={() => props.handleDisplay(false)}>Profile</Link></div>
+            <div><Link className="user-menu-link" onClick={logout}>Logout</Link></div>
+          </div>
         </> :
         <div><Link to="/login">Login</Link></div>
       }

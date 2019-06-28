@@ -11,10 +11,10 @@
 .user-menu {
   position: fixed;
   right: 0;
-  padding: 1rem;
   background-color: #ffffff;
   width: 18rem;
   height: 100%;
+  font-weight: normal;
 }
 
 .hide-menu {
@@ -25,23 +25,52 @@
   display: block;
 }
 
+.user-menu-head {
+  padding: 0.5rem 0.2rem 0.2rem 1rem;
+  border-bottom: 0.07rem solid #e6ecf0;
+}
 .title-user-menu {
   display: inline-block;
-  border-bottom: 0.07rem solid #e6ecf0;
 }
 
 .menu-close-btn {
   float: right;
+  margin: 0.5rem;
+  border-color: #ffffff;
+  border-radius: 100%;
+  padding: 0.3rem 0.7rem;
+  font-size: 1.2rem;
+  color: #1da1f2;
+  cursor: pointer;
+  outline: none;
+}
+
+.menu-close-btn:hover {
+  background-color: #dcf3fc;
+}
+
+.menu-close-btn:focus {
+  border: 0.06rem solid #72c2f3;
+}
+
+.user-menu-main {
+  padding: 1rem;
+  font-size: 0.9375rem;
 }
 
 .img-user-menu {
   display: block;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 1.5rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 2rem;
+  margin-bottom: 1rem;
 }
 
-.menu-follow-count {
-  display: inline-block;
-  margin: 1rem 0.5rem 1rem 0;
+.menu-name {
+  font-weight: bold;
+}
+
+.user-menu-link {
+  display: block;
+  margin-bottom: 0.25rem;
 }

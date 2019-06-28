@@ -57,13 +57,13 @@ const UserTimeline = (props) => {
       <div id="acct-main">
         <img className="usertl-photo" alt="user" src={userIcon} />
         <div className="usertl-name">{user.name || "no name found"}</div>
-        <div className="usertl-username">@{user.username || "no username found"}</div>
+        <div className="username">@{user.username || "no username found"}</div>
         {/* <div id="btn-box"><ActionButton text="Edit Profile" /></div> */}
         {/* <div id="user-bio">{user.bio || "no bio found"}</div> */}
-        <span className="usertl-follow-num">{followingCount || 0}</span>
-        <span className="usertl-follow-text"> Following</span>
-        <span className="usertl-follow-num">{followersCount || 0}</span>
-        <span className="usertl-follow-text"> Followers</span>
+        <span className="user-follow-num">{followingCount || 0}</span>
+        <span className="user-follow-text">Following</span>
+        <span className="user-follow-num">{followersCount || 0}</span>
+        <span className="user-follow-text">Follower{followersCount === 1 ? "" : "s"}</span>
         {/* <div id="user-tabs">
           <button className="acct-tab">Tweets</button>
           <button className="acct-tab">Tweets & replies</button>
