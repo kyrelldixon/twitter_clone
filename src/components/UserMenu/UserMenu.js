@@ -24,9 +24,13 @@ const UserMenu = (props) => {
   useEffect(() => {
     const getFollowCounts = async () => {
       try {
-        const followerCountResponse = await getFollowerCount();
+        const followerCountResponse = await getFollowerCount({
+          username: user.username
+        });
         setFollowerCount(followerCountResponse);
-        const followingCountResponse = await getFollowingCount();
+        const followingCountResponse = await getFollowingCount({
+          username: user.username
+        });
         setFollowingCount(followingCountResponse);
       } catch (error) {
         console.error(error);
@@ -34,7 +38,7 @@ const UserMenu = (props) => {
     }
 
     getFollowCounts();
-  }, []);
+  }, [user]);
 
   return (
     <div id="modal-bg" className={props.display ? 'show-menu' : 'hide-menu'} onClick={(event) => {
