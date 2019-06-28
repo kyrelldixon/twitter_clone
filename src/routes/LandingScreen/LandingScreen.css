@@ -155,6 +155,33 @@ footer {
   cursor: pointer;
 }
 
+@media only screen and (max-width: 500px), (max-height: 660px) {
+  #left-half {
+    justify-content: flex-start;
+    padding: 0.5rem;
+  }
+  #left-half h2 {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
+  #left-half h2 i {
+    margin-right: 0.75rem;
+    font-size: 1.5rem;
+  }
+  #home-logo {
+    font-size: 2rem;
+  }
+  
+  #right-half .right-container h1 {
+    font-size: 1.3rem;
+    margin: 0.8rem 0 1.4rem 0;
+  }
+  #small-btn-lower {
+    line-height: 1.2rem;
+    font-size: 0.6rem;
+  }
+}
+
 @media only screen and (max-width: 800px) {
   .wrapper {
     flex-direction: column-reverse;
@@ -167,10 +194,12 @@ footer {
     font-size: 30rem;
     top: 35%;
     left: 65%;
+    width: 35%;
   }
   #right-half {
     width: 100%;
     height: 50%;
+    padding: 1rem;
   }
   #top-login {
     display: none;
