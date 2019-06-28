@@ -29,13 +29,17 @@ const NavLogin = ({ history }) => {
   return (
     <>
       <div id="top-login">
-        <input type="email" placeholder="Phone, email or username"
-          name="email" value={values.email || ''} onChange={handleChange}/>
-        <input type="password" placeholder="Password"
-          name="password" value={values.password || ''} onChange={handleChange}/>
+        <div>
+          <input type="email" placeholder="Phone, email or username"
+            name="email" value={values.email || ''} onChange={handleChange}/>
+        </div>
+        <div>
+          <input type="password" placeholder="Password"
+            name="password" value={values.password || ''} onChange={handleChange}/>
+          <Link to="/" id="forgot-pass">Forgot password?</Link>
+        </div>
         <button className="login-btn" id="small-btn-upper" onClick={handleSubmit}>Log in</button>
       </div>
-      <Link to="/" id="forgot-pass">Forgot password?</Link>
   </>
   )
 }

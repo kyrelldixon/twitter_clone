@@ -9,17 +9,18 @@ const LandingScreen = () => (
   <div className="wrapper">
 
     <section id="left-half">
-      <h2><i className="fas fa-search"></i>Follow your interests.</h2>
-      <h2><i className="fas fa-users"></i>Hear what people are talking about.</h2>
-      <h2><i className="far fa-comment"></i>Join the conversation.</h2>
+      <div className="left-container">
+        <h2><i className="fas fa-search"></i>Follow your interests.</h2>
+        <h2><i className="fas fa-users"></i>Hear what people are talking about.</h2>
+        <h2><i className="far fa-comment"></i>Join the conversation.</h2>
+      </div>
+      <i className="fab fa-twitter" id="bird-bg"></i>
     </section>
-
-    <i className="fab fa-twitter" id="bird-bg"></i>
 
     <section id="right-half">
       <NavLogin />
 
-      <div id="container">
+      <div className="right-container">
         <i className="fab fa-twitter" id="home-logo"></i>
         <Link to="login"><button className="login-btn" id="small-btn-lower">Log in</button></Link>
         <h1>See what's happening in the world right now</h1>
