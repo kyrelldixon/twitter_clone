@@ -20,11 +20,12 @@ const handleLogoutSuccess = (response) => {
 }
 
 const handleLogoutFailure = ({ response }) => {
+  handleLogoutSuccess(response);
   return Promise.reject(response.data);
 }
 
 const handleSignupFailure = (response) => {
-  return Promise.reject("Email has already been taken.")
+  return Promise.reject("Email has already been taken.");
 }
 
 const getCurrentUser = () => {
@@ -54,7 +55,7 @@ const logout = () => {
 
 const signup = (user) => {
   return createUser(user)
-  .catch(handleSignupFailure)
+  .catch(handleSignupFailure);
 }
 
 const getToken = () => window.localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);

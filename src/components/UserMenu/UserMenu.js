@@ -15,10 +15,10 @@ const UserMenu = (props) => {
   const logout = async (e) => {
     try {
       await authClient.logout();
-      props.history.push('/login');
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
+    props.history.push('/login');
   }
 
   useEffect(() => {
