@@ -32,13 +32,14 @@
 #bird-bg {
   color: #14171a;
   opacity: 0.1;
-  font-size: 164vh;
+  font-size: 80rem;
   width: 50%;
   position: absolute;
   z-index: 10;
   top: -33.5%;
   bottom: 0%;
   left: 3%;
+  overflow-x: hidden;
   overflow-y: hidden;
 }
 
@@ -132,11 +133,13 @@ footer {
   bottom: 0;
   z-index: 30;
   background-color: #ffffff;
-  text-align: center;
   border-top: 0.06rem solid #e6ecf0;
 }
 
 #home-footer-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   margin: 0.78rem 0;
 }
 
@@ -161,8 +164,9 @@ footer {
     height: 50%;
   }
   #bird-bg {
-    width: 97%;
-    overflow-x: hidden;
+    font-size: 30rem;
+    top: 35%;
+    left: 65%;
   }
   #right-half {
     width: 100%;
