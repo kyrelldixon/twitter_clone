@@ -4,6 +4,7 @@ import LandingScreen from '../../routes/LandingScreen';
 import TimelineScreen from '../../routes/TimelineScreen';
 import LoginScreen from '../../routes/LoginScreen';
 import SignupScreen from '../../routes/SignupScreen';
+import NotFoundScreen from '../../routes/NotFoundScreen';
 import PrivateRoute from '../PrivateRoute';
 
 import './App.css';
@@ -15,6 +16,7 @@ const App = () => (
     <Route path="/signup" component={SignupScreen} />
     <PrivateRoute path="/home" component={TimelineScreen} />
     <PrivateRoute exact path="/:username" component={TimelineScreen} />
+    <Route component={NotFoundScreen} />
   </Switch>
 );
 
