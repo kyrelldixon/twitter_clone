@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Tweet from '../Tweet';
 import ComposeTweet from '../ComposeTweet';
+import ComposeButton from './ComposeButton';
 import { getHomeTimeline } from '../../services/tweetClient';
 import { useBoolean } from '../../hooks';
 import { generateRandomIconUrl } from '../../services/randomImageClient';
@@ -29,6 +30,7 @@ const Timeline = () => {
     <div>
       <ComposeTweet isVisible={isVisible} hideModal={hideModal} setTweets={setTweets} />
       <div id="home-bar">Home<i className="far fa-star"></i></div>
+      <ComposeButton className="compose-tweet-btn" action={showModal} />
       <div id="compose" onClick={showModal}>
         <img alt="user" src={generateRandomIconUrl()} />
         <div id="input-box">What's happening?</div>
