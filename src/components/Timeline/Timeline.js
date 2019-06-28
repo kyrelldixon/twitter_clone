@@ -29,7 +29,7 @@ const Timeline = () => {
   return (
     <div>
       <ComposeTweet isVisible={isVisible} hideModal={hideModal} setTweets={setTweets} />
-      <div id="home-bar">Home<i className="far fa-star"></i></div>
+      <div id="home-bar-tl" className="home-bar">Home<i className="far fa-star"></i></div>
       <ComposeButton className="compose-tweet-btn" action={showModal} />
       <div id="compose" onClick={showModal}>
         <img alt="user" src={generateRandomIconUrl()} />

@@ -77,7 +77,7 @@
   transition: 0.4s;
 }
 
-#acct-link img {
+.user-profile-img {
   width: 2.05rem;
   height: 2.15rem;
   border-radius: 50%;
@@ -105,6 +105,12 @@
 
 @media only screen and (max-width: 1000px) {
   #user-nav #search-box {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 675px) {
+  #acct-link {
     display: none;
   }
 }

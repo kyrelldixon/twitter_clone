@@ -4,22 +4,33 @@ import UserNav from '../../components/UserNav';
 import Timeline from '../../components/Timeline';
 import WhoToFollow from '../../components/WhoToFollow';
 import UserTimeline from '../../components/UserTimeline';
+import { useAuth } from '../../hooks';
+import { generateRandomIconUrl } from '../../services/randomImageClient';
 
-const TimelineScreen = () => (
-  <div>
-    <UserNav />
-    <div className="home-container">
-      <div className="left-side">
-        <Switch>
-          <Route path="/home" component={Timeline} />
-          <Route path="/:username" component={UserTimeline} />
-        </Switch>
+const TimelineScreen = () => {
+
+  const [{ isAuthenticated }, ] = useAuth();
+
+  return (
+    <div>
+      <div id="home-bar-nav" className="home-bar">
+        {isAuthenticated && <img className="user-profile-img" alt="user" src={generateRandomIconUrl()} />}Home
+        <i className="far fa-star"></i>
       </div>
-      <div className="tl-right-side">
-        <WhoToFollow />
+      <UserNav />
+      <div className="home-container">
+        <div className="left-side">
+          <Switch>
+            <Route path="/home" component={Timeline} />
+            <Route path="/:username" component={UserTimeline} />
+          </Switch>
+        </div>
+        <div className="tl-right-side">
+          <WhoToFollow />
+        </div>
       </div>
     </div>
-  </div>
-)
+  );
+}
 
 export default TimelineScreen;

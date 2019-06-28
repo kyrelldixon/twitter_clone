@@ -22,7 +22,7 @@ const UserNav = () => {
         </ul>
         <input id="search-box" placeholder="Search Twitter" />
         <button id="nav-icon-button" onClick={() => setMenuDisplayState(true)}><span id="acct-link">
-          {isAuthenticated && <img alt="user" src={generateRandomIconUrl()} />}
+          {isAuthenticated && <img className="user-profile-img" alt="user" src={generateRandomIconUrl()} />}
           <span>{user ? user.name : 'Not Signed In'}</span>
           <i className="fas fa-chevron-down"></i>
         </span>
