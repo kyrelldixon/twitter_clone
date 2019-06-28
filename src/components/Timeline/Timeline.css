@@ -57,3 +57,9 @@
   margin: 0;
   list-style-type: none;
 }
+
+@media only screen and (max-width: 1000px) {
+  #compose #input-box {
+    width: 60%;
+  }
+}

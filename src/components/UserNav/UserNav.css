@@ -102,3 +102,9 @@
   border: none;
   background: none;
 }
+
+@media only screen and (max-width: 1000px) {
+  #user-nav #search-box {
+    display: none;
+  }
+}
