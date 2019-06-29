@@ -110,7 +110,7 @@
 }
 
 @media only screen and (max-width: 675px) {
-  #acct-link {
+  #nav-icon-button {
     display: none;
   }
 }

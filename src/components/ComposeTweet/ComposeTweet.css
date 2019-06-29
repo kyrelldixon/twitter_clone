@@ -2,7 +2,7 @@
 
 #modal-bg {
   position: fixed;
-  z-index: 1;
+  z-index: 200;
   left: 0;
   top: 0;
   width: 100%;
@@ -75,9 +75,14 @@
   border: 0.1rem solid #70c1f3;
 }
 
+#compose-tweet-body {
+  height: 100%;
+  width: 100%;
+}
+
 #compose-tweet-body img {
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 6.2%;
+  height: 14.5%;
   border-radius: 1.5rem;
   margin: 1rem 1.2rem 0 1rem;
   vertical-align: top;
@@ -85,8 +90,8 @@
 }
 
 #compose-tweet-message {
-  width: 31.8rem;
-  height: 7rem;
+  width: 85%;
+  height: 50%;
   padding: 0.5rem;
   font-size: 1.2rem;
   margin-top: 1rem;
@@ -104,4 +109,18 @@
 
 #compose-tweet-message:focus::placeholder {
   color: #b0b5b8;
+}
+
+@media only screen and (max-width: 1000px) {
+  #compose-tweet-modal {
+    width: 32rem;
+    left: 20%;
+  }
+}
+
+@media only screen and (max-width: 675px) {
+  #compose-tweet-modal {
+    width: 100%;
+    left: 0;
+  }
 }
