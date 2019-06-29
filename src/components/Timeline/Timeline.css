@@ -13,8 +13,8 @@
 .compose-tweet-btn {
   display: none;
   position: fixed;
-  bottom: 2rem;
-  right: 4rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
   z-index: 5;
   font-size: 1rem;
   padding: 0.8rem;
