@@ -18,6 +18,10 @@
   margin-right: 1rem;
 }
 
+#tweet-container {
+  position: relative;
+}
+
 #tweet-container #name {
   display: inline;
   font-weight: bold;
