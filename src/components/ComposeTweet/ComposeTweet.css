@@ -123,4 +123,13 @@
     width: 100%;
     left: 0;
   }
+  #compose-tweet-body img {
+    width: 2rem;
+    height: 2rem;
+  }
+  #compose-tweet-message {
+    width: 77.5%;
+    height: 50%;
+    font-size: 1rem;
+  }
 }
