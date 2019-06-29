@@ -16,7 +16,6 @@
 }
 
 #user-nav ul {
-  display: inline-block;
   padding: 0;
 }
 
@@ -112,5 +111,13 @@
 @media only screen and (max-width: 675px) {
   #nav-icon-button {
     display: none;
+  }
+  #user-nav {
+    padding: 0;
+  }
+  #user-nav ul {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
 }
